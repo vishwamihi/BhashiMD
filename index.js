@@ -69,9 +69,9 @@ require("./plugins/" + plugin);
 console.log('Plugins Installed Successful ✅')
 console.log('Bhashi-MD Connected  Successful ✅')
 
-let up = `Bhashi-MD Connected  Successful ✅\n\nPREFIX: ${prefix}`; ------------------------------> EDIT NOW ALIVE MSG
+let up = `*BHASHI-MD V1 CONECTED SUCESSFULL ✅*\n\nᴘᴏᴡᴇʀᴅ ʙʏ ᴏꜰᴄ ʙʜᴀꜱʜɪᴛʜᴀ`;
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/900435c6d3157c98c3c88.jpg` }, caption: up })
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
 }
 })
