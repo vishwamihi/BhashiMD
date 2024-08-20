@@ -18,17 +18,16 @@ const deta = search.videos[0];
 const url = deta.url 
 
 let desc= `
-*•.¸♡ 💃𝐐𝐔𝐄𝐄𝐍 𝐊𝐄𝐍𝐙𝐈 𝐌𝐃 🤍 AUDIO-DOWNLOADER🎶 ♡¸.•*
+*•.¸♡ BHASHI-Md AUDIO DOWNLOADER 🎶 ♡¸.•*
 |__________________________
-| 🎠title : ${deta.title}
-| 🎠description : ${deta.description}
-| 🎠time : ${deta.timestamp}
-| 🎠ago : ${deta.ago}
-| 🎠views : ${deta.views}
+| 💦 *ᴛɪᴛʟᴇ* : ${deta.title}
+| 💫 *ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ* : ${deta.description}
+| 🎞️ *ᴛɪᴍᴇ* : ${deta.timestamp}
+| 🌏 *ᴀɢᴏ* : ${deta.ago}
+| 🎥 *ᴠɪᴇᴡꜱ* : ${deta.views}
 |__________________________
 
-POWERED by *⚡ DARK NEON CYBERS 🤍*
-
+> *ᴘᴏᴡᴇʀᴅ ʙʏ ᴠɪꜱʜᴡᴀ22*
 `
 
 await conn.sendMessage(from,{image :{ url: deta.thumbnail},caption:desc},{quoted:mek});
@@ -68,17 +67,16 @@ const deta = search.videos[0];
 const url = deta.url 
 
 let desc= `
-*•.¸♡ 💃𝐐𝐔𝐄𝐄𝐍 𝐊𝐄𝐍𝐙𝐈 𝐌𝐃 🤍 VIDEO-DOWNLOADER📽️ ♡¸.•*
+*•.¸♡ BHASHI-Md AUDIO DOWNLOADER 🎶 ♡¸.•*
 |__________________________
-| 🎠title : ${deta.title}
-| 🎠description : ${deta.description}
-| 🎠time : ${deta.timestamp}
-| 🎠ago : ${deta.ago}
-| 🎠views : ${deta.views}
+| 💦 *ᴛɪᴛʟᴇ* : ${deta.title}
+| 💫 *ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ* : ${deta.description}
+| 🎞️ *ᴛɪᴍᴇ* : ${deta.timestamp}
+| 🌏 *ᴀɢᴏ* : ${deta.ago}
+| 🎥 *ᴠɪᴇᴡꜱ* : ${deta.views}
 |__________________________
 
-POWERED by *⚡ DARK NEON CYBERS 🤍*
-
+> *ᴘᴏᴡᴇʀᴅ ʙʏ ᴠɪꜱʜᴡᴀ22*
 `
 
 await conn.sendMessage(from,{image :{ url: deta.thumbnail},caption:desc},{quoted:mek});
