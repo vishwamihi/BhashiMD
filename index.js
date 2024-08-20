@@ -69,7 +69,9 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Bot connected to whatsapp ✅')
 
-let up = `*BHASHI-MD V1 CONECTED SUCESSFULL ✅*/n/nᴘᴏᴡᴇʀᴅ ʙʏ ᴏꜰᴄ ʙʜᴀꜱʜɪᴛʜᴀ`;
+let up = `*BHASHI-MD V1 CONECTED SUCESSFULL ✅*
+
+ᴘᴏᴡᴇʀᴅ ʙʏ ᴏꜰᴄ ʙʜᴀꜱʜɪᴛʜᴀ`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
