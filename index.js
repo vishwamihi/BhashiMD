@@ -32,9 +32,16 @@ fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
 console.log("Session downloaded âœ…")
 })})}
 
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 8000;
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000;
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 //=============================================
 
