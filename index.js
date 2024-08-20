@@ -32,10 +32,6 @@ fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
 console.log("Session downloaded ✅")
 })})}
 
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 8000;
-
 //=============================================
 
 async function connectToWA() {
@@ -173,8 +169,4 @@ res.send("hey, bot started✅");
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 setTimeout(() => {
 connectToWA()
-        
-
-{const express = require("express");
-const app = express();
-const port = process.env.PORT || 8000;}
+4000;
