@@ -1,176 +1,695 @@
+/* ---------------------------------------------------------------------------------/
+/                                                                                   /
+/             d8888 888    888                        888b     d888 8888888b.       /
+/            d88888 888    888                        8888b   d8888 888  "Y88b      /
+/           d88P888 888    888                        88888b.d88888 888    888      /
+/          d88P 888 888888 888  8888b.  .d8888b       888Y88888P888 888    888      /
+/         d88P  888 888    888     "88b 88K           888 Y888P 888 888    888      /
+/        d88P   888 888    888 .d888888 "Y8888b.      888  Y8P  888 888    888      /
+/       d8888888888 Y88b.  888 888  888      X88      888   "   888 888  .d88P      /
+/      d88P     888  "Y888 888 "Y888888  88888P'      888       888 8888888P"       /
+/                                                                                   / 
+/-----------------------------------------------------------------------------------/
+/ Author and Main Developer: FantoX                                                 /
+/ Github: https://github.com/FantoX001/Atlas-MD                                     /
+/ Powered By: Team ATLAS                                                            /
+/-----------------------------------------------------------------------------------/
+/             Meet Team ATLAS who holds all rights to this repository:              /
+/                                                                                   /
+/ 1. Pratyush - https://github.com/pratyush4932                                     /
+/ 2. Ahmii - https://github.com/kirito2355                                          /               
+/ 3. Kai - https://github.com/Kai0071                                               /                    
+/ 4. Devime - https://github.com/Devime69                                           /
+/ 5. Jay JayOps - https://github.com/jayjay-ops                                     /
+/                                                                                   /
+/ ----------------------------------------------------------------------------------/
+/                                                                                   /
+/      With all of our hard work and defication you can enjoy this awesome bot!     /  
+/                                                                                   / 
+/----------------------------------------------------------------------------------*/
+
+require("./config.js");
+require("./Core.js");
+
+const pino = require('pino');
 const {
-default: makeWASocket,
-useMultiFileAuthState,
-DisconnectReason,
-jidNormalizedUser,
-getContentType,
-fetchLatestBaileysVersion,
-Browsers
-} = require('@whiskeysockets/baileys')
+    default: MikuConnect,
+    DisconnectReason,
+    delay,
+    fetchLatestBaileysVersion,
+    useSingleFileAuthState,
+    generateForwardMessageContent,
+    prepareWAMessageMedia,
+    generateWAMessageFromContent,
+    generateMessageID,
+    downloadContentFromMessage,
+    makeInMemoryStore,
+    jidDecode,
+    proto
+} = require("@adiwajshing/baileys");
 
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
-const fs = require('fs')
-const P = require('pino')
-const config = require('./config')
-const qrcode = require('qrcode-terminal')
-const util = require('util')
-const { sms,downloadMediaMessage } = require('./lib/msg')
-const axios = require('axios')
-const { File } = require('megajs')
-const prefix = '.'
-
-const ownerNumber = ['94779415698']
-
-//===================SESSION-AUTH============================
-if (!fs.existsSync(__dirname + '/auth_info_baileys/creds.json')) {
-if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-const sessdata = config.SESSION_ID
-const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
-filer.download((err, data) => {
-if(err) throw err
-fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
-console.log("Session downloaded ✅")
-})})}
-
+const fs = require("fs");
+const chalk = require("chalk");
+const path = require("path");
+const figlet = require('figlet');
+const FileType = require('file-type');
 const express = require("express");
+const { join } = require("path");
+const {
+    Boom
+} = require("@hapi/boom");
+const PhoneNumber = require('awesome-phonenumber');
+const store = makeInMemoryStore({
+    logger: pino().child({
+        level: 'silent',
+        stream: 'store'
+    })
+});
+const {
+    smsg,
+    generateMessageTag,
+    getBuffer,
+    getSizeMedia,
+    fetchJson,
+    await,
+    sleep
+} = require('./lib/myfunc');
+const {
+    imageToWebp,
+    videoToWebp,
+    writeExifImg,
+    writeExifVid
+} = require('./lib/exif')
+const qrcode = require('qrcode')
+const prefix = global.prefa;
+
+const welcomeLeft = require('./Processes/welcome.js');
+const {
+    Collection,
+    Simple
+} = require("./lib");
+const {
+    serialize,
+    WAConnection
+} = Simple;
+const Commands = new Collection()
+const {
+    color
+} = require('./lib/color');
+Commands.prefix = prefa
+const mongoose = require("mongoose");
+const Auth = require('./Processes/Auth');
+
+const readCommands = () => {
+    let dir = path.join(__dirname, "./Commands")
+    let dirs = fs.readdirSync(dir)
+    let cmdlist = {}
+    try {
+        dirs.forEach(async (res) => {
+            let groups = res.toLowerCase()
+            Commands.category = dirs.filter(v => v !== "_").map(v => v)
+            cmdlist[groups] = []
+            let files = fs.readdirSync(`${dir}/${res}`).filter((file) => file.endsWith(".js"))
+            for (const file of files) {
+                const command = require(`${dir}/${res}/${file}`)
+                cmdlist[groups].push(command)
+                Commands.set(command.name, command)
+                delay(100)
+            }
+        })
+        Commands.list = cmdlist
+    } catch (eerror) {
+        console.error("An error occured!")
+    }
+}
+
+
+readCommands()
+const PORT = port;
 const app = express();
-const port = process.env.PORT || 8000;
+let QR_GENERATE = "invalid";
 
-//=============================================
+let status;
+async function startMiku() {
+    await mongoose.connect(mongodb)
 
-async function connectToWA() {
-console.log("Connecting wa bot 🧬...");
-const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/auth_info_baileys/')
-var { version } = await fetchLatestBaileysVersion()
+    const {
+        getAuthFromDatabase
+    } = new Auth(sessionId)
 
-const conn = makeWASocket({
-        logger: P({ level: 'silent' }),
-        printQRInTerminal: false,
-        browser: Browsers.macOS("Safari"),
-        syncFullHistory: true,
+    const {
+        saveState,
+        state,
+        clearState,
+    } = await getAuthFromDatabase()
+
+    console.log(color(figlet.textSync('Atlas Bot MD', {
+        font: 'Pagga',
+        horizontalLayout: 'default',
+        vertivalLayout: 'default',
+        width: 80,
+        whitespaceBreak: true
+    }), 'yellow'))
+
+    console.log(color('\nHello, I am Fantox, the main developer of this bot.\n\nThanks for using: Atlas MD made by my Team Atlas.', 'aqua'))
+    console.log(color('\nYou can follow me on GitHub: FantoX001\n\n', 'aqua'))
+
+
+
+
+    let {
+        version,
+        isLatest
+    } = await fetchLatestBaileysVersion()
+    const Miku = MikuConnect({
+        logger: pino({
+            level: 'silent'
+        }),
+        printQRInTerminal: true,
+        browser: ['Atlas MD', 'Safari', '1.0.0'],
         auth: state,
         version
-        })
-    
-conn.ev.on('connection.update', (update) => {
-const { connection, lastDisconnect } = update
-if (connection === 'close') {
-if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
-connectToWA()
-}
-} else if (connection === 'open') {
-console.log('😼 Installing... ')
-const path = require('path');
-fs.readdirSync("./plugins/").forEach((plugin) => {
-if (path.extname(plugin).toLowerCase() == ".js") {
-require("./plugins/" + plugin);
-}
-});
-console.log('Plugins installed successful ✅')
-console.log('Bot connected to whatsapp ✅')
+    })
 
-let up = `Wa-BOT connected successful ✅\n\nPREFIX: ${prefix}`;
+    store.bind(Miku.ev)
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/900435c6d3157c98c3c88.jpg` }, caption: up })
+    Miku.public = true
+    Miku.ev.on('creds.update', saveState)
+    Miku.serializeM = (m) => smsg(Miku, m, store)
 
-}
-})
-conn.ev.on('creds.update', saveCreds)  
+    Miku.ev.on('connection.update', async (update) => {
+        const {
+            connection,
+            lastDisconnect,
+            qr
+        } = update
+        status = connection;
+        if (connection) {
+            await console.info(`Atlas MD Server Status => ${connection}`);
+          }
 
-conn.ev.on('messages.upsert', async(mek) => {
-mek = mek.messages[0]
-if (!mek.message) return	
-mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-if (mek.key && mek.key.remoteJid === 'status@broadcast') return
-const m = sms(conn, mek)
-const type = getContentType(mek.message)
-const content = JSON.stringify(mek.message)
-const from = mek.key.remoteJid
-const quoted = type == 'extendedTextMessage' && mek.message.extendedTextMessage.contextInfo != null ? mek.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
-const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
-const isCmd = body.startsWith(prefix)
-const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
-const args = body.trim().split(/ +/).slice(1)
-const q = args.join(' ')
-const isGroup = from.endsWith('@g.us')
-const sender = mek.key.fromMe ? (conn.user.id.split(':')[0]+'@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)
-const senderNumber = sender.split('@')[0]
-const botNumber = conn.user.id.split(':')[0]
-const pushname = mek.pushName || 'Sin Nombre'
-const isMe = botNumber.includes(senderNumber)
-const isOwner = ownerNumber.includes(senderNumber) || isMe
-const botNumber2 = await jidNormalizedUser(conn.user.id);
-const groupMetadata = isGroup ? await conn.groupMetadata(from).catch(e => {}) : ''
-const groupName = isGroup ? groupMetadata.subject : ''
-const participants = isGroup ? await groupMetadata.participants : ''
-const groupAdmins = isGroup ? await getGroupAdmins(participants) : ''
-const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : false
-const isAdmins = isGroup ? groupAdmins.includes(sender) : false
-const reply = (teks) => {
-conn.sendMessage(from, { text: teks }, { quoted: mek })
-}
-
-conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
-              let mime = '';
-              let res = await axios.head(url)
-              mime = res.headers['content-type']
-              if (mime.split("/")[1] === "gif") {
-                return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options }, { quoted: quoted, ...options })
-              }
-              let type = mime.split("/")[0] + "Message"
-              if (mime === "application/pdf") {
-                return conn.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options }, { quoted: quoted, ...options })
-              }
-              if (mime.split("/")[0] === "image") {
-                return conn.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options }, { quoted: quoted, ...options })
-              }
-              if (mime.split("/")[0] === "video") {
-                return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options }, { quoted: quoted, ...options })
-              }
-              if (mime.split("/")[0] === "audio") {
-                return conn.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
-              }
+        if (connection === 'close') {
+            let reason = new Boom(lastDisconnect?.error)?.output.statusCode
+            if (reason === DisconnectReason.badSession) {
+                console.log(`Bad Session File, Please Delete Session and Scan Again`);
+                process.exit();
+            } else if (reason === DisconnectReason.connectionClosed) {
+                console.log("Connection closed, reconnecting....");
+                startMiku();
+            } else if (reason === DisconnectReason.connectionLost) {
+                console.log("Connection Lost from Server, reconnecting...");
+                startMiku();
+            } else if (reason === DisconnectReason.connectionReplaced) {
+                console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
+                process.exit();
+            } else if (reason === DisconnectReason.loggedOut) {
+                clearState()
+                console.log(`Device Logged Out, Please Delete Session and Scan Again.`);
+                process.exit();
+            } else if (reason === DisconnectReason.restartRequired) {
+                console.log("Restart Required, Restarting...");
+                startMiku();
+            } else if (reason === DisconnectReason.timedOut) {
+                console.log("Connection TimedOut, Reconnecting...");
+                startMiku();
+            } else {
+                console.log(`Disconnected: Reason "Probably your WhatsApp account Banned for Spamming !\n\nCheck your WhatsApp !"`)
             }
+        }
+        if (qr) {
+            QR_GENERATE = qr;
+        }
+    })
 
 
-const events = require('./command')
-const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
-if (isCmd) {
-const cmd = events.commands.find((cmd) => cmd.pattern === (cmdName)) || events.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName))
-if (cmd) {
-if (cmd.react) conn.sendMessage(from, { react: { text: cmd.react, key: mek.key }})
+    Miku.ev.on("group-participants.update", async (m) => {
+        welcomeLeft(Miku, m);
+    });
 
-try {
-cmd.function(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply});
-} catch (e) {
-console.error("[PLUGIN ERROR] " + e);
-}
-}
-}
-events.commands.map(async(command) => {
-if (body && command.on === "body") {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
-} else if (mek.q && command.on === "text") {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
-} else if (
-(command.on === "image" || command.on === "photo") &&
-mek.type === "imageMessage"
-) {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
-} else if (
-command.on === "sticker" &&
-mek.type === "stickerMessage"
-) {
-command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
-}});
-//============================================================================ 
+    Miku.ev.on("messages.upsert", async (chatUpdate) => {
+        m = serialize(Miku, chatUpdate.messages[0])
 
-})
+        if (!m.message) return
+        if (m.key && m.key.remoteJid == "status@broadcast") return
+        if (m.key.id.startsWith("BAE5") && m.key.id.length == 16) return
+        require("./Core.js")(Miku, m, Commands, chatUpdate)
+    })
+
+    
+     Miku.getName = (jid, withoutContact  = false) => {
+        id = Miku.decodeJid(jid)
+        withoutContact = Miku.withoutContact || withoutContact 
+        let v
+        if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
+            v = store.contacts[id] || {}
+            if (!(v.name || v.subject)) v = Miku.groupMetadata(id) || {}
+            resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
+        })
+        else v = id === '0@s.whatsapp.net' ? {
+            id,
+            name: 'WhatsApp'
+        } : id === Miku.decodeJid(Miku.user.id) ?
+            Miku.user :
+            (store.contacts[id] || {})
+            return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
+    }
+
+    Miku.decodeJid = (jid) => {
+        if (!jid) return jid
+        if (/:\d+@/gi.test(jid)) {
+            let decode = jidDecode(jid) || {}
+            return decode.user && decode.server && decode.user + '@' + decode.server || jid
+        } else return jid
+    }
+
+    Miku.ev.on('contacts.update', update => {
+        for (let contact of update) {
+            let id = Miku.decodeJid(contact.id)
+            if (store && store.contacts) store.contacts[id] = {
+                id,
+                name: contact.notify
+            }
+        }
+    })
+
+    /** Send Button 5 Images
+     *
+     * @param {*} jid
+     * @param {*} text
+     * @param {*} footer
+     * @param {*} image
+     * @param [*] button
+     * @param {*} options
+     * @returns
+     */
+    Miku.send5ButImg = async (jid, text = '', footer = '', img, but = [], thumb, options = {}) => {
+        let message = await prepareWAMessageMedia({
+            image: img,
+            jpegThumbnail: thumb
+        }, {
+            upload: Miku.waUploadToServer
+        })
+        var template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+            templateMessage: {
+                hydratedTemplate: {
+                    imageMessage: message.imageMessage,
+                    "hydratedContentText": text,
+                    "hydratedFooterText": footer,
+                    "hydratedButtons": but
+                }
+            }
+        }), options)
+        Miku.relayMessage(jid, template.message, {
+            messageId: template.key.id
+        })
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} buttons 
+     * @param {*} caption 
+     * @param {*} footer 
+     * @param {*} quoted 
+     * @param {*} options 
+     */
+    Miku.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
+        let buttonMessage = {
+            text,
+            footer,
+            buttons,
+            headerType: 2,
+            ...options
+        }
+        Miku.sendMessage(jid, buttonMessage, {
+            quoted,
+            ...options
+        })
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} text 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendText = (jid, text, quoted = '', options) => Miku.sendMessage(jid, {
+        text: text,
+        ...options
+    }, {
+        quoted
+    })
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} path 
+     * @param {*} caption 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendImage = async (jid, path, caption = '', quoted = '', options) => {
+        let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+        return await Miku.sendMessage(jid, {
+            image: buffer,
+            caption: caption,
+            ...options
+        }, {
+            quoted
+        })
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} path 
+     * @param {*} caption 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
+        let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+        return await Miku.sendMessage(jid, {
+            video: buffer,
+            caption: caption,
+            gifPlayback: gif,
+            ...options
+        }, {
+            quoted
+        })
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} path 
+     * @param {*} quoted 
+     * @param {*} mime 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
+        let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+        return await Miku.sendMessage(jid, {
+            audio: buffer,
+            ptt: ptt,
+            ...options
+        }, {
+            quoted
+        })
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} text 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendTextWithMentions = async (jid, text, quoted, options = {}) => Miku.sendMessage(jid, {
+        text: text,
+        contextInfo: {
+            mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net')
+        },
+        ...options
+    }, {
+        quoted
+    })
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} path 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+        let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+        let buffer
+        if (options && (options.packname || options.author)) {
+            buffer = await writeExifImg(buff, options)
+        } else {
+            buffer = await imageToWebp(buff)
+        }
+
+        await Miku.sendMessage(jid, {
+            sticker: {
+                url: buffer
+            },
+            ...options
+        }, {
+            quoted
+        })
+        return buffer
+    }
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} path 
+     * @param {*} quoted 
+     * @param {*} options 
+     * @returns 
+     */
+    Miku.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+        let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+        let buffer
+        if (options && (options.packname || options.author)) {
+            buffer = await writeExifVid(buff, options)
+        } else {
+            buffer = await videoToWebp(buff)
+        }
+        await Miku.sendMessage(jid, {
+            sticker: {
+                url: buffer
+            },
+            ...options
+        }, {
+            quoted
+        })
+        return buffer
+    }
+
+    Miku.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
+        let types = await Miku.getFile(path, true)
+        let {
+            mime,
+            ext,
+            res,
+            data,
+            filename
+        } = types
+        if (res && res.status !== 200 || file.length <= 65536) {
+            try {
+                throw {
+                    json: JSON.parse(file.toString())
+                }
+            } catch (e) {
+                if (e.json) throw e.json
+            }
+        }
+        let type = '',
+            mimetype = mime,
+            pathFile = filename
+        if (options.asDocument) type = 'document'
+        if (options.asSticker || /webp/.test(mime)) {
+            let {
+                writeExif
+            } = require('./lib/exif')
+            let media = {
+                mimetype: mime,
+                data
+            }
+            pathFile = await writeExif(media, {
+                packname: options.packname ? options.packname : global.packname,
+                author: options.author ? options.author : global.author,
+                categories: options.categories ? options.categories : []
+            })
+            await fs.promises.unlink(filename)
+            type = 'sticker'
+            mimetype = 'image/webp'
+        } else if (/image/.test(mime)) type = 'image'
+        else if (/video/.test(mime)) type = 'video'
+        else if (/audio/.test(mime)) type = 'audio'
+        else type = 'document'
+        await Miku.sendMessage(jid, {
+            [type]: {
+                url: pathFile
+            },
+            caption,
+            mimetype,
+            fileName,
+            ...options
+        }, {
+            quoted,
+            ...options
+        })
+        return fs.promises.unlink(pathFile)
+    }
+    /**
+     * 
+     * @param {*} message 
+     * @param {*} filename 
+     * @param {*} attachExtension 
+     * @returns 
+     */
+    Miku.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+        let quoted = message.msg ? message.msg : message
+        let mime = (message.msg || message).mimetype || ''
+        let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
+        const stream = await downloadContentFromMessage(quoted, messageType)
+        let buffer = Buffer.from([])
+        for await (const chunk of stream) {
+            buffer = Buffer.concat([buffer, chunk])
+        }
+        let type = await FileType.fromBuffer(buffer)
+        trueFileName = attachExtension ? (filename + '.' + type.ext) : filename
+        // save to file
+        await fs.writeFileSync(trueFileName, buffer)
+        return trueFileName
+    }
+
+    Miku.downloadMediaMessage = async (message) => {
+        let mime = (message.msg || message).mimetype || ''
+        let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
+        const stream = await downloadContentFromMessage(message, messageType)
+        let buffer = Buffer.from([])
+        for await (const chunk of stream) {
+            buffer = Buffer.concat([buffer, chunk])
+        }
+
+        return buffer
+    }
+
+
+    Miku.sendListMsg = (jid, text = '', footer = '', title = '', butText = '', sects = [], quoted) => {
+        let sections = sects
+        var listMes = {
+            text: text,
+            footer: footer,
+            title: title,
+            buttonText: butText,
+            sections
+        }
+        Miku.sendMessage(jid, listMes, {
+            quoted: quoted
+        })
+    }
+
+    Miku.getFile = async (PATH, save) => {
+        let res
+        let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,` [1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)
+        //if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer')
+        let type = await FileType.fromBuffer(data) || {
+            mime: 'application/octet-stream',
+            ext: '.bin'
+        }
+        filename = path.join(__filename, '../src/' + new Date * 1 + '.' + type.ext)
+        if (data && save) fs.promises.writeFile(filename, data)
+        return {
+            res,
+            filename,
+            size: await getSizeMedia(data),
+            ...type,
+            data
+        }
+    }
+
+    Miku.sendFile = async (jid, PATH, fileName, quoted = {}, options = {}) => {
+        let types = await Miku.getFile(PATH, true)
+        let {
+            filename,
+            size,
+            ext,
+            mime,
+            data
+        } = types
+        let type = '',
+            mimetype = mime,
+            pathFile = filename
+        if (options.asDocument) type = 'document'
+        if (options.asSticker || /webp/.test(mime)) {
+            let {
+                writeExif
+            } = require('./lib/sticker.js')
+            let media = {
+                mimetype: mime,
+                data
+            }
+            pathFile = await writeExif(media, {
+                packname: global.packname,
+                author: global.packname,
+                categories: options.categories ? options.categories : []
+            })
+            await fs.promises.unlink(filename)
+            type = 'sticker'
+            mimetype = 'image/webp'
+        } else if (/image/.test(mime)) type = 'image'
+        else if (/video/.test(mime)) type = 'video'
+        else if (/audio/.test(mime)) type = 'audio'
+        else type = 'document'
+        await Miku.sendMessage(jid, {
+            [type]: {
+                url: pathFile
+            },
+            mimetype,
+            fileName,
+            ...options
+        }, {
+            quoted,
+            ...options
+        })
+        return fs.promises.unlink(pathFile)
+    }
+    Miku.parseMention = async (text) => {
+        return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
+    }
+
+    return Miku
 }
-app.get("/", (req, res) => {
-res.send("hey, bot started✅");
+
+startMiku();
+
+app.use("/", express.static(join(__dirname, "Page")));
+app.get("/qr", async (req, res) => {
+    const { session } = req.query;
+    if (!session)
+    return void res
+      .status(404)
+      .setHeader("Content-Type", "text/plain")
+      .send("Provide the session id for authentication")
+      .end();
+    if (sessionId !== session)
+    return void res
+      .status(404)
+      .setHeader("Content-Type", "text/plain")
+      .send("Invalid session")
+      .end();
+    if (status == "open")
+    return void res
+      .status(404)
+      .setHeader("Content-Type", "text/plain")
+      .send("Session already exist")
+      .end();
+    res.setHeader("content-type", "image/png");
+    res.send(await qrcode.toBuffer(QR_GENERATE));
 });
-app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
-setTimeout(() => {
-connectToWA()
-}, 4000);  
+
+app.listen(PORT, () => {
+    console.log(`Server running on PORT ${PORT}`);
+});
+
+
+let file = require.resolve(__filename)
+fs.watchFile(file, () => {
+    fs.unwatchFile(file)
+    console.log(chalk.redBright(`${__filename} Updated`))
+    delete require.cache[file]
+    require(file)
+})
