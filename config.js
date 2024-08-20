@@ -7,4 +7,9 @@ function convertToBool(text, fault = 'true') {
 module.exports = {
 SESSION_ID: process.env.SESSION_ID,
 ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/d8279f4ca5da23bda7da4.jpg",
+ALIVE_MSG: process.env.ALIVE_MSG || "*HELLO IM ALIVE NOW ✅*
+*TYPE MENU GET COMMANDS LIST 🔄*
+
+
+ᴘᴏᴡᴇʀᴅ ʙʏ ᴏꜰᴄ ʙʜᴀꜱʜɪᴛʜᴀ"
 };
