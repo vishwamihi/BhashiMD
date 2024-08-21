@@ -13,7 +13,7 @@ async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender
 try{
 let status = `
 ‎ 
-┏━━━┫  𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡
+┏━━━┫  𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢
 ┃
 ┃ ⏰ 𝗨𝗽 𝗧𝗶𝗺𝗲 : ${runtime(process.uptime())}
 ┃ 📻 𝗥𝗮𝗺 𝗨𝘀𝗮𝗴𝗲 : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
