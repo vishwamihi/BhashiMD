@@ -39,7 +39,8 @@ Special Thanks For
 
 ‎ ‎ ᴀʟᴇx ɪᴅ
 
-### Contact My Main Owner
+Contact My Main Owner
+-
  <p align="center">
 
   <a aria-label="Owner WhatsApp Channel" href="https://wa.me/+94786328485" target="_blank">
