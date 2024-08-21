@@ -33,4 +33,4 @@ DEPLOYMENT METHOD
 
 ## Team - Team *[ Since 20## ]*
 
-<p align = left> <img src="https://telegra.ph/file/55c73f8d525de43aea0c0.jpg"<width=80 height=80/p>
+<p align = left> <img src="https://telegra.ph/file/1fbbe3ff26b0e12ebb9b4.jpg"<width=80 height=80/p>
