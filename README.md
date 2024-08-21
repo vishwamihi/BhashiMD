@@ -11,7 +11,7 @@
 <p align="center">
 <a href='https://pair-web-public.koyeb.app/' target="_blank"><img alt='Pair Code' src='https://img.shields.io/badge/-Pair Code-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/< width=115 height=28/p></a>
 
-----
+***
 
 
 <p align="center"> 𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗𝗦
@@ -27,7 +27,8 @@
 
 <p align="center">
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb deploy-blue?style=for-the-badge&logo=koyeb&logoColor=white'/< width=150 height=28/p></a> 
-
+ 
+***
 
 <p align="center"> 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 𝗠𝗔𝗜𝗡 𝗢𝗪𝗡𝗘𝗥
 
