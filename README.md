@@ -46,5 +46,5 @@ CONTACT MY MAIN OWNER
   </a>
 
 <p align="center">
-<a href='https://wa.me/+94786328485' target="_blank"><img alt='Contact My Main Owner' src='https://img.shields.io/badge/-Pair Code-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/< width=115 height=28/p></a>
+<a href='https://wa.me/+94786328485' target="_blank"><img alt='Contact My Main Owner' src='https://img.shields.io/badge/-Contact Owner-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
