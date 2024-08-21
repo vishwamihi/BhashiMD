@@ -38,6 +38,6 @@ DEPLOYMENT METHOD
 
 ***
 
-<a href="https://dinaaofficial.github.io/dina-official/"><img src="https://avatars.githubusercontent.com/u/85923514?v=4" width=80 height=80></a> | <a href="https://www.youtube.com/channel/UCZx8U1EU95-Wn9mH4dn15vQ"><img 
+<a href="https://dinaaofficial.github.io/dina-official/"><img src="https://avatars.githubusercontent.com/u/85923514?v=4" width=80 height=80></a> | <a href="https://www.youtube.com/channel/UCZx8U1EU95-Wn9mH4dn15vQ"><img <a href="https://dinaaofficial.github.io/dina-official/"><img src="https://avatars.githubusercontent.com/u/85923514?v=4" width=80 height=80></a> | <a href="https://www.youtube.com/channel/UCZx8U1EU95-Wn9mH4dn15vQ"><img 
 
 
