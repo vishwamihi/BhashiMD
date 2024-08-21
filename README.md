@@ -41,10 +41,9 @@
 <p align="center">
 <a href='https://wa.me/+94786328485' target="_blank"><img alt='Contact My Main Owner' src='https://img.shields.io/badge/-Contact Owner-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
+***
 
-
-SPECIAL THANKS FOR
--
+𝗦𝗣𝗘𝗖𝗜𝗔𝗟 𝗧𝗛𝗔𝗡𝗞𝗦 𝗙𝗢𝗥
 
 <p align = left> <img src="https://telegra.ph/file/d04c9bc108603e4a6b13a.jpg"<width=70 height=70/p>
 
