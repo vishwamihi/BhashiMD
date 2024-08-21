@@ -36,5 +36,5 @@ Special Thanks For
 -
 
 <p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=60 height=60/p>
-<t ᴀʟᴇx ɪᴅ /t>
+ᴀʟᴇx ɪᴅ
 
