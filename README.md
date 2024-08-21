@@ -32,6 +32,7 @@ DEPLOYMENT METHOD
 
 
 ## Team - Team *[ Since 2016 ]*
-
-**[Achintha Bandara](https://github.com/BlackAmda)**</br>Founder & Developer</br>*[Black Amda]* | **[Sasmitha Ashinsana](https://github.com/sasmeee)**</br>Co-Admin/Developer | **[Lil Luzi](https://github.com/Sajiya2002)**</br>User Supporter |
+| <a href="https://amdaniwasa.com"><img src="https://avatars.githubusercontent.com/u/83172207?v=4" width=80 height=80></a> | <a href="https://sasmitha-ashinsana.vercel.app/"><img src="https://avatars.githubusercontent.com/u/89065560?v=4" width=80 height=80></a> | <a href="https://www.instagram.com/saji_x.x_4/"><img src="https://avatars.githubusercontent.com/u/88334967?v=4" width=80 height=80></a> |
+|---|---|---|
+|**[Achintha Bandara](https://github.com/BlackAmda)**</br>Founder & Developer</br>*[Black Amda]* | **[Sasmitha Ashinsana](https://github.com/sasmeee)**</br>Co-Admin/Developer | **[Lil Luzi](https://github.com/Sajiya2002)**</br>User Supporter |
 | <a href="https://dinaaofficial.github.io/dina-official/"><img 
