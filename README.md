@@ -17,7 +17,7 @@
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-railway deploy-blue?style=for-the-badge&logo=railway&logoColor=white'/></a>
 
 <p align="center">
-<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku deploy-blue?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku ‎ deploy-blue?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
 <p align="center">
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Render ‎ deploy-blue?style=for-the-badge&logo=render&logoColor=white'/></a>
