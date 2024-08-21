@@ -13,10 +13,7 @@ DEPLOYMENT
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-black?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
-2. Now Deploy
-    <br>
-<a href='https://xlcon-v3-deloy.vercel.app/' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
-
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Render-black?style=for-the-badge&logo=render&logoColor=white'/></a>
 ***
 
   ## ``Support Group``
