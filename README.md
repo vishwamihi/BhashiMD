@@ -18,9 +18,7 @@ DEPLOYMENT
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-railway deploy-black?style=for-the-badge&logo=railway&logoColor=white'/></a>
 
-<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
-
-
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb  deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
