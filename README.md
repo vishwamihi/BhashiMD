@@ -12,12 +12,12 @@ DEPLOYMENT
 
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-black?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
+***
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Render deploy-black?style=for-the-badge&logo=render&logoColor=white'/></a>
-***
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
-***
+
 
   ## ``Support Group``
    
