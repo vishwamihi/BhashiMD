@@ -35,4 +35,4 @@ DEPLOYMENT METHOD
 Special Thanks For
 -
 
-<p align = left> <img src="https://telegra.ph/file/1fbbe3ff26b0e12ebb9b4.jpg"<width=40 height=40/p>
+<p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=40 height=40/p>
