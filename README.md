@@ -5,8 +5,8 @@
 *BHASHI-MD* - A Advanced Multi Device whatsapp bot Based on *ALEX V10 System use*
 -------
 
-## 🛠️ `Installation Methods`
-1. Fork the repo
+
+1. LINK NOW
     <br>
 <a href='https://github.com/salmanytofficial/XLICON-V3-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork Repo-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
