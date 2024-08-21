@@ -26,7 +26,10 @@
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb deploy-blue?style=for-the-badge&logo=koyeb&logoColor=white'/< width=150 height=28/p></a> 
 
 
+<p align="center"> 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 𝗠𝗔𝗜𝗡 𝗢𝗪𝗡𝗘𝗥
 
+<p align="center">
+<a href='https://wa.me/+94786328485' target="_blank"><img alt='Contact My Main Owner' src='https://img.shields.io/badge/-Contact Owner-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
 
 
@@ -36,15 +39,3 @@ SPECIAL THANKS FOR
 <p align = left> <img src="https://telegra.ph/file/d04c9bc108603e4a6b13a.jpg"<width=70 height=70/p>
 
 ‎ ‎ ᴀʟᴇx ɪᴅ
-
-CONTACT MY MAIN OWNER
--
- <p align="center">
-
-  <a aria-label="Owner WhatsApp Channel" href="https://wa.me/+94786328485" target="_blank">
-    <img alt="whatsapp" src="https://img.shields.io/badge/WhatsApp Owner-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
-  </a>
-
-<p align="center">
-<a href='https://wa.me/+94786328485' target="_blank"><img alt='Contact My Main Owner' src='https://img.shields.io/badge/-Contact Owner-darkgreen?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
-
