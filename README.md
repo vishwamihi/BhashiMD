@@ -1,4 +1,4 @@
-</p><p align="center">
+/p> <p align="center">
 
 ## 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗧𝗢 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣
 
