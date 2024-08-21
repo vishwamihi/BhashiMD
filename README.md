@@ -32,14 +32,14 @@ DEPLOYMENT METHOD
 
 
 
-Special Thanks For
+SPECIAL THANKS FOR
 -
 
 <p align = left> <img src="https://telegra.ph/file/d04c9bc108603e4a6b13a.jpg"<width=70 height=70/p>
 
 ‎ ‎ ᴀʟᴇx ɪᴅ
 
-Contact My Main Owner
+CONTACT MY MAIN OWNER
 -
  <p align="center">
 
