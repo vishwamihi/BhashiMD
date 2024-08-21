@@ -36,7 +36,5 @@ Special Thanks For
 -
 
 <p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=60 height=60/p>
-<a ᴀʟᴇx ɪᴅ /a>
+<t ᴀʟᴇx ɪᴅ /t>
 
-
-<a href='https://signup.heroku.com/' target="_blank"><img>"https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"'/></a>
