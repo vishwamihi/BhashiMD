@@ -17,12 +17,20 @@ Pair & Connect To Whatsapp
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-black?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 ***
 
+Deploy on Railway 
+----
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-railway deploy-black?style=for-the-badge&logo=railway&logoColor=white'/></a>
 
+Deploy on Heroku
+----
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
+Deploy on Render
+----
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Render deploy-black?style=for-the-badge&logo=render&logoColor=white'/></a>
 
+Deploy on Koyeb
+----
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
 
