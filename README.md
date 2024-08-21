@@ -23,7 +23,8 @@
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Render ‎ deploy-blue?style=for-the-badge&logo=render&logoColor=white'/></a>
 
 <p align="center">
-<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-‎‎ koyeb ‎ deploy-blue?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-‎‎ koyeb ‎ deploy-blue?style=for-the-badge&logo=koyeb&logoColor=white'/<width=70 height=70/p></a> 
+
 
 
 
