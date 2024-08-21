@@ -12,17 +12,15 @@ cmd({
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 let status = `
-*🚀ᴄʏʙᴇʀ-ᴍᴅ ꜱʏꜱᴛᴇᴍ🚀*
-┌──────────────────────────────>
+┏━━━┫  𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡  ┣━━━━
+┃
+┃ ⏰ 𝗨𝗽 𝗧𝗶𝗺𝗲 : ${runtime(process.uptime())}
+┃ 📻 𝗥𝗮𝗺 𝗨𝘀𝗮𝗴𝗲 : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
+┃  ⚙️ 𝗛𝗼𝘀𝘁 : ${os.hostname()}
+┃  👑 𝗢𝘄𝗻𝗲𝗿 : OFC Bhashitha 
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-> *⏰Uptime:*  ${runtime(process.uptime())}
-> *📟 Ram usage:* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
-> *⚙️HostName:* ${os.hostname()}
-> *👨‍💻Owner:* *ᴩʀᴏɢʀᴀᴍᴍᴇʀ ᴀʏᴇꜱʜ*
-
-└──────────────────────────────>
-
-> *🧑‍💻ᴩᴏᴡᴇʀᴅ  ʙʏ  ᴄʏʙᴇʀ-ᴀʏᴇꜱʜ🧑‍💻*
+> ᴘᴏᴡᴇʀᴅ ʙʏ ᴏꜰᴄ ʙʜᴀꜱʜɪᴛʜᴀ
 
 `
 return reply(`${status}`)
