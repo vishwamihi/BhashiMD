@@ -6,10 +6,8 @@
 -------
 
 
-
-1. Pair Code
     <br>
-<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=Pair&logoColor=white'/></a>
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-black?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
 2. Now Deploy
     <br>
