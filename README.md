@@ -35,19 +35,5 @@ DEPLOYMENT METHOD
 
 <a href="https://amdaniwasa.com"><img src="https://avatars.githubusercontent.com/u/83172207?v=4" width=80 height=80>
 
-</a href="https://amdaniwasa.com"><img src="https://avatars.githubusercontent.com/u/83172207?v=4" width=80 height=80>
-
-
-
-
-
-
-
-
-
-
-
-
-</a> <a href="https://sasmitha-ashinsana.vercel.app/"><img src="https://avatars.githubusercontent.com/u/89065560?v=4" width=80 height=80></a> <a href="https://www.instagram.com/saji_x.x_4/"><img src="https://avatars.githubusercontent.com/u/88334967?v=4" width=80 height=80></a>
-
+<a href="https://amdaniwasa.com"><img src="https://avatars.githubusercontent.com/u/83172207?v=4" width=80 height=80>
 
