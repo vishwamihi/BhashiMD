@@ -31,6 +31,7 @@ DEPLOYMENT METHOD
 
 
 
-## Team - Team *[ Since 20## ]*
+
+Special Thanks For
 
 <p align = left> <img src="https://telegra.ph/file/1fbbe3ff26b0e12ebb9b4.jpg"<width=80 height=80/p>
