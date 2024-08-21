@@ -42,7 +42,7 @@ Special Thanks For
 ### Contact My Main Owner
  <p align="center">
 
-  <a aria-label="Owner WhatsApp Channel" href="https://wa.me/+94786328485?text=Hello_bashi_🔥" target="_blank">
+  <a aria-label="Owner WhatsApp Channel" href="https://wa.me/+94786328485" target="_blank">
     <img alt="whatsapp" src="https://img.shields.io/badge/WhatsApp Owner-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
 
