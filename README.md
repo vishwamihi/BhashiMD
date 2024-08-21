@@ -6,14 +6,11 @@
 -------
 
 
-/p>
-
 Fork This Repo
 ----
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Fork Repo-black?style=for-the-badge&logo=github&logoColor=white'/></a>
 
 
-/p>
 
 Pair & Connect To Whatsapp 
 ----
