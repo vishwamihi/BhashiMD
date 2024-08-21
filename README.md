@@ -35,7 +35,7 @@ DEPLOYMENT METHOD
 Special Thanks For
 -
 
-<p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=60 height=60/p>
+<p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=70 height=70/p>
 
 ‎ ‎ ᴀʟᴇx ɪᴅ
 
