@@ -35,4 +35,4 @@ DEPLOYMENT METHOD
 
 <a href="https://amdaniwasa.com"><img src="[https://avatars.githubusercontent.]https://telegra.ph/file/55c73f8d525de43aea0c0.jpg" width=80 height=80>
 
-<p align = left width=80 height=80>   <img src="https://telegra.ph/file/55c73f8d525de43aea0c0.jpg"</p>
+<p align = left>   <img src="https://telegra.ph/file/55c73f8d525de43aea0c0.jpg"<width=80 height=80/p>
