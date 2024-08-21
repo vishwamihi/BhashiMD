@@ -33,5 +33,5 @@ DEPLOYMENT METHOD
 
 ## Team - Team *[ Since 2016 ]*
 
-<a href="https://amdaniwasa.com"><img src="https://avatars.githubusercontent.com/u/83172207?v=4" width=80 height=80>
+<a href="https://amdaniwasa.com"><img src="[https://avatars.githubusercontent.]https://telegra.ph/file/55c73f8d525de43aea0c0.jpg" width=80 height=80>
 
