@@ -1,6 +1,6 @@
 </p> <p align="center">
 
-## Type here
+Type here
 
 
 
