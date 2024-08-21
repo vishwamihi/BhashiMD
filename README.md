@@ -5,9 +5,10 @@
 *BHASHI-MD* - A Advanced Multi Device whatsapp bot Based on *ALEX V10 System use*
 -------
 
-DEPLOYMENT
 
 
+###
+Fork Now Bhashi MD
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Fork Repo-black?style=for-the-badge&logo=github&logoColor=white'/></a>
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-black?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
