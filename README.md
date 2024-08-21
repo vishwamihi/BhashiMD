@@ -5,11 +5,13 @@
 
 
 <p align = center>   <img src="https://telegra.ph/file/c0b0cad12d5a3dea4d9cf.jpg"</p>
+
+<p align="center"> ## 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗧𝗢 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣
  
 ***
 
 
- <p align="center"> 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗧𝗢 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣
+<p align="center"> 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗧𝗢 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣
 
 <p align="center">
 <a href='https://github.com/BhashiMD/BhashiMD/fork' target="_blank"><img alt='Fork Repo' src='https://img.shields.io/badge/-Fork Repo-grey?style=for-the-badge&logo=github&logoColor=white'/< width=115 height=28/p></a>
