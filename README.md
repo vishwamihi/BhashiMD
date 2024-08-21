@@ -53,5 +53,5 @@ Type here
 
 𝗦𝗣𝗘𝗖𝗜𝗔𝗟 𝗧𝗛𝗔𝗡𝗞𝗦 𝗙𝗢𝗥
 
-<p align = left> <img src="https://telegra.ph/file/406a9e7e8f97f5ed456c2.jpg"<width=70 height=70/p>
+<p align = left> <img src="https://telegra.ph/file/31da3dde186b59435a96f.jpg"<width=70 height=70/p>
 
