@@ -1,3 +1,4 @@
+<p align="center">
 # MULTI DEVICE WHATSAPP USER BOT
 
 
