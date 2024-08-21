@@ -1,6 +1,4 @@
-<div align="center"><h1>MULTI DEVICE WHATSAPP USER BOT</h1><a href="https://github.com/ravindu01manoj/Sew-Queen
-
-
+<div align="center"><h1>MULTI DEVICE WHATSAPP USER BOT</h1><a href=
 
 
 <p align = center>   <img src="https://telegra.ph/file/c0b0cad12d5a3dea4d9cf.jpg"</p>
