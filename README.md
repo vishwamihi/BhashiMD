@@ -37,3 +37,6 @@ Special Thanks For
 
 <p align = left> <img src="https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg"<width=60 height=60/p>
 <a ᴀʟᴇx ɪᴅ /a>
+
+
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb deploy-black?style=for-the-badge&logo=[koyeb]https://telegra.ph/file/3b2f266f6b19ca65908d9.jpg&logoColor=white'/></a>
