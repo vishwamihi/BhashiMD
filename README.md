@@ -6,7 +6,7 @@ CONTACT TO WHATSAPP
 -
 
 
-<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Fork Repo-style=for-the-badge&logo=github&logoColor=white'/></a>
+<a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Fork Repo-?style=for-the-badge&logo=github&logoColor=white'/></a>
 
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Pair Code-blue?style=for-the-badge&logo=Whatsapp&logoColor=white'/></a>
 
