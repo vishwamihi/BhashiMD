@@ -71,7 +71,7 @@ let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗�
 📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
 🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
 ‎
-Your Video Download Request Uploading Fallowing. You Can See File Audio Type And Document Type.`
+Your Video Download Request Uploading Fallowing. You Can See File Video Type And Document Type.`
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
 
 //download video
