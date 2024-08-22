@@ -134,7 +134,7 @@ cmd({
     };
 
     // Create the menu message
-    let menuMessage = `╔══ ≪ °👾BHASHI-MD MENU👾° ≫ ══╗\n\n`;
+    let menuMessage = `╔ ≪°👾*BHASHI-MD MENU*👾°≫ ╗\n\n`;
     menuMessage += `👋 Hello!\n`;
     menuMessage += `🤖 I'm BHASHI-MD, your friendly bot assistant.\n\n`;
     menuMessage += `📚 Here are my available commands:\n\n`;
@@ -150,7 +150,7 @@ cmd({
     }
 
     menuMessage += `🔧 Use ${config.PREFIX}help <command> for detailed info on a specific command.\n\n`;
-    menuMessage += `╚═ ≪ °ᴘᴏᴡᴇʀᴇᴅ ʙʜᴀsʜɪ-ᴍᴅ° ≫ ═╝`;
+    menuMessage += `╚═ ≪ °*ᴘᴏᴡᴇʀᴇᴅ ʙʜᴀsʜɪ-ᴍᴅ*° ≫ ═╝`;
 
     // Send the menu message
     const sentMessage = await conn.sendMessage(from, { 
