@@ -7,8 +7,9 @@ function convertToBool(text, fault = 'true') {
 module.exports = {
 
 
-MENU_IMG: process.env.MENU_IMG=``
-
+MENU_IMG: process.env.MENU_IMG=``,
+    
+MENU_MSG: process.env.MENU_MSG=`TYPE YOUR MENU MSG`,
 
 
 };
