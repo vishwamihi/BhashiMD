@@ -108,7 +108,7 @@ cmd({
           title: "BHASHI-MD MENU",
           body: "Your Ultimate Bot Assistant",
           
-          sourceUrl: "https://telegra.ph/file/0675611d25c5a1f3ea245.jpg"
+          sourceUrl: "https://chat.whatsapp.com/CFDoTTvO1PC2KyRLe8h1YQ"
         }
       }
     }, { quoted: mek });
