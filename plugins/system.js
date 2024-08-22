@@ -19,7 +19,7 @@ let status = `*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜�
 ⚙️ 𝗛𝗼𝘀𝘁 : ${os.hostname()}
 👑 𝗢𝘄𝗻𝗲𝗿 : OFC Bhashitha
 
-Bhashi MD Verify Powerful Whatsapp Bot. Base Build Using By Baileys API Keys.‎`
+Bhashi MD Very Powerful Whatsapp Bot. Base Build Using By Baileys API Keys.‎`
 return reply(`${status}`)
 
 }catch(e){
