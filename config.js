@@ -46,4 +46,8 @@ Bhashi MD Verify Powerful Whatsapp Bot. Base Build Using By Baileys API Keys.
 
 This is My All In One Commands Menu. Here All The Commands Are Arranged in Order. Type You Need Command And Send Me.`,
 //--------------------------------//--------------------------------//
+OMDB_API_KEY: process.env.OMDB_API_KEY="76cb7f39",
+//--------------------------------//--------------------------------//
+MODE: process.env.MODE="public"
+//--------------------------------//--------------------------------//    
 };
