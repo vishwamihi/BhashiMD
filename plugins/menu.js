@@ -1,4 +1,3 @@
-
 const { cmd } = require('../command'); // Import cmd from the command module
 const config = require('../config'); // Import config
 
@@ -108,7 +107,8 @@ cmd({
         externalAdReply: {
           title: "BHASHI-MD MENU",
           body: "Your Ultimate Bot Assistant",
-          sourceUrl: "https://github.com/vishwamihi/BHASHI-MD-PAIR-CODE"
+          sourceUrl: "https://github.com/vishwamihi/BHASHI-MD-PAIR-CODE",
+          sourceUrl: "https://telegra.ph/file/0675611d25c5a1f3ea245.jpg"
         }
       }
     }, { quoted: mek });
