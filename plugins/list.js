@@ -3,9 +3,9 @@ const config = require('../config'); // Import config
 
 // Define your commands object
 const commands = {
-  "define": {
+  "list": {
     category: "main",
-    desc: "Provides the definition of a word."
+    desc: "all commands"
   },
   "trt": {
     category: "main",
@@ -98,6 +98,14 @@ const commands = {
   "rvideo": {
     category: "fun",
     desc: "Get Random Video"
+  },
+    "menu": {
+    category: "main",
+    desc: "all of commands"
+  },
+    "panel": {
+    category: "main",
+    desc: "All of commands."
   },
   "restart": {
     category: "owner",
