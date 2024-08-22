@@ -107,7 +107,7 @@ cmd({
         externalAdReply: {
           title: "BHASHI-MD MENU",
           body: "Your Ultimate Bot Assistant",
-          sourceUrl: "https://github.com/vishwamihi/BHASHI-MD-PAIR-CODE",
+          
           sourceUrl: "https://telegra.ph/file/0675611d25c5a1f3ea245.jpg"
         }
       }
