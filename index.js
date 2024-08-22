@@ -69,10 +69,13 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Bot connected to whatsapp ✅')
 
-let up =`*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗖𝗢𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟 ✅*
+let up = `*BHASHI-MD V1 CONECTED SUCESSFULL ✅*
 
 BHASHI MD IS A VERY POWERFUL WHATSAPP BOT
-BASE BUILD USING BY BAILEYES API KEYS`;
+BASE BUILD USING BY BAILEYES API KEYS
+
+
+𝗣𝗢𝗪𝗘𝗥𝗘𝗗  𝗕𝗬 𝗔𝗟𝗘𝗫-𝗜𝗗`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
@@ -135,14 +138,7 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
               if (mime.split("/")[0] === "audio") {
                 return conn.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
               }
-            }
-
-
-if(senderNumber.includes("94775341543")){
-if(isReact) return
-m.react("👨🏻‍💻")
-}
-        
+            }  
 //=========================WORK-TYPE=========================//
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return 
