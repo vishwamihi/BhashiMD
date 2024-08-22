@@ -69,7 +69,7 @@ require("./plugins/" + plugin);
 console.log('Plugins installed successful ✅')
 console.log('Bot connected to whatsapp ✅')
 
-let up = `*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗖𝗢𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟 ✅*
+let up =`*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗖𝗢𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟 ✅*
 
 BHASHI MD IS A VERY POWERFUL WHATSAPP BOT
 BASE BUILD USING BY BAILEYES API KEYS`;
