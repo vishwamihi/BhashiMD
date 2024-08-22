@@ -107,7 +107,7 @@ const commands = {
 
 // Define the command using cmd
 cmd({
-  pattern: "menu",
+  pattern: "list",
   desc: "Display all available commands in a beautiful format.",
   category: "main",
   filename: __filename
