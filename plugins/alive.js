@@ -16,18 +16,3 @@ console.log(e)
 reply(`${e}`)
 }
 })
-
-//MSG REACTION==========
-
-await conn.sendMessage(from, {
-      react: {
-        text: "✅", // Reaction emoji
-        key: sentMessage.key
-      }
-    });
-
-  } catch (e) {
-    console.log(e);
-    reply(`An error occurred: ${e.message}`);
-  }
-});
