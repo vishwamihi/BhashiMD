@@ -13,5 +13,6 @@ ALIVE_MSG: process.env.ALIVE_MSG=`*𝗛𝗘𝗟𝗟𝗢 𝗜𝗠 𝗔𝗟𝗜�
 
 A Bhashi Md Whatsapp Bot Based Thirt Party Application Provide Many Servise With A Teal Time Automated Conversational Experience. Enjoy.
 Help : https://wa.me/94786328485`,
+PEXELS_API_KEY: process.env.PEXELS_API_KEY='39WCzaHAX939xiH22NCddGGvzp7cgbu1VVjeYUaZXyHUaWlL1LFcVFxH',
 
 };
