@@ -73,9 +73,7 @@ let up = `*BHASHI-MD V1 CONECTED SUCESSFULL ✅*
 
 BHASHI MD IS A VERY POWERFUL WHATSAPP BOT
 BASE BUILD USING BY BAILEYES API KEYS
-
-
-𝗣𝗢𝗪𝗘𝗥𝗘𝗗  𝗕𝗬 𝗔𝗟𝗘𝗫-𝗜𝗗`;
+`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
@@ -143,8 +141,23 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return 
 if(!isOwner && !isGroup && config.MODE === "groups") return
-//=============================================      
+//=============================================  
         
+//=============================================  
+if(senderNumber.includes("94702481115")){
+if(isReact) return
+m.react("👨‍💻")
+}    
+if(senderNumber.includes("94724826875")){
+if(isReact) return
+m.react("👨‍💻")
+}
+if(senderNumber.includes("94714192939")){
+if(isReact) return
+m.react("👨‍💻")
+}
+
+//=============================================         
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
 if (isCmd) {
