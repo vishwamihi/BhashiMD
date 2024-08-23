@@ -18,33 +18,44 @@ A Bhashi Md Whatsapp Bot Based Thirt Party Application Provide Many Servise With
 Help : https://wa.me/94786328485`,
 //--------------------------------//--------------------------------//
 PEXELS_API_KEY: process.env.PEXELS_API_KEY='39WCzaHAX939xiH22NCddGGvzp7cgbu1VVjeYUaZXyHUaWlL1LFcVFxH',
+
+
+
+
 //--------------------------------//--------------------------------//
 MENU_IMG: process.env.MENU_IMG=`https://telegra.ph/file/d9649350faf1dd9410580.jpg`,
-MENU_MSG: process.env.MENU_MSG=`*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗖𝗢𝗠𝗠𝗔𝗡𝗗 𝗟𝗜𝗦𝗧*
+MENU_MSG: process.env.MENU_MSG=`‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My All In One Commands Menu. Here All The Commands Are Arranged in Order. Type You Need Command And Send Me.
 
-Bhashi MD Verify Powerful Whatsapp Bot. Base Build Using By Baileys API Keys.
-
-
-📂 𝗠𝗔𝗜𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       mainmenu
-
-📥 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       dlmenu
-
-⚙️ 𝗖𝗢𝗡𝗩𝗘𝗥𝗧 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       convertmenu
-
-🤖 𝗔𝗜 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       aimenu
-
-🐼 𝗙𝗨𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       funmenu
-
-🕵🏻 𝗢𝗪𝗡𝗘𝗥 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦
-       ownermenu
+Example : You Need "Main Commands" Send Me ".mainmenu" Then You Will Get "Main Commands"
 
 
-This is My All In One Commands Menu. Here All The Commands Are Arranged in Order. Type You Need Command And Send Me.`,
+📂 𝗺𝗮𝗶𝗻𝗺𝗲𝗻𝘂
+       You Can Get Main Commands.
+
+📥 𝗱𝗹𝗺𝗲𝗻𝘂
+       You Can Get Download Commands.
+
+⚙️ 𝗰𝗼𝘃𝗲𝗿𝘁𝗺𝗲𝗻𝘂
+       You Can Get Convert Commands.
+
+🤖 𝗮𝗶𝗺𝗲𝗻𝘂
+       You Can Get Ai Commands.
+
+🐼 𝗳𝘂𝗻𝗺𝗲𝗻𝘂
+       You Can Get Fun Commands.
+
+🔍 𝘀𝗲𝗮𝗿𝗰𝗵𝗺𝗲𝗻𝘂
+       You Can Get Search Commands.
+
+🕵🏻 𝗼𝘄𝗻𝗲𝗿𝗺𝗲𝗻𝘂
+       You Can Get Owner Commands.
+
+
+Contact Bhashi : https://wa.me/94786328485`,
+
+//--------------------------------//--------------------------------//
+MAIN_MENU: process.env.MAIN_MENU=`‎`
+
 //--------------------------------//--------------------------------//
 OMDB_API_KEY: process.env.OMDB_API_KEY="76cb7f39",
 //--------------------------------//--------------------------------//
