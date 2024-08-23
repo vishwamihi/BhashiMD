@@ -19,9 +19,7 @@ const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
-
-🎧 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
+let desc = `‎‎🎧 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
 ⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
 📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
 🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
@@ -64,9 +62,7 @@ const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
-
-🎬 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
+let desc = `‎‎🎬 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
 ⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
 📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
 🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
