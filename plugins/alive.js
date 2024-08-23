@@ -8,7 +8,6 @@ cmd({
     react: "👋🏻",
     filename: __filename
 
-
 const { cmd } = require('../command');
 const { conn } = require('../config');  // Make sure you have the proper connection setup
 
@@ -22,6 +21,8 @@ const voiceMessages = {
     hmm: 'https://github.com/Sithuwa/SITHUWA-MD/blob/main/media/Hmm.mp3?raw=true'
 };
 
+
+
 // Function to send voice message
 async function sendVoice(conn, chatId, voiceUrl) {
     try {
@@ -32,12 +33,7 @@ async function sendVoice(conn, chatId, voiceUrl) {
 }
 
 // Command handlers for sending voice messages
-cmd({
-    pattern: "palayan",
-    desc: "Send the palayan voice message.",
-    category: "media",
-    react: "🔊",
-    filename: __filename
+
 }, async (conn, mek, m, { from }) => {
     await sendVoice(conn, from, voiceMessages.palayan);
 
