@@ -67,7 +67,7 @@ MAIN_MENU: process.env.MAIN_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Ass
        Ping The Bot And Shows Response Time
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 DL_MENU: process.env.DL_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Download Commands List. Enjoi Now.
@@ -80,7 +80,7 @@ DL_MENU: process.env.DL_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assista
        You Can Download Videos.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 CONVERT_MENU: process.env.CONVERT_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Convert Commands List. Enjoi Now.
@@ -99,7 +99,7 @@ CONVERT_MENU: process.env.CONVERT_MENU=`‎‎Hello I'm Bhashi MD Your Frendly B
        Genarate Strong Password.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 AI_MENU: process.env.AI_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Ai Commands List. Enjoi Now.
@@ -112,7 +112,7 @@ AI_MENU: process.env.AI_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assista
        You Can Use Ai Genarater.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 FUN_MENU: process.env.FUN_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Convert Commands List. Enjoi Now.
@@ -143,7 +143,7 @@ FUN_MENU: process.env.FUN_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assis
        Get Rendom HD Video.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 SEARCH_MENU: process.env.SEARCH_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Search Commands List. Enjoi Now.
@@ -165,7 +165,7 @@ SEARCH_MENU: process.env.SEARCH_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot
        Fatches Weather Information.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 OWNER_MENU: process.env.OWNER_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My Owner Commands List. But This Commands Use Can Bhashi MD Owner Only. Enjoi Now.
@@ -181,11 +181,10 @@ OWNER_MENU: process.env.OWNER_MENU=`‎‎Hello I'm Bhashi MD Your Frendly Bot A
        Join Group Invite Link.
 
 
-Contact Bhashi : https://wa.me/94786328485`
+Contact Bhashi : https://wa.me/94786328485`,
 
 
 //--------------------------------//--------------------------------//
-MAIN_MENU: process.env.MAIN_MENU=`‎`
 
 //--------------------------------//--------------------------------//
 OMDB_API_KEY: process.env.OMDB_API_KEY="76cb7f39",
