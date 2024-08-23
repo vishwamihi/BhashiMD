@@ -25,23 +25,22 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         }
 
         const movieInfo = `
-🎬 *Movie Information* 🎬
-
-🎥 *Title:* ${data.Title}
-📅 *Year:* ${data.Year}
-🌟 *Rated:* ${data.Rated}
-📆 *Released:* ${data.Released}
-⏳ *Runtime:* ${data.Runtime}
-🎭 *Genre:* ${data.Genre}
-🎬 *Director:* ${data.Director}
-✍️ *Writer:* ${data.Writer}
-🎭 *Actors:* ${data.Actors}
-📝 *Plot:* ${data.Plot}
-🌍 *Language:* ${data.Language}
-🇺🇸 *Country:* ${data.Country}
-🏆 *Awards:* ${data.Awards}
-⭐ *IMDB Rating:* ${data.imdbRating}
-🗳️ *IMDB Votes:* ${data.imdbVotes}
+*╭─「 𝐀𝙻𝗘𝙓-𝙈𝘿 」*
+*╰───────────────┈*
+*⟡━⟪ 🎥𝐀𝐋𝐄𝐗-𝐌𝐃  𝐌𝐕 𝐈𝐌𝐃𝐁 🎥 ⟫━⟡*
+*╭⃘⃝──────────────┈◦•☻•◦*
+*╎☘️ Tιтle :* $ {data.Title}
+*╎📆 Rᴇʟᴇᴀꜱᴇ ➠* ${data.Released}
+*╎🌼 Rᴀᴛɪɴɢ ➠* ${data.Rating}
+*╎🌙 Lᴀɴɢᴜᴀɢᴇꜱ ➠* ${data.Languages}
+*╎🌈 Dɪʀᴇᴄᴛᴏʀ ➠* ${data.Director}
+*╎〽️ Gᴇɴʀᴇs ➠* ${data.Genres}
+*╎🌎 Cᴏᴜɴᴛʀʏ ➠* ${data.Country}
+*╚────────────────>*
+╭─「  𝙪𝙥𝙡𝙤𝙖𝙙𝙚 𝙗𝙮 」
+╰────────────┈
+> ⟡━⟪ 𝘔𝘙.𝘈𝘓𝘌𝘟-𝘐𝘋⟫━⟡
+        *⦁│ᴘʀᴏɢʀᴀᴍꜱ│⦁*
 `;
 
         // Define the image URL
