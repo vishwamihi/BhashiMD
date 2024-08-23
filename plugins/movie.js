@@ -29,14 +29,16 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 *╰───────────────┈*
 *⟡━⟪ 🎥𝐀𝐋𝐄𝐗-𝐌𝐃  𝐌𝐕 𝐈𝐌𝐃𝐁 🎥 ⟫━⟡*
 *╭⃘⃝──────────────┈◦•☻•◦*
-*╎☘️ Tιтle :* $ {data.Title}
+*╎☘️ Tιтle :* ${data.Title}
 *╎📆 Rᴇʟᴇᴀꜱᴇ ➠* ${data.Released}
-*╎🌼 Rᴀᴛɪɴɢ ➠* ${data.Rating}
+*╎*🌼 Rᴀᴛɪɴɢ ➠* ${data.Rating}
 *╎🌙 Lᴀɴɢᴜᴀɢᴇꜱ ➠* ${data.Languages}
 *╎🌈 Dɪʀᴇᴄᴛᴏʀ ➠* ${data.Director}
 *╎〽️ Gᴇɴʀᴇs ➠* ${data.Genres}
 *╎🌎 Cᴏᴜɴᴛʀʏ ➠* ${data.Country}
 *╚────────────────>*
+*📖* ${Plot}
+
 ╭─「  𝙪𝙥𝙡𝙤𝙖𝙙𝙚 𝙗𝙮 」
 ╰────────────┈
 > ⟡━⟪ 𝘔𝘙.𝘈𝘓𝘌𝘟-𝘐𝘋⟫━⟡
