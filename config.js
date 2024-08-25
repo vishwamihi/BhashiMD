@@ -16,7 +16,7 @@ PEXELS_API_KEY: process.env.PEXELS_API_KEY='39WCzaHAX939xiH22NCddGGvzp7cgbu1VVje
 //--------------------------------//--------------------------------//
 OMDB_API_KEY: process.env.OMDB_API_KEY="76cb7f39",
 //--------------------------------//--------------------------------//
-MODE: process.env.MODE="public"
+MODE: process.env.MODE="public",
 //--------------------------------//--------------------------------//    
 
 
@@ -59,8 +59,7 @@ ALIVE_MSG: process.env.ALIVE_MSG=`*𝗛𝗘𝗟𝗟𝗢 𝗜𝗠 𝗔𝗟𝗜�
 A Bhashi Md Whatsapp Bot Based Thirt Party Application Provide Many Servise With A Teal Time Automated Conversational Experience. Enjoy.
 
 Help : https://wa.me/94786328485`,
-//--------------------------------//--------------------------------//
-//--------------------------------//--------------------------------//
+//---------------------------------------------------------
 MENU_IMG: process.env.MENU_IMG=`https://telegra.ph/file/d9649350faf1dd9410580.jpg`,
 MENU_MSG: process.env.MENU_MSG=`‎Hello I'm Bhashi MD Your Frendly Bot Assistant. This is My All In One Commands Menu. Here All The Commands Are Arranged in Order. Type You Need Command And Send Me.
 
