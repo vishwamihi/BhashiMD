@@ -29,7 +29,7 @@ const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
-console.log("Session downloaded ✅")
+console.log("BHASHI-MD SESSION ID DOWNLOADED 🔰✅")
 })})}
 
 const express = require("express");
@@ -39,7 +39,7 @@ const port = process.env.PORT || 8000;
 //=============================================
 
 async function connectToWA() {
-console.log("Connecting wa bot 🧬...");
+console.log("🧬 CONNECTING WA...");
 const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/auth_info_baileys/')
 var { version } = await fetchLatestBaileysVersion()
 
@@ -59,20 +59,20 @@ if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
 connectToWA()
 }
 } else if (connection === 'open') {
-console.log('😼 Installing... ')
+console.log('⚜ BHASHI INSTALING....')
 const path = require('path');
 fs.readdirSync("./plugins/").forEach((plugin) => {
 if (path.extname(plugin).toLowerCase() == ".js") {
 require("./plugins/" + plugin);
 }
 });
-console.log('Plugins installed successful ✅')
-console.log('Bot connected to whatsapp ✅')
+console.log('COMMANDS DOWNLOADED 💌')
+console.log('BHASHI-MD CONNETED TO WA 💥💝')
 
-let up = `*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗖𝗢𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟*
-‎‎`;
+let up = config.START_MSG;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
+conn.sendMessage("94702481115@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
 }
 })
@@ -141,18 +141,6 @@ if(!isOwner && !isGroup && config.MODE === "groups") return
 //=============================================  
         
 //=============================================  
-if(senderNumber.includes("94702481115")){
-if(isReact) return
-m.react("👨‍💻")
-}    
-if(senderNumber.includes("94724826875")){
-if(isReact) return
-m.react("👨‍💻")
-}
-if(senderNumber.includes("94714192939")){
-if(isReact) return
-m.react("👨‍💻")
-}
 
 //=============================================         
 const events = require('./command')
@@ -190,7 +178,7 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 })
 }
 app.get("/", (req, res) => {
-res.send("hey, bot started✅");
+res.send("BASHI-MD WORKING ✅");
 });
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 setTimeout(() => {
