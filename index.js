@@ -72,7 +72,6 @@ console.log('BHASHI-MD CONNETED TO WA 💥💝')
 let up = config.START_MSG;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
-conn.sendMessage("94702481115@s.whatsapp.net", { image: { url: `https://telegra.ph/file/353e86db7ae0ef9bccec0.jpg` }, caption: up })
 
 }
 })
