@@ -6,7 +6,7 @@ function convertToBool(text, fault = 'true') {
 }
 module.exports = {
 //--------------------------------//--------------------------------//
-SESSION_ID: process.env.SESSION_ID=`UnMzxK7Z#IU0NOFrFff_yC-vHdEkBHlys5ySNDy9S1ZyTAVd8A_Q`,
+SESSION_ID: process.env.SESSION_ID=``,
 //--------------------------------//--------------------------------//
 START_MSG: process.env.START_MSG=`*BHASHI-MD CONNECTED*`,
 //--------------------------------//--------------------------------//
