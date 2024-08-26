@@ -1,6 +1,6 @@
 </p> <p align="center">
 
-# BHASHI-MD MULTI DEVICE WHATSAPP BOT 🇱🇰
+#              BHASHI-MD MULTI DEVICE WHATSAPP BOT 🇱🇰
 
 
 
