@@ -22,7 +22,7 @@ const url = data.url
 let desc = `‎‎🎧 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
 ⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
 📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
-🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
+🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}`
 ‎
 Your Song Download Request Uploading Fallowing. You Can See File Audio Type And Document Type.`
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
@@ -65,7 +65,7 @@ const url = data.url
 let desc = `‎‎🎬 ‎𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
 ⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
 📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
-🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
+🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}`
 ‎
 Your Video Download Request Uploading Fallowing. You Can See File Video Type And Document Type.`
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
