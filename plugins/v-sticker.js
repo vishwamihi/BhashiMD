@@ -20,7 +20,7 @@ cmd({
     pattern: "sticker",
     alias: ["s", "stick"],
     desc: "Create stickers from image or video",
-    category: "utility",
+    category: "converter",
     react: "✂️",
     filename: __filename
 },
