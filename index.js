@@ -185,9 +185,11 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 })
 }
 app.get("/", (req, res) => {
-res.send("BASHI-MD WORKING ✅");
+    res.sendFile(path.join(__dirname, "index.html"));  // Serve the HTML file
 });
-app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+
+app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
+
 setTimeout(() => {
-connectToWA()
-}, 4000);  
+    connectToWA();
+}, 4000);
