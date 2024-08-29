@@ -8,6 +8,46 @@ module.exports = {
   PEXELS_API_KEY: process.env.PEXELS_API_KEY || "39WCzaHAX939xiH22NCddGGvzp7cgbu1VVjeYUaZXyHUaWlL1LFcVFxH",
   OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39",
   MODE: process.env.MODE || "public",
+  AUTO_VOICE: process.env.AUTO_VOICE || "true",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //================ OWNERS ONLY DONT GO =================
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
   ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/d8279f4ca5da23bda7da4.jpg",
   ALIVE_MSG: process.env.ALIVE_MSG || `*𝗛𝗘𝗟𝗟𝗢 𝗜𝗠 𝗔𝗟𝗜𝗩𝗘 𝗡𝗢𝗪*
 
