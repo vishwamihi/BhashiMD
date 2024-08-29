@@ -154,7 +154,7 @@ const commands ={
   "gitclone": {
     "category": "🎥 Media",
     "desc": "📥 Clone repositories from GitHub."
-  }
+  },
   "song": {
     "category": "🎥 Media",
     "desc": "📥 Download your favorite songs."
