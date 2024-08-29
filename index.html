@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASHI-MD Server</title>
+    <style>
+        /* Background Gradient and Setup */
+        body {
+            background: linear-gradient(135deg, #2c3e50, #4b79a1);
+            background-size: 400% 400%;
+            animation: backgroundShift 15s ease infinite;
+            color: #ecf0f1;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: pulse 2s infinite;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Subtitle Styling */
+        .status {
+            font-size: 1.5rem;
+            color: #1abc9c;
+            margin-top: 10px;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+        }
+
+        /* Glowing Effect */
+        .glow {
+            text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c;
+            animation: glowPulse 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Background Animation */
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Pulse Effect */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Glow Pulse Effect */
+        @keyframes glowPulse {
+            from {
+                text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c;
+            }
+            to {
+                text-shadow: 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c, 0 0 50px #1abc9c;
+            }
+        }
+
+        /* Fade-in Effect for Text */
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="glow">BASHI-MD WORKING ✅</h1>
+        <p class="status">Server is up and running!</p>
+    </div>
+</body>
+</html>
