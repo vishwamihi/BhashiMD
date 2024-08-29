@@ -35,7 +35,13 @@ console.log("BHASHI-MD SESSION ID DOWNLOADED 🔰✅")
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Route to serve index.html
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 //=============================================
 
 async function connectToWA() {
@@ -184,12 +190,8 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 
 })
 }
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));  // Serve the HTML file
+// Start the server and connect to WhatsApp
+app.listen(port, async () => {
+    console.log(`Server running at http://localhost:${port}/`);
+    const conn = await connectToWA();
 });
-
-app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
-
-setTimeout(() => {
-    connectToWA();
-}, 4000);
