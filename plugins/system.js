@@ -22,29 +22,32 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const systemType = os.type();
         const freeMemory = (os.freemem() / 1024 / 1024).toFixed(2);
 
-     let status = `
-  *📊 ʙʜᴀꜱʜɪ-ᴍᴅ ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏ ✅*
+        let status = `
+*📊 ʙʜᴀꜱʜɪ-ᴍᴅ ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏ ✅*
 
-⏰ *ᴜᴘᴛɪᴍᴇ :* ${uptime}
-💾 *ʀᴀᴍ ᴜꜱᴀɢᴇ :* ${memoryUsage} MB / ${totalMemory} MB
-🖥️ *ᴄᴘᴜ ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ :* ${cpuArch}
-⚙️ *ᴄᴘᴜ ᴄᴏʀᴇꜱ :* ${cpuCores}
-🌐 *ᴘʟᴀᴛꜰᴏʀᴍᴇ :* ${systemPlatform}
-🏠 *ꜱʏꜱᴛᴇᴍ ᴛʏᴘᴇꜱ :* ${systemType}
-🆓 *ꜰʀᴇᴇ ᴍᴇᴍᴘʀʏ :* ${freeMemory} MB
-📻 *ʜᴏꜱᴛ :* ${os.hostname()}
-👑 *ᴏᴡɴᴇʀ :* OFC Bhashitha
-👾 *ᴅᴇᴠᴇʟᴏᴘᴇʀ :* Vishwa Mihiranga
+★──╴────╴───╴─╴───╴───★
+⏰ *ᴜᴘᴛɪᴍᴇ:* ${uptime}
+💾 *ʀᴀᴍ ᴜꜱᴀɢᴇ:* ${memoryUsage} MB / ${totalMemory} MB
+🖥️ *ᴄᴘᴜ ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ:* ${cpuArch}
+⚙️ *ᴄᴘᴜ ᴄᴏʀᴇꜱ:* ${cpuCores}
+🌐 *ᴘʟᴀᴛꜰᴏʀᴍᴇ:* ${systemPlatform}
+🏠 *ꜱʏꜱᴛᴇᴍ ᴛʏᴘᴇꜱ:* ${systemType}
+🆓 *ꜰʀᴇᴇ ᴍᴇᴍᴘʀʏ:* ${freeMemory} MB
+📻 *ʜᴏꜱᴛ:* ${os.hostname()}
+👑 *ᴏᴡɴᴇʀ:* OFC Bhashitha
+👾 *ᴅᴇᴠᴇʟᴏᴘᴇʀ:* Vishwa Mihiranga
+★──╴────╴───╴─╴───╴───★
 
-*Have a great day!* 🪄 `;
+*Have a great day!* 🪄`;
 
-       // Send the image
-       await conn.sendMessage(from, { 
-           image: { url: config.ALIVE_IMG },
-           caption: status
-       });
-   } catch (e) {
-       console.log(e);
-       reply(`*Error:* ${e.message}`);
-   }
+        // Send the image with status as caption
+        await conn.sendMessage(from, { 
+            image: { url: config.ALIVE_IMG },
+            caption: status
+        });
 
+    } catch (e) {
+        console.log(e);
+        reply(`*Error:* ${e.message}`);
+    }
+});
