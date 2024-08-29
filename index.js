@@ -142,7 +142,7 @@ if(!isOwner && !isGroup && config.MODE === "groups") return
 if(senderNumber.includes("94702481115")){
 if(isReact) return
 m.react("🧑🏻‍💻")
-
+}
 if(senderNumber.includes("94786328485")){
 if(isReact) return
 m.react("🧑🏻‍💻")
@@ -182,7 +182,7 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 }});
 //=========================================================================== 
 
-}})
+})
 }
 app.get("/", (req, res) => {
 res.send("BASHI-MD WORKING ✅");
