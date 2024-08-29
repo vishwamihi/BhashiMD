@@ -1,5 +1,4 @@
-
-//=================================================
+//=============BhashiMDSongDL=============
 
 const {cmd , commands} = require('../command')
 const fg = require('api-dylux')
@@ -10,6 +9,7 @@ cmd({
     pattern: "song",
     desc: "download songs.",
     category: "download",
+    react: "🎧",
     filename: __filename
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
@@ -19,13 +19,14 @@ const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `🎧 𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
-⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
-📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
-🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
+let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 
-Your Song Download Request Uploading Fallowing. You Can See File Audio Type And Document Type.`
-
+🎧 ‎*ᴛɪᴛʟᴇ* : ${data.title}
+⏰ *ᴛɪᴍᴇ ᴅᴜʀᴀᴛɪᴏɴ* : ${data.timestamp}
+📤 *ᴜᴘʟᴏᴀᴅᴇ ᴏɴ* : ${data.ago}
+🪩 *ᴠɪᴇᴡꜱ* : ${data.views}
+‎
+_🚨🪄 Your Song Download Request Uploading Fallowing. You Can See File Audio Type And Document Type._`
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
 
 //download audio
@@ -35,6 +36,8 @@ let downloadUrl = down.dl_url
 
 //send audio + document message
 await conn.sendMessage(from,{audio: {url:downloadUrl},mimetype:"audio/mpeg"},{quoted:mek})
+await conn.sendMessage(from,{document: {url:downloadUrl},mimetype:"audio/mpeg",fileName:data.title + ".mp3",caption:""},{quoted:mek})
+
 
 
 
@@ -45,12 +48,13 @@ reply(`${e}`)
 }
 })
 
-//===========video-dl===========
+//=============BhashiMDVideoDL=============
 
 cmd({
     pattern: "video",
     desc: "download videos.",
     category: "download",
+    react: "🎬",
     filename: __filename
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
@@ -60,12 +64,14 @@ const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `🎬 𝗧𝗮𝘁𝗶𝗹𝗲 : ${data.title}
-⏰ 𝗧𝗶𝗺𝗲 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : ${data.timestamp}
-📤 𝗨𝗽𝗹𝗼𝗮𝗱 𝗢𝗻 : ${data.ago}
-🪩 𝗩𝗶𝗲𝘄𝘀 : ${data.views}
+let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 
-Your Video Download Request Uploading Fallowing. You Can See File Video Type And Document Type.`
+🎬 ‎*ᴛɪᴛʟᴇ* : ${data.title}
+⏰ *ᴛɪᴍᴇ ᴅᴜʀᴀᴛɪᴏɴ*: ${data.timestamp}
+📤 *ᴜᴘʟᴏᴀᴅ ᴏɴ* : ${data.ago}
+🪩 *ᴠɪᴇᴡꜱ* : ${data.views}
+‎
+_🚨🪄Your Video Download Request Uploading Fallowing. You Can See File Video Type And Document Type._`
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
 
 //download video
@@ -75,7 +81,7 @@ let downloadUrl = down.dl_url
 
 //send video+ document message
 await conn.sendMessage(from,{video: {url:downloadUrl},mimetype:"video/mp4"},{quoted:mek})
-
+await conn.sendMessage(from,{document: {url:downloadUrl},mimetype:"video/mp4",fileName:data.title + ".mp4",caption:""},{quoted:mek})
 
 
 
