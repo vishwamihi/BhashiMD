@@ -9,7 +9,8 @@ module.exports = {
   OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39",
   MODE: process.env.MODE || "public",
   AUTO_VOICE: process.env.AUTO_VOICE || "true",
-
+  packname: process.env.packname || "🪄BHASHI",
+  author: process.env.author || "BHASHI x VISHWA",
 
 
 
