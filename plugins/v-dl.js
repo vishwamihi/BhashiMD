@@ -67,21 +67,31 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
             await conn.sendMessage(from, { text: qualityMessage }, { quoted: mek });
 
             // Wait for user's quality selection
-            const qualityResponse = await new Promise((resolve) => {
-                conn.ev.once('messages.upsert', async (m) => {
-                    const msg = m.messages[0];
-                    if (msg.key.remoteJid === from) {
-                        resolve(msg.message.conversation);
-                    }
-                });
-            });
+            let qualityResponse = null;
+            const messageHandler = (m) => {
+                const msg = m.messages[0];
+                if (msg.key.remoteJid === from) {
+                    qualityResponse = msg.message.conversation;
+                }
+            };
 
-            const selectedQuality = parseInt(qualityResponse) - 1;
+            conn.ev.on('messages.upsert', messageHandler);
+
+            // Wait for response or timeout after 30 seconds
+            await new Promise(resolve => setTimeout(resolve, 30000));
+
+            conn.ev.off('messages.upsert', messageHandler);
+
+            let selectedQuality;
+            if (qualityResponse) {
+                selectedQuality = parseInt(qualityResponse) - 1;
+            }
+
             if (selectedQuality >= 0 && selectedQuality < qualities.length) {
                 const chosenQuality = qualities[selectedQuality];
                 await conn.sendMessage(from, { video: { url: chosenQuality.url }, caption: `Selected Quality: ${chosenQuality.quality}\n\n${caption}` }, { quoted: mek });
             } else {
-                await conn.sendMessage(from, { text: "Invalid selection. Sending the highest available quality." }, { quoted: mek });
+                await conn.sendMessage(from, { text: "Invalid selection or no response. Sending the highest available quality." }, { quoted: mek });
                 await conn.sendMessage(from, { video: { url: qualities[0].url }, caption: `Selected Quality: ${qualities[0].quality}\n\n${caption}` }, { quoted: mek });
             }
 
