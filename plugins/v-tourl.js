@@ -2,6 +2,7 @@ const { cmd } = require('../command');
 const fs = require('fs').promises;
 const axios = require('axios');
 const FormData = require('form-data');
+const path = require('path');
 
 cmd({
     pattern: "tourl",
@@ -16,8 +17,9 @@ cmd({
     const downloadingMsg = await conn.sendMessage(from, { text: "⏳ Processing your file..." }, { quoted: mek });
     await conn.sendMessage(from, { react: { text: "⏳", key: mek.key } });
 
+    let mediaMessage;
     try {
-        const mediaMessage = await conn.downloadAndSaveMediaMessage(quoted);
+        mediaMessage = await conn.downloadAndSaveMediaMessage(quoted);
         const fileData = await fs.readFile(mediaMessage);
         const fileStats = await fs.stat(mediaMessage);
 
@@ -57,6 +59,9 @@ cmd({
         await conn.sendMessage(from, { text: `❌ An error occurred: ${error.message}` }, { quoted: mek });
         await conn.sendMessage(from, { react: { text: "❌", key: mek.key } });
     } finally {
+        if (mediaMessage) {
+            await fs.unlink(mediaMessage).catch(console.error);
+        }
         await conn.sendMessage(from, { delete: downloadingMsg.key });
     }
 });
