@@ -35,13 +35,13 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
     try {
         const data = await fetchJson(`${baseUrl}/api/${apiEndpoint}?url=${encodeURIComponent(url)}`);
 
-        const fileInfo = data.data.data || data.data;
+        const fileInfo = data.data || data;
         const captionHeader = `
 ╭─『 ${apiEndpoint.toUpperCase().replace('DL', ' DL')} 』───⊷
 │
 │ ✨ *Requester*: ${pushname}
 │ 🤖 *Bot*: BHASHI-MD
-│ 📄 *File Name:* ${fileInfo.fileName || fileInfo.name || 'Not available'}
+│ 📄 *File Name:* ${fileInfo.fileName || fileInfo.title || 'Not available'}
 │ 📦 *Size:* ${formatFileSize(fileInfo.fileSize || fileInfo.size || 0)}
 │ 📎 *Type:* ${fileInfo.mimeType || fileInfo.file_type || 'Not available'}
 │
@@ -53,34 +53,35 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
             const caption = `${captionHeader}\n\n> BHASHI-MD`.trim();
 
             // Prepare quality options
-            const qualities = [];
-            if (videoInfo.hd || videoInfo.HD) qualities.push({ quality: 'HD', url: videoInfo.hd || videoInfo.HD });
-            if (videoInfo.sd || videoInfo.SD) qualities.push({ quality: 'SD', url: videoInfo.sd || videoInfo.SD });
+            const qualities = Object.entries(videoInfo)
+                .filter(([key, value]) => typeof value === 'string' && value.startsWith('http'))
+                .map(([key, value]) => ({ quality: key, url: value }));
 
             // Send quality selection message
             let qualityMessage = "Available qualities:\n";
             qualities.forEach((q, index) => {
                 qualityMessage += `${index + 1}. ${q.quality}\n`;
             });
-            qualityMessage += "\nReply with the number of your chosen quality (e.g., '1' for HD, '2' for SD).";
+            qualityMessage += "\nReply with the number of your chosen quality (e.g., '1' for highest quality).";
 
             await conn.sendMessage(from, { text: qualityMessage }, { quoted: mek });
 
             // Wait for user's quality selection
-            let qualityResponse = null;
-            const messageHandler = (m) => {
-                const msg = m.messages[0];
-                if (msg.key.remoteJid === from) {
-                    qualityResponse = msg.message.conversation;
-                }
-            };
-
-            conn.ev.on('messages.upsert', messageHandler);
-
-            // Wait for response or timeout after 30 seconds
-            await new Promise(resolve => setTimeout(resolve, 30000));
-
-            conn.ev.off('messages.upsert', messageHandler);
+            const qualityResponse = await new Promise((resolve) => {
+                const messageHandler = (m) => {
+                    const msg = m.messages[0];
+                    if (msg.key.remoteJid === from) {
+                        conn.ev.off('messages.upsert', messageHandler);
+                        resolve(msg.message.conversation);
+                    }
+                };
+                conn.ev.on('messages.upsert', messageHandler);
+                // Timeout after 30 seconds
+                setTimeout(() => {
+                    conn.ev.off('messages.upsert', messageHandler);
+                    resolve(null);
+                }, 30000);
+            });
 
             let selectedQuality;
             if (qualityResponse) {
@@ -106,8 +107,8 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
             const caption = `${captionHeader}\n\n> BHASHI-MD`.trim();
 
             await conn.sendMessage(from, { 
-                document: { url: fileInfo.download || fileInfo.link_1 }, 
-                fileName: fileInfo.fileName || fileInfo.name, 
+                document: { url: fileInfo.download || fileInfo.link || fileInfo.url }, 
+                fileName: fileInfo.fileName || fileInfo.title, 
                 mimetype: fileInfo.mimeType || fileInfo.file_type,
                 caption: caption
             }, { quoted: mek });
