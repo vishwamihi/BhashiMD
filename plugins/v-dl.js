@@ -54,30 +54,36 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
 
             // Prepare quality options
             const qualities = [];
-            if (videoInfo.hd || videoInfo.HD) qualities.push({ text: 'HD', url: videoInfo.hd || videoInfo.HD });
-            if (videoInfo.sd || videoInfo.SD) qualities.push({ text: 'SD', url: videoInfo.sd || videoInfo.SD });
+            if (videoInfo.hd || videoInfo.HD) qualities.push({ quality: 'HD', url: videoInfo.hd || videoInfo.HD });
+            if (videoInfo.sd || videoInfo.SD) qualities.push({ quality: 'SD', url: videoInfo.sd || videoInfo.SD });
 
-            // Send quality selection buttons
-            const buttons = qualities.map(q => ({ buttonId: `quality_${q.text}_${q.url}`, buttonText: { displayText: q.text }, type: 1 }));
-            const buttonMessage = {
-                text: "Choose video quality:",
-                footer: caption,
-                buttons: buttons,
-                headerType: 1
-            };
-            await conn.sendMessage(from, buttonMessage, { quoted: mek });
-
-            // Handle button response
-            conn.ev.on('messages.upsert', async (m) => {
-                const msg = m.messages[0];
-                if (msg.message?.buttonsResponseMessage) {
-                    const selectedButton = msg.message.buttonsResponseMessage.selectedButtonId;
-                    if (selectedButton.startsWith('quality_')) {
-                        const [_, quality, url] = selectedButton.split('_');
-                        await conn.sendMessage(from, { video: { url: url }, caption: `Selected Quality: ${quality}\n\n${caption}` }, { quoted: mek });
-                    }
-                }
+            // Send quality selection message
+            let qualityMessage = "Available qualities:\n";
+            qualities.forEach((q, index) => {
+                qualityMessage += `${index + 1}. ${q.quality}\n`;
             });
+            qualityMessage += "\nReply with the number of your chosen quality (e.g., '1' for HD, '2' for SD).";
+
+            await conn.sendMessage(from, { text: qualityMessage }, { quoted: mek });
+
+            // Wait for user's quality selection
+            const qualityResponse = await new Promise((resolve) => {
+                conn.ev.once('messages.upsert', async (m) => {
+                    const msg = m.messages[0];
+                    if (msg.key.remoteJid === from) {
+                        resolve(msg.message.conversation);
+                    }
+                });
+            });
+
+            const selectedQuality = parseInt(qualityResponse) - 1;
+            if (selectedQuality >= 0 && selectedQuality < qualities.length) {
+                const chosenQuality = qualities[selectedQuality];
+                await conn.sendMessage(from, { video: { url: chosenQuality.url }, caption: `Selected Quality: ${chosenQuality.quality}\n\n${caption}` }, { quoted: mek });
+            } else {
+                await conn.sendMessage(from, { text: "Invalid selection. Sending the highest available quality." }, { quoted: mek });
+                await conn.sendMessage(from, { video: { url: qualities[0].url }, caption: `Selected Quality: ${qualities[0].quality}\n\n${caption}` }, { quoted: mek });
+            }
 
             if (videoInfo.audio) {
                 await conn.sendMessage(from, { 
