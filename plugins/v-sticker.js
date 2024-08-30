@@ -1,9 +1,7 @@
 const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 const { Sticker } = require('wa-sticker-formatter');
-const path = require('path');
-const fs = require('fs');
 const config = require('../config');
-const { cmd, commands } = require('../command');
+const { cmd } = require('../command');
 
 // Helper function to get file buffer
 async function getFileBuffer(mediakey, mediaType) {
@@ -24,40 +22,50 @@ cmd({
     react: "✂️",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+async (conn, mek, m) => {
     try {
-        const msg = m.message;
-        const media = msg?.extendedTextMessage?.contextInfo?.quotedMessage?.videoMessage ||
-                      msg?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage ||
-                      msg?.videoMessage || msg?.imageMessage;
+        const { from, quoted } = m;
+        const getQuotedObj = quoted ? quoted : m;
+        const mimetype = getQuotedObj.mimetype || '';
 
-        if (!media?.mimetype) {
+        if (!mimetype.startsWith('image') && !mimetype.startsWith('video')) {
             return conn.sendMessage(from, {
                 text: "Please reply to an image or video with the .sticker command to create a sticker."
             }, { quoted: mek });
         }
 
-        // Get the media buffer
-        const mediaBuffer = await getFileBuffer(media, media.mimetype.split('/')[0]);
+        conn.sendMessage(from, { react: { text: "🔄", key: mek.key }});
+
+        let mediaBuffer;
+        if (quoted) {
+            const downloadFilePath = await conn.downloadAndSaveMediaMessage(getQuotedObj);
+            mediaBuffer = await getFileBuffer({ path: downloadFilePath }, mimetype.split('/')[0]);
+        } else {
+            const downloadFilePath = await conn.downloadAndSaveMediaMessage(m);
+            mediaBuffer = await getFileBuffer({ path: downloadFilePath }, mimetype.split('/')[0]);
+        }
 
         // Create sticker
         const sticker = new Sticker(mediaBuffer, {
-            pack: 'BHASHI-MD',
-            author: 'BHASHI-MD',
+            pack: config.packname || 'BHASHI-MD',
+            author: config.author || 'BHASHI-MD',
             type: 'full',
-            background: '#ffffff',
-            quality: 90
+            categories: ['🤩', '🎉'],
+            id: '12345',
+            quality: 70,
+            background: 'transparent'
         });
 
         // Send the sticker
-        await conn.sendMessage(from, {
-            sticker: await sticker.toBuffer()
-        }, { quoted: mek });
+        const stickerBuffer = await sticker.toBuffer();
+        await conn.sendMessage(from, { sticker: stickerBuffer }, { quoted: mek });
 
+        conn.sendMessage(from, { react: { text: "✅", key: mek.key }});
     } catch (error) {
         console.error('Error creating sticker:', error);
         conn.sendMessage(from, {
             text: "An error occurred while creating the sticker. Please try again."
         }, { quoted: mek });
+        conn.sendMessage(from, { react: { text: "❌", key: mek.key }});
     }
 });
