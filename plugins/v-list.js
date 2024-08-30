@@ -19,7 +19,7 @@ const commands ={
     "category": "🔄 Converter",
     "desc": "🔄 Convert text into speech with our Text-to-Speech tool."
   },
-  "translate": {
+  "trt": {
     "category": "🛠️ Useful",
     "desc": "🛠️ Translate text between different languages."
   },
@@ -47,9 +47,17 @@ const commands ={
     "category": "🔍 Search",
     "desc": "🔍 Search for repository details on GitHub."
   },
+  "yts": {
+    "category": "🔍 Search*
+    "desc": "🔍 Search From Youtube"
+  },
   "qr": {
     "category": "🔄 Converter",
     "desc": "🔄 Generate QR codes from text or URLs for quick access."
+  },
+"tourl": {
+    "category": "🔄 Converter",
+    "desc": "🔄 Convert Any File to url."
   },
   "shorturl": {
     "category": "🔄 Converter",
@@ -167,7 +175,7 @@ const commands ={
     "category": "🔍 Search",
     "desc": "🔍 Look up definitions and meanings from the dictionary."
   },
-  "converter": {
+  "convert": {
     "category": "🔄 Converter",
     "desc": "🔄 Convert currency from one type to another."
   },
@@ -182,10 +190,6 @@ const commands ={
   "autobio": {
     "category": "👑 Owner",
     "desc": "👑 Automatically update the bot's bio."
-  },
-  "animegirl": {
-    "category": "🎭 Anime",
-    "desc": "🎭 Browse and receive pictures of anime girls."
   },
   "anime": {
     "category": "🎭 Anime",
