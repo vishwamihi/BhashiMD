@@ -52,12 +52,32 @@ async function downloadAndSendMedia(conn, mek, from, url, apiEndpoint, mediaType
             const videoInfo = fileInfo;
             const caption = `${captionHeader}\n\n> BHASHI-MD`.trim();
 
-            if (videoInfo.hd || videoInfo.HD) {
-                await conn.sendMessage(from, { video: { url: videoInfo.hd || videoInfo.HD }, caption: `\n\n${caption}` }, { quoted: mek });
-            }
-            if (videoInfo.sd || videoInfo.SD) {
-                await conn.sendMessage(from, { video: { url: videoInfo.sd || videoInfo.SD }, caption: `\n\n${caption}` }, { quoted: mek });
-            }
+            // Prepare quality options
+            const qualities = [];
+            if (videoInfo.hd || videoInfo.HD) qualities.push({ text: 'HD', url: videoInfo.hd || videoInfo.HD });
+            if (videoInfo.sd || videoInfo.SD) qualities.push({ text: 'SD', url: videoInfo.sd || videoInfo.SD });
+
+            // Send quality selection buttons
+            const buttons = qualities.map(q => ({ buttonId: `quality_${q.text}_${q.url}`, buttonText: { displayText: q.text }, type: 1 }));
+            const buttonMessage = {
+                text: "Choose video quality:",
+                footer: caption,
+                buttons: buttons,
+                headerType: 1
+            };
+            await conn.sendMessage(from, buttonMessage, { quoted: mek });
+
+            // Handle button response
+            conn.ev.on('messages.upsert', async (m) => {
+                const msg = m.messages[0];
+                if (msg.message?.buttonsResponseMessage) {
+                    const selectedButton = msg.message.buttonsResponseMessage.selectedButtonId;
+                    if (selectedButton.startsWith('quality_')) {
+                        const [_, quality, url] = selectedButton.split('_');
+                        await conn.sendMessage(from, { video: { url: url }, caption: `Selected Quality: ${quality}\n\n${caption}` }, { quoted: mek });
+                    }
+                }
+            });
 
             if (videoInfo.audio) {
                 await conn.sendMessage(from, { 
