@@ -3,7 +3,6 @@ require("dotenv").config();
 
 module.exports = {
   SESSION_ID: process.env.SESSION_ID || "UnMzxK7Z#IU0NOFrFff_yC-vHdEkBHlys5ySNDy9S1ZyTAVd8A_Q",
-  START_MSG: process.env.START_MSG || "*BHASHI-MD CONNECTED*",
   PREFIX: process.env.PREFIX || ".",
   PEXELS_API_KEY: process.env.PEXELS_API_KEY || "39WCzaHAX939xiH22NCddGGvzp7cgbu1VVjeYUaZXyHUaWlL1LFcVFxH",
   OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39",
@@ -56,7 +55,18 @@ module.exports = {
 
 
   
-  
+    START_MSG: process.env.START_MSG || "           ★ *ＢＨＡＳＨＩ-ＭＤ* ★
+      ╴ *ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ ᴡᴀ ʙᴏᴛ 🇱🇰* ╴
+
+ `A fast and responsive multi-device WhatsApp bot built using Baileys and various APIs. It offers seamless functionality without buttons, delivering quick and efficient performance for automated tasks and commands.`
+
+
+> 🚨 *ꜰᴏʟʟᴏᴡ ᴜꜱ* : https://whatsapp.com/channel/0029VaSaZd5CBtxGawmSph1k
+
+> 🪄 *ꜱᴜᴘᴘᴏᴛᴇʀ ɢʀᴏᴜᴘ* :
+
+> 👾 *ʀᴇᴘᴏ ʟɪɴᴋ* : https://github.com/BhashiMD/BhashiMD/
+",
   ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/d8279f4ca5da23bda7da4.jpg",
   ALIVE_MSG: process.env.ALIVE_MSG || `*𝗛𝗘𝗟𝗟𝗢 𝗜𝗠 𝗔𝗟𝗜𝗩𝗘 𝗡𝗢𝗪*
 
