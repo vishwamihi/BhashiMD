@@ -14,6 +14,7 @@ module.exports = {
   ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY || "sk_6438bcc100d96458f8de0602aec662f4ba14b905fd090ad3",
   SHODAN_API: process.env.SHODAN_API || "cbCkidr6qd7AFVaYs56MuCouGfM8gFki",
   AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
+  ANTI_LINK: process.env.ANTILINK || "true",
 
 
 
