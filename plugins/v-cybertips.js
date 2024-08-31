@@ -27,7 +27,7 @@ const cybersecurityTips = [
 cmd({
     pattern: "cybertips",
     desc: "Get random cybersecurity tips.",
-    category: "security",
+    category: "useful",
     react: "🛡️",
     filename: __filename
 },
