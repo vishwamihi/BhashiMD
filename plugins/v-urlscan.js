@@ -16,7 +16,7 @@ async (conn, mek, m, { from, args, reply }) => {
 
         const query = args[0];
         // Replace with your Shodan API key
-        const apiKey = '5d6295d98f638ea52f2b17620c9b3e772005c01e331c54d6ae9d70bf6b99262f';
+        const apiKey = config.SHODAN_API;
 
         // Get the IP address of the domain if it's provided as a domain
         let ipAddress = query;
