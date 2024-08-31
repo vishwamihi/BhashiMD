@@ -48,7 +48,7 @@ const commands ={
     "desc": "🔍 Search for repository details on GitHub."
   },
   "yts": {
-    "category": "🔍 Search*
+    "category": "🔍 Search*,
     "desc": "🔍 Search From Youtube"
   },
   "qr": {
