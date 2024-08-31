@@ -11,7 +11,7 @@ cmd({
 async (conn, mek, m, { from, args, reply }) => {
     try {
         if (args.length === 0) {
-            return reply("❌ Please specify a cryptocurrency symbol. Example: .signal btc")
+            return reply("❌ Please specify a cryptocurrency symbol. Example: .signal btc");
         }
 
         const symbol = args[0].toLowerCase();
@@ -19,6 +19,11 @@ async (conn, mek, m, { from, args, reply }) => {
 
         const response = await axios.get(url);
         const data = response.data;
+
+        // Check if the necessary data is available
+        if (!data.market_data || !data.market_data.current_price || !data.market_data.price_change_percentage_24h) {
+            return reply("⚠️ Data not available for the specified cryptocurrency symbol.");
+        }
 
         // Extract relevant data
         const currentPrice = data.market_data.current_price.usd;
@@ -39,6 +44,7 @@ async (conn, mek, m, { from, args, reply }) => {
         await conn.sendMessage(from, { text: message }, { quoted: mek });
     } catch (e) {
         console.log(e);
-        reply(`🚫 An error occurred: ${e.message}`);
+        // Provide a more user-friendly error message
+        reply(`🚫 An error occurred while fetching the trading signal. Please check the cryptocurrency symbol and try again.`);
     }
 });
