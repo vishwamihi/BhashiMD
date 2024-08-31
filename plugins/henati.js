@@ -4,7 +4,7 @@ const { cmd } = require('../command'); // Adjust the path if necessary
 cmd({
     pattern: 'hentai',
     desc: 'Fetches NSFW Waifu images',
-    category: 'Hentai',
+    category: 'download',
     react: '🙄',
     fromMe: true
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
