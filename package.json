@@ -4,9 +4,9 @@
   "description": "bhashimd powered by bashitha✅",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name bhashimd",
-    "stop": "pm2 stop bhashimd",
-    "restart": "pm2 restart bhashimd"
+    "start": "pm2 start index.js --deep-monitoring --attach --name BHASHI",
+    "stop": "pm2 stop BHASHI",
+    "restart": "pm2 restart BHASHI"
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
