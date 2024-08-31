@@ -1,3 +1,6 @@
+const config = require('../config');
+const { cmd } = require('../command');
+
 const antiConfig = {
     ANTI_LINK: false,
     ANTI_BAD_WORDS_ENABLED: true,
@@ -159,13 +162,11 @@ async function antiAbuseChecks(from, body, mek, isGroup, isBotAdmins, conn) {
 
     //=========================ANTI-CAPSLOCK=========================
     if (isGroup && antiConfig.ANTI_CAPSLOCK) {
-        const capsThreshold = antiConfig.CAPSLOCK_THRESHOLD;
+        const capslockThreshold = antiConfig.CAPSLOCK_THRESHOLD;
+        const bodyUpperCase = body.toUpperCase();
 
-        const capsCount = body.replace(/[^A-Z]/g, '').length;
-        const capsPercentage = (capsCount / body.length) * 100;
-
-        if (capsPercentage >= capsThreshold) {
-            await conn.sendMessage(from, { text: '🚩 Please avoid excessive use of capital letters (capslock).' }, { quoted: mek });
+        if (body === bodyUpperCase && body.length > capslockThreshold) {
+            await conn.sendMessage(from, { text: '🚩 Please avoid using caps lock excessively!' }, { quoted: mek });
             return;
         }
     }
@@ -183,27 +184,11 @@ async function antiAbuseChecks(from, body, mek, isGroup, isBotAdmins, conn) {
         global.spamData[from].push(now);
 
         if (global.spamData[from].length > spamThreshold) {
-            await conn.sendMessage(from, { text: '🚩 Stop spamming the group!' }, { quoted: mek });
+            await conn.sendMessage(from, { text: '🚩 Stop spamming messages in the group!' }, { quoted: mek });
             global.spamData[from] = [];
             return;
         }
     }
 }
 
-// Sample usage in the main function
-async function main() {
-    // Initialize connection and other setup here
-    const conn = ...; // Your WhatsApp connection object
-    const isBotAdmins = true; // Assume the bot is an admin for demonstration purposes
-
-    // Event listener for incoming messages
-    conn.on('message-new', async (mek) => {
-        const { from, body, isGroup } = mek;
-        if (body) {
-            await handleCommand(from, body, mek, isGroup, isBotAdmins, conn);
-            await antiAbuseChecks(from, body, mek, isGroup, isBotAdmins, conn);
-        }
-    });
-}
-
-main();
+module.exports = { handleCommand, antiAbuseChecks };
