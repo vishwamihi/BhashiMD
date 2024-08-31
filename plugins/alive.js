@@ -1,6 +1,6 @@
 const config = require('../config');
 const { cmd, commands } = require('../command');
-
+const axios = require('axios');
 cmd({
     pattern: "alive",
     desc: "Check if the bot is online and send an 'alive' message with a menu button.",
@@ -25,19 +25,16 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
         // Define the buttons
         const buttons = [
-            {
-                buttonId: `${isCmd}menu`, // Button ID to call the menu command
-                buttonText: { displayText: 'Menu' },
-                type: 1
-            }
+            { buttonId: `${command}menu`, buttonText: { displayText: 'Menu' }, type: 1 }
         ];
         
         // Button message configuration
         const buttonMessage = {
-            contentText: 'Hello! Click the button below to see the menu.',
-            footerText: 'Powered by BHASHI-MD',
+            image: { url: config.ALIVE_IMG },
+            caption: "Hello! Click the button below to see the menu.",
+            footer: "Powered by BHASHI-MD",
             buttons: buttons,
-            headerType: 1 // Indicates that the message has buttons
+            headerType: 4 // Indicates an image and buttons
         };
 
         // Send the button message
