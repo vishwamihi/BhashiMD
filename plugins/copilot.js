@@ -5,6 +5,7 @@ const { fetchJson } = require('../lib/functions');
 cmd({
     pattern: "copilot",
     desc: "copilot chat.",
+    react: "✔",
     category: "main",
     filename: __filename
 },
