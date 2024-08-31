@@ -157,7 +157,7 @@ if (config.ANTI_BAD_WORDS_ENABLED) {
         for (const word of badWords) {
             if (bodyLower.includes(word.toLowerCase())) {
                 if (isGroup) {
-                    conn.sendMessage(from, { text: 'Please avoid using inappropriate language!' }, { quoted: mek });
+                    conn.sendMessage(from, { text: "🚩 Don't Use any BadWords" }, { quoted: mek });
                     conn.sendMessage(from, { delete: mek.key });
                 }
                 return; // Exit early if bad word is found
@@ -168,19 +168,27 @@ if (config.ANTI_BAD_WORDS_ENABLED) {
 
 //=========================ANTI-LINK=========================
 if (config.ANTI_LINK) {
-    const linkPattern = /https?:\/\/(?:www\.)?\w+\.\w+\/(?:\w+\/)?(?:\w+\/)?(?:[\w-]+\/)?(?:[\w-]+\/)?(?:[\w-]+)?/gi;
+    // Define patterns for chat.whatsapp.com links and other links
     const chatLinkPattern = /chat\.whatsapp\.com\/(g|gb)\/[A-Z0-9]{5,}/i;
 
-    // Check if the message contains any link that is not a chat.whatsapp.com link
-    if (linkPattern.test(body) && !chatLinkPattern.test(body)) {
+    // Check if the message contains a chat.whatsapp.com link
+    if (chatLinkPattern.test(body)) {
         if (isGroup) {
-            conn.sendMessage(from, { text: 'Links are not allowed in this group!' }, { quoted: mek });
-            conn.sendMessage(from, { delete: mek.key });
+            // Check if the bot is an admin
+            if (isBotAdmin) {
+                // Send a warning message and attempt to delete the offending message
+                await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
+                await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
+            } else {
+                // Notify the user that the bot cannot delete messages
+                await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
+            }
         }
-        return; // Exit early if link is found
+        return; // Exit early if a disallowed link is found
     }
 }
 //=============================================  
+
 
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
