@@ -4,7 +4,7 @@ const { cmd, commands } = require('../command');
 cmd({
     pattern: "whois",
     desc: "Perform WHOIS lookup on a domain or IP",
-    category: "cybersecurity",
+    category: "useful",
     react: "📄",
     filename: __filename
 },
@@ -19,7 +19,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, reply }) => {
             if (err) {
                 return reply(`❌ WHOIS lookup failed: ${err.message}`)
             }
-            reply(`📄 *WHOIS Lookup for ${target}* 📄\n\n${data}`)
+            reply(`*📄 WHOIS Lookup for ${target} 📄*\n\n${data}\n\n> BHASHI-MD`)
         })
     } catch (e) {
         console.log(e)
