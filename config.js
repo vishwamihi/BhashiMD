@@ -56,8 +56,7 @@ module.exports = {
 
   
   START_MSG: process.env.START_MSG || `
-    
-    ★ *ＢＨＡＳＨＩ-ＭＤ* ★
+        ★ *ＢＨＡＳＨＩ-ＭＤ* ★
     ╴ *ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ ᴡᴀ ʙᴏᴛ 🇱🇰* ╴
 
     \`A fast and responsive multi-device WhatsApp bot built using Baileys and various APIs. It offers seamless functionality without buttons, delivering quick and efficient performance for automated tasks and commands.\`
