@@ -1,7 +1,7 @@
 const dns = require('dns'); // Adjust this to your command registration method
 const { cmd, commands } = require('../command');
 
-registerCommand({
+cmd({
     pattern: "dnslookup",
     desc: "Perform DNS lookup on a domain",
     category: "useful",
