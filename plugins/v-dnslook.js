@@ -18,7 +18,7 @@ cmd({
             if (err) {
                 return reply(`❌ DNS Lookup failed: ${err.message}`);
             }
-            reply(`🌐 DNS Lookup for ${domain}\n\n🔗 IP Address: ${address}`);
+            reply(`🌐 DNS Lookup for ${domain}\n\n🔗 IP Address: ${address}`\n>BHASHI-MD);
         });
     } catch (e) {
         console.log(e);
