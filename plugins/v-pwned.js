@@ -1,5 +1,8 @@
-const axios = require('axios')
 const { cmd, commands } = require('../command');
+const { default: HaveIBeenPwned } = require('haveibeenpwned');
+const pwnedPasswords = require('pwnedpasswords');
+
+const hibp = new HaveIBeenPwned(); // Create an instance of the HIBP class
 
 cmd({
     pattern: "pwned",
@@ -8,62 +11,46 @@ cmd({
     react: "🛡️",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+async (conn, mek, m, { from, args, reply }) => {
     try {
         if (args.length === 0) {
-            return reply("❌ Please provide an email or password to check. Example: .pwned [email/password]")
+            return reply("❌ Please provide an email or password to check. Example: .pwned [email/password]");
         }
 
-        const input = args[0]
-        const apiKey = config.HIBP_API_KEY // Replace with your HIBP API key
+        const input = args[0];
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isEmail = emailRegex.test(input);
 
-        // Check if the input is an email or password
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        const isEmail = emailRegex.test(input)
-
-        let url = ''
         if (isEmail) {
             // Email breach check
-            url = `https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(input)}`
-        } else {
-            // Password breach check (hashed password)
-            const sha1 = require('crypto').createHash('sha1').update(input).digest('hex').toUpperCase()
-            const prefix = sha1.slice(0, 5)
-            url = `https://api.pwnedpasswords.com/range/${prefix}`
-        }
-
-        // Perform the breach check request
-        const response = await axios.get(url, {
-            headers: { 'hibp-api-key': apiKey }
-        })
-
-        if (response.status === 200 && response.data) {
-            let message
-            if (isEmail) {
-                // Email was found in breaches
-                const breaches = response.data.map(breach => `• ${breach.Name} (Date: ${breach.BreachDate})`).join('\n')
-                message = `
+            const breaches = await hibp.breachedAccount(input);
+            if (breaches.length > 0) {
+                const breachList = breaches.map(breach => `• ${breach.Name} (Date: ${breach.BreachDate})`).join('\n');
+                const message = `
 🔍 *Breach Report for ${input}* 🔍
 
 ⚠️ The email has been found in the following breaches:
-${breaches}
-                `.trim()
+${breachList}
+                `.trim();
+                await conn.sendMessage(from, { text: message }, { quoted: mek });
             } else {
-                // Password was found in breaches
-                message = `⚠️ The provided password has been compromised in data breaches. Consider changing it immediately!`
+                reply(`✅ No breaches found for ${input}.`);
             }
-
-            // Send the message
-            await conn.sendMessage(from, { text: message }, { quoted: mek })
         } else {
-            reply(`✅ No breaches found for ${input}.`)
+            // Password breach check (hashed password)
+            const sha1 = require('crypto').createHash('sha1').update(input).digest('hex').toUpperCase();
+            const prefix = sha1.slice(0, 5);
+            const suffix = sha1.slice(5);
+
+            const result = await pwnedPasswords.checkPassword(prefix, suffix);
+            if (result) {
+                reply(`⚠️ The provided password has been compromised in data breaches. Consider changing it immediately!`);
+            } else {
+                reply(`✅ The provided password has not been found in data breaches.`);
+            }
         }
     } catch (e) {
-        console.log(e)
-        if (e.response && e.response.status === 404) {
-            reply(`✅ No breaches found for ${input}.`)
-        } else {
-            reply(`🚫 An error occurred: ${e.message}`)
-        }
+        console.log(e);
+        reply(`🚫 An error occurred: ${e.message}`);
     }
-})
+});
