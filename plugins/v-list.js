@@ -7,6 +7,26 @@ const commands ={
     "category": "🔍 Search",
     "desc": "🔍 Search and retrieve information from Wikipedia."
   },
+  "binance": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Get current cryptocurrency prices from Binance."
+  },
+  "dnslookup": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Perform DNS lookup on a domain to retrieve its IP address."
+  },
+  "ipgeo": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Get geolocation information for an IP address."
+  },
+  "whois": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Perform a WHOIS lookup on a domain or IP address."
+  },
+  "headers": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Fetch HTTP headers from a website."
+  },
   "weather": {
     "category": "🛠️ Useful",
     "desc": "🛠️ Fetch current weather information for any location."
