@@ -3,6 +3,7 @@ const fs = require('fs').promises;
 const axios = require('axios');
 const FormData = require('form-data');
 const path = require('path');
+const { downloadMediaMessage } = require('@adiwajshing/baileys');
 
 cmd({
     pattern: "tourl",
@@ -17,15 +18,18 @@ cmd({
     const downloadingMsg = await conn.sendMessage(from, { text: "⏳ Processing your file..." }, { quoted: mek });
     await conn.sendMessage(from, { react: { text: "⏳", key: mek.key } });
 
-    let mediaMessage;
+    let mediaPath;
     try {
-        mediaMessage = await conn.downloadAndSaveMediaMessage(quoted);
-        const fileData = await fs.readFile(mediaMessage);
-        const fileStats = await fs.stat(mediaMessage);
+        const buffer = await downloadMediaMessage(quoted, 'buffer', {});
+        const fileName = 'file_' + Date.now() + path.extname(quoted.mimetype.split('/')[1]);
+        mediaPath = path.join(process.cwd(), fileName);
+        await fs.writeFile(mediaPath, buffer);
+
+        const fileStats = await fs.stat(mediaPath);
 
         const form = new FormData();
-        form.append('file', fileData, {
-            filename: 'file',
+        form.append('file', buffer, {
+            filename: fileName,
             contentType: quoted.mimetype,
         });
 
@@ -59,8 +63,8 @@ cmd({
         await conn.sendMessage(from, { text: `❌ An error occurred: ${error.message}` }, { quoted: mek });
         await conn.sendMessage(from, { react: { text: "❌", key: mek.key } });
     } finally {
-        if (mediaMessage) {
-            await fs.unlink(mediaMessage).catch(console.error);
+        if (mediaPath) {
+            await fs.unlink(mediaPath).catch(console.error);
         }
         await conn.sendMessage(from, { delete: downloadingMsg.key });
     }
