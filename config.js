@@ -55,18 +55,21 @@ module.exports = {
 
 
   
-    START_MSG: process.env.START_MSG || "           ★ *ＢＨＡＳＨＩ-ＭＤ* ★
-      ╴ *ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ ᴡᴀ ʙᴏᴛ 🇱🇰* ╴
+  START_MSG: process.env.START_MSG || `
+    
+    ★ *ＢＨＡＳＨＩ-ＭＤ* ★
+    ╴ *ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ ᴡᴀ ʙᴏᴛ 🇱🇰* ╴
 
- `A fast and responsive multi-device WhatsApp bot built using Baileys and various APIs. It offers seamless functionality without buttons, delivering quick and efficient performance for automated tasks and commands.`
-
+    \`A fast and responsive multi-device WhatsApp bot built using Baileys and various APIs. It offers seamless functionality without buttons, delivering quick and efficient performance for automated tasks and commands.\`
 
 > 🚨 *ꜰᴏʟʟᴏᴡ ᴜꜱ* : https://whatsapp.com/channel/0029VaSaZd5CBtxGawmSph1k
 
-> 🪄 *ꜱᴜᴘᴘᴏᴛᴇʀ ɢʀᴏᴜᴘ* :
+> 🪄 *ꜱᴜᴘᴘᴏʀᴛᴇʀ ɢʀᴏᴜᴘ* :
 
 > 👾 *ʀᴇᴘᴏ ʟɪɴᴋ* : https://github.com/BhashiMD/BhashiMD/
-",
+    
+` ,
+
   ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/d8279f4ca5da23bda7da4.jpg",
   ALIVE_MSG: process.env.ALIVE_MSG || `*𝗛𝗘𝗟𝗟𝗢 𝗜𝗠 𝗔𝗟𝗜𝗩𝗘 𝗡𝗢𝗪*
 
