@@ -15,6 +15,7 @@ module.exports = {
   SHODAN_API: process.env.SHODAN_API || "cbCkidr6qd7AFVaYs56MuCouGfM8gFki",
   AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
   ANTI_LINK: process.env.ANTILINK || "true",
+  ANTI_LINK: process.env.ANTI_BAD_WORD || "false",
 
 
 
