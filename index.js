@@ -155,17 +155,20 @@ if (isGroup && config.ANTI_BAD_WORDS_ENABLED) {
     if (config.ANTI_BAD_WORDS) {
         const badWords = config.ANTI_BAD_WORDS;
         const bodyLower = body.toLowerCase();
-        for (const word of badWords) {
-            if (bodyLower.includes(word.toLowerCase())) {
-                // Notify the group and delete the message
-                await conn.sendMessage(from, { text: "🚩 Don't use any bad words!" }, { quoted: mek });
-                await conn.sendMessage(from, { delete: mek.key });
-                return; // Exit early if a bad word is found
+
+        // Check if the sender is an admin or the bot itself
+        if (!isAdmins && !isOwner) {
+            for (const word of badWords) {
+                if (bodyLower.includes(word.toLowerCase())) {
+                    // Notify the group and delete the message
+                    await conn.sendMessage(from, { text: "🚩 Don't use any bad words!" }, { quoted: mek });
+                    await conn.sendMessage(from, { delete: mek.key });
+                    return; // Exit early if a bad word is found
+                }
             }
         }
     }
 }
-
 //=========================ANTI-LINK=========================
 if (isGroup && config.ANTI_LINK) {
     // Define patterns for chat.whatsapp.com links
@@ -173,17 +176,19 @@ if (isGroup && config.ANTI_LINK) {
 
     // Check if the message contains a chat.whatsapp.com link
     if (chatLinkPattern.test(body)) {
-        if (isBotAdmins) {
+        // Check if the sender is an admin or the bot itself
+        if (!isBotAdmins && !isAdmins && !isOwner) {
             // Send a warning message and delete the message
             await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
-            await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
-        } else {
+            await conn.sendMessage(from, { delete: mek.key });
+        } else if (!isBotAdmins) {
             // Notify that the bot is not an admin
             await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
         }
         return; // Exit early if a link is found
     }
 }
+
   
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
