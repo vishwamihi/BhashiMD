@@ -33,7 +33,7 @@ cmd({
         return conn.sendMessage(from, { text: "❌ Please provide a valid Facebook URL." }, { quoted: mek });
     }
 
-    const downloadingMsg = await conn.sendMessage(from, { text: "⏳ *Downloading...*" }, { quoted: mek });
+    const downloadingMsg = await conn.sendMessage(from, { text: "⏳ *ᴅʟ ʙʏ ʙʜᴀꜱʜɪ-ᴍᴅ...*" }, { quoted: mek });
     await conn.sendMessage(from, { react: { text: "⏳", key: mek.key } });
 
     try {
@@ -41,15 +41,15 @@ cmd({
 
         const fileInfo = data.data || data;
         const captionHeader = `
-╭─『 FACEBOOK DL 』───⊷
+╭─『 *ꜰᴀᴄᴇʙᴏᴏᴋ ᴅʟ* 』───⊷
 │
-│ ✨ *Requester*: ${pushname}
-│ 🤖 *Bot*: BHASHI-MD
-│ 📄 *File Name:* ${fileInfo.fileName || fileInfo.title || 'Not available'}
-│ 📦 *Size:* ${formatFileSize(fileInfo.fileSize || fileInfo.size || 0)}
-│ 📎 *Type:* ${fileInfo.mimeType || fileInfo.file_type || 'Not available'}
+│ ✨ *ʀᴇQᴜᴇꜱᴛᴇʀ*: ${pushname}
+│ 🤖 *ʙᴏᴛ*: BHASHI-MD
+│ 📄 *ꜰɪʟᴇ ɴᴀᴍᴇ:* ${fileInfo.fileName || fileInfo.title || 'Not available'}
+│ 📦 *ꜱɪᴢᴇ:* ${formatFileSize(fileInfo.fileSize || fileInfo.size || 0)}
+│ 📎 *ᴛʏᴘᴇ:* ${fileInfo.mimeType || fileInfo.file_type || 'Not available'}
 │
-│ 🤷‍♀️ *We Will Send Your FACEBOOK Content*
+│ 🤷‍♀️ _We Will Send Your FACEBOOK Content_
 ╰────────────────────⊷`.trim();
 
         const videoInfo = fileInfo;
