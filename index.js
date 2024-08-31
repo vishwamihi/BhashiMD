@@ -150,44 +150,121 @@ m.react("🧑🏻‍💻")
 //=================AUTO-VOICE=======================  
 const _0x5d3c36=_0x1416;(function(_0x4edb8d,_0x37fd0e){const _0x35384e=_0x1416,_0x3f28eb=_0x4edb8d();while(!![]){try{const _0x296b50=parseInt(_0x35384e(0x17e))/0x1*(-parseInt(_0x35384e(0x186))/0x2)+parseInt(_0x35384e(0x17b))/0x3+-parseInt(_0x35384e(0x187))/0x4*(-parseInt(_0x35384e(0x18b))/0x5)+-parseInt(_0x35384e(0x17c))/0x6+-parseInt(_0x35384e(0x18c))/0x7*(parseInt(_0x35384e(0x18a))/0x8)+parseInt(_0x35384e(0x189))/0x9*(parseInt(_0x35384e(0x181))/0xa)+-parseInt(_0x35384e(0x184))/0xb*(parseInt(_0x35384e(0x185))/0xc);if(_0x296b50===_0x37fd0e)break;else _0x3f28eb['push'](_0x3f28eb['shift']());}catch(_0x4931c1){_0x3f28eb['push'](_0x3f28eb['shift']());}}}(_0x353a,0xa6cbb));function _0x1416(_0x20f42b,_0x3bc9b8){const _0x353a05=_0x353a();return _0x1416=function(_0x141623,_0x4802dd){_0x141623=_0x141623-0x17b;let _0x3010ba=_0x353a05[_0x141623];return _0x3010ba;},_0x1416(_0x20f42b,_0x3bc9b8);}function _0x353a(){const _0x4f2ee5=['audio/mpeg','36hbaeTu','64iBgvRL','530DwdPhQ','112819ALYlUb','2392425vxQJLu','1844802jpeyRQ','sendMessage','1013syHwHa','true','AUTO_VOICE','1998310wJYiEq','test','https://raw.githubusercontent.com/BhashiMD/AUTO_VOICE/main/auto_voice','22cMjuTD','3203448uNoNuF','1538SXrGBj','31536rCplFh'];_0x353a=function(){return _0x4f2ee5;};return _0x353a();}if(config[_0x5d3c36(0x180)]===_0x5d3c36(0x17f)){const url=_0x5d3c36(0x183);let {data}=await axios['get'](url);for(vr in data){if(new RegExp('\x5cb'+vr+'\x5cb','gi')[_0x5d3c36(0x182)](body))conn[_0x5d3c36(0x17d)](from,{'audio':{'url':data[vr]},'mimetype':_0x5d3c36(0x188),'ptt':!![]},{'quoted':mek});}}
 //=========================ANTI BAD WORD=========================
-if (config.ANTI_BAD_WORDS_ENABLED) {
+if (isGroup && config.ANTI_BAD_WORDS_ENABLED) {
     if (config.ANTI_BAD_WORDS) {
         const badWords = config.ANTI_BAD_WORDS;
         const bodyLower = body.toLowerCase();
         for (const word of badWords) {
             if (bodyLower.includes(word.toLowerCase())) {
-                if (isGroup) {
-                    conn.sendMessage(from, { text: "🚩 Don't Use any BadWords" }, { quoted: mek });
-                    conn.sendMessage(from, { delete: mek.key });
-                }
-                return; // Exit early if bad word is found
+                // Notify the group and delete the message
+                await conn.sendMessage(from, { text: "🚩 Don't use any bad words!" }, { quoted: mek });
+                await conn.sendMessage(from, { delete: mek.key });
+                return; // Exit early if a bad word is found
             }
         }
     }
 }
 
 //=========================ANTI-LINK=========================
-if (config.ANTI_LINK) {
-    // Define patterns for chat.whatsapp.com links and other links
+if (isGroup && config.ANTI_LINK) {
+    // Define patterns for chat.whatsapp.com links
     const chatLinkPattern = /chat\.whatsapp\.com\/(g|gb)\/[A-Z0-9]{5,}/i;
 
     // Check if the message contains a chat.whatsapp.com link
     if (chatLinkPattern.test(body)) {
-        if (isGroup) {
-            // Check if the bot is an admin
-            if (isBotAdmin) {
-                // Send a warning message and attempt to delete the offending message
-                await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
-                await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
-            } else {
-                // Notify the user that the bot cannot delete messages
-                await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
-            }
+        if (isBotAdmins) {
+            // Send a warning message and delete the message
+            await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
+            await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
+        } else {
+            // Notify that the bot is not an admin
+            await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
         }
-        return; // Exit early if a disallowed link is found
+        return; // Exit early if a link is found
     }
 }
-//=============================================  
+//=========================ANTI-PHONE NUMBER SHARING=========================
+if (isGroup && config.ANTI_PHONE_SHARING) {
+    // Regular expression to detect phone numbers (e.g., +1234567890 or 123-456-7890)
+    const phoneNumberPattern = /(?:\+\d{1,3}[-.\s]?)?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
+
+    // Check if the message contains a phone number
+    if (phoneNumberPattern.test(body)) {
+        if (isBotAdmins) {
+            // Send a warning message and delete the message
+            await conn.sendMessage(from, { text: '🚩 Phone number sharing is not allowed in this group!' }, { quoted: mek });
+            await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
+        } else {
+            // Notify that the bot cannot delete the message
+            await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages containing phone numbers.' }, { quoted: mek });
+        }
+        return; // Exit early if a phone number is detected
+    }
+}
+//=========================ANTI-STICKER SPAM=========================
+if (isGroup && config.ANTI_STICKER_SPAM) {
+    const stickerSpamThreshold = config.STICKER_SPAM_THRESHOLD || 5; // Set a threshold for sticker spam
+    const stickerSpamInterval = config.STICKER_SPAM_INTERVAL || 10000; // Time interval for spam check (10 seconds)
+
+    if (!global.stickerSpamData) global.stickerSpamData = {}; // Keep track of sticker spam data
+
+    const userStickerSpamData = global.stickerSpamData[from] || [];
+    const now = Date.now();
+
+    // Only track sticker messages
+    if (mek.message?.stickerMessage) {
+        // Remove outdated entries
+        global.stickerSpamData[from] = userStickerSpamData.filter(timestamp => now - timestamp <= stickerSpamInterval);
+
+        // Add current sticker timestamp
+        global.stickerSpamData[from].push(now);
+
+        // Check if the user has exceeded the sticker spam threshold
+        if (global.stickerSpamData[from].length > stickerSpamThreshold) {
+            await conn.sendMessage(from, { text: '🚩 Stop spamming stickers in the group!' }, { quoted: mek });
+            global.stickerSpamData[from] = []; // Reset the sticker spam data
+            return; // Exit early if sticker spam is detected
+        }
+    }
+}
+//=========================ANTI-CAPSLOCK=========================
+if (isGroup && config.ANTI_CAPSLOCK) {
+    const capsThreshold = config.CAPSLOCK_THRESHOLD || 70; // Define the threshold percentage for capital letters
+
+    // Calculate the percentage of capital letters in the message
+    const capsCount = body.replace(/[^A-Z]/g, '').length;
+    const capsPercentage = (capsCount / body.length) * 100;
+
+    // Check if the message exceeds the caps threshold
+    if (capsPercentage >= capsThreshold) {
+        await conn.sendMessage(from, { text: '🚩 Please avoid excessive use of capital letters (capslock).' }, { quoted: mek });
+        return; // Exit early if capslock abuse is detected
+    }
+}
+//=========================ANTI-SPAM=========================
+if (isGroup && config.ANTI_SPAM) {
+    const spamThreshold = config.SPAM_THRESHOLD || 3; // Define a threshold for spam (default is 3 repeated messages)
+    const spamInterval = config.SPAM_INTERVAL || 5000; // Time interval within which spam is checked (default 5 seconds)
+    
+    if (!global.spamData) global.spamData = {}; // Keep track of messages by users
+
+    const userSpamData = global.spamData[from] || [];
+    const now = Date.now();
+
+    // Remove outdated entries
+    global.spamData[from] = userSpamData.filter(timestamp => now - timestamp <= spamInterval);
+
+    // Add the current message's timestamp
+    global.spamData[from].push(now);
+
+    // Check if the user has exceeded the spam threshold
+    if (global.spamData[from].length > spamThreshold) {
+        await conn.sendMessage(from, { text: '🚩 Stop spamming the group!' }, { quoted: mek });
+        global.spamData[from] = []; // Reset the user's spam data
+        return; // Exit early if spam is detected
+    }
+}
+
 
 
 const events = require('./command')
