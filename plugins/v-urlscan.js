@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { cmd, commands } = require('../command');
 
 cmd({
     pattern: "shodan",
