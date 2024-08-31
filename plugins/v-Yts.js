@@ -21,8 +21,8 @@ async (conn, mek, m, { from, args, reply }) => {
             return reply('🔍 No videos found for the given query.');
         }
 
-        let response = '🎥 *YouTube Search Results:*\n\n';
-        results.videos.slice(0, 20).forEach((video, index) => {
+        let response = '🎥 *Bhashi YouTube Search Results:*\n\n';
+        results.videos.slice(0, 10).forEach((video, index) => {
             response += `${index + 1}. *${video.title}*\n`;
             response += `   👤 Channel: ${video.author.name}\n`;
             response += `   ⏱️ Duration: ${video.duration.timestamp}\n`;
@@ -31,7 +31,7 @@ async (conn, mek, m, { from, args, reply }) => {
             response += `   🔗 Link: ${video.url}\n\n`;
         });
 
-        response += `\n🔢 Showing top 20 results for "${query}"\n`;
+        response += `\n🔢 Showing top 10 results for "${query}"\n`;
         response += `💡 To watch, click on the video link or use the command:\n`;
 
         await conn.sendMessage(from, { text: response }, { quoted: mek });
