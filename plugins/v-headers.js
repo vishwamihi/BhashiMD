@@ -3,7 +3,7 @@ const { cmd, commands } = require('../command');
 cmd({
     pattern: "headers",
     desc: "Fetch HTTP headers from a website",
-    category: "cybersecurity",
+    category: "useful",
     react: "📑",
     filename: __filename
 },
