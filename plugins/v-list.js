@@ -40,8 +40,8 @@ const commands ={
     "desc": "🔄 Convert text into speech with our Text-to-Speech tool."
   },
   "trt": {
-    "category": "🛠️ Useful",
-    "desc": "🛠️ Translate text between different languages."
+    "category": "🔄 Converter",
+    "desc": "🔄 Translate text between different languages."
   },
   "tiktok": {
     "category": "🎥 Media",
@@ -67,17 +67,17 @@ const commands ={
     "category": "🔍 Search",
     "desc": "🔍 Search for repository details on GitHub."
   },
-    "yta": {
+  "yta": {
     "category": "🔍 Search",
-    "desc": "🔍 Search form youtube"
+    "desc": "🔍 Search on YouTube."
   },
   "qr": {
     "category": "🔄 Converter",
     "desc": "🔄 Generate QR codes from text or URLs for quick access."
   },
-"tourl": {
+  "tourl": {
     "category": "🔄 Converter",
-    "desc": "🔄 Convert Any File to url."
+    "desc": "🔄 Convert any file to a URL."
   },
   "shorturl": {
     "category": "🔄 Converter",
@@ -121,7 +121,7 @@ const commands ={
   },
   "list": {
     "category": "🌟 Main",
-    "desc": "🌟 Display All Commands."
+    "desc": "🌟 Display all commands."
   },
   "menu": {
     "category": "🌟 Main",
@@ -226,8 +226,53 @@ const commands ={
   "ai": {
     "category": "🔍 Search",
     "desc": "🔍 Chat with an AI for answers and conversations."
+  },
+  "promote": {
+    "category": "👥 Group",
+    "desc": "👥 Promote a member to admin."
+  },
+  "demote": {
+    "category": "👥 Group",
+    "desc": "👥 Demote an admin to a regular member."
+  },
+  "tagall": {
+    "category": "👥 Group",
+    "desc": "👥 Tag all members in the group."
+  },
+  "seticon": {
+    "category": "👥 Group",
+    "desc": "👥 Set the group icon."
+  },
+  "setsubject": {
+    "category": "👥 Group",
+    "desc": "👥 Set the group subject."
+  },
+  "removeall": {
+    "category": "👥 Group",
+    "desc": "👥 Remove all members from the group."
+  },
+  "setdecs": {
+    "category": "👥 Group",
+    "desc": "👥 Set the group description."
+  },
+  "mute": {
+    "category": "👥 Group",
+    "desc": "👥 Mute a member."
+  },
+  "unmute": {
+    "category": "👥 Group",
+    "desc": "👥 Unmute a member."
+  },
+  "kick": {
+    "category": "👥 Group",
+    "desc": "👥 Kick a member from the group."
+  },
+  "groupinfo": {
+    "category": "👥 Group",
+    "desc": "👥 Get information about the group."
   }
 };
+
 
 // Define the command using cmd
 cmd({
