@@ -1,6 +1,6 @@
 const config = require('../config');
-const { cmd, commands } = require('../command');
-const axios = require('axios');
+const { cmd } = require('../command');
+
 cmd({
     pattern: "alive",
     desc: "Check if the bot is online and send an 'alive' message with a menu button.",
@@ -10,17 +10,11 @@ cmd({
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        // Send the audio message first
+        // Send the audio message
         await conn.sendMessage(from, {
             audio: { url: 'https://github.com/BhashiMD/BhashiMD/raw/main/Media/media_Gm.mp3' },
             mimetype: 'audio/mp4',
             ptt: true
-        }, { quoted: mek });
-
-        // Then send the image with the alive message
-        await conn.sendMessage(from, {
-            image: { url: config.ALIVE_IMG },
-            caption: config.ALIVE_MSG
         }, { quoted: mek });
 
         // Define the buttons
@@ -42,6 +36,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e.message}`);
+        await reply(`Error: ${e.message}`);
     }
 });
