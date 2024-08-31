@@ -3,7 +3,6 @@ const fs = require('fs').promises;
 const axios = require('axios');
 const FormData = require('form-data');
 const path = require('path');
-const { downloadMediaMessage } = require('@adiwajshing/baileys');
 
 cmd({
     pattern: "tourl",
@@ -11,7 +10,7 @@ cmd({
     category: "utility",
     filename: __filename
 }, async (conn, mek, m, { from, quoted, pushname }) => {
-    if (!quoted) {
+    if (!quoted || !quoted.mimetype) {
         return conn.sendMessage(from, { text: "❌ Please reply to a file, image, or video to convert it to a URL." }, { quoted: mek });
     }
 
@@ -20,13 +19,15 @@ cmd({
 
     let mediaPath;
     try {
-        const buffer = await downloadMediaMessage(quoted, 'buffer', {});
-        const fileName = 'file_' + Date.now() + path.extname(quoted.mimetype.split('/')[1]);
+        // Download the file
+        const buffer = await downloadMedia(conn, quoted);
+        const fileName = 'file_' + Date.now() + '.' + quoted.mimetype.split('/')[1];
         mediaPath = path.join(process.cwd(), fileName);
         await fs.writeFile(mediaPath, buffer);
 
         const fileStats = await fs.stat(mediaPath);
 
+        // Upload to Telegraph
         const form = new FormData();
         form.append('file', buffer, {
             filename: fileName,
@@ -69,3 +70,11 @@ cmd({
         await conn.sendMessage(from, { delete: downloadingMsg.key });
     }
 });
+
+async function downloadMedia(conn, quoted) {
+    if (quoted.mimetype.startsWith('image/') || quoted.mimetype.startsWith('video/') || quoted.mimetype.startsWith('audio/')) {
+        return await conn.downloadMediaMessage(quoted);
+    } else {
+        throw new Error('Unsupported media type');
+    }
+}
