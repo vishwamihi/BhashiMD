@@ -14,9 +14,12 @@ module.exports = {
   ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY || "sk_6438bcc100d96458f8de0602aec662f4ba14b905fd090ad3",
   SHODAN_API: process.env.SHODAN_API || "cbCkidr6qd7AFVaYs56MuCouGfM8gFki",
   AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
-  ANTI_LINK: process.env.ANTI_LINK || "true",
-  ANTI_BAD_WORDS: process.env.ANTI_BAD_WORDS || ["huththo", "pakayo", "fuck", "fuckyou"], 
-  ANTI_BAD_WORDS_ENABLED: process.env.ANTI_BAD_WORDS_ENABLED || "true",
+  ANTI_LINK: process.env.ANTI_LINK || "false",
+  ANTI_BAD_WORDS: process.env.ANTI_BAD_WORDS || ["huththo", "pakayo", "fuck", "fuckyou","pinnaya","Ponnaya","Wesigeputha","Kariya",], 
+  ANTI_CAPSLOCK: process.env.ANTI_CAPSLOCK|| "false",
+  ANTI_STICKER_SPAM: process.env.ANTI_STICKER_SPAM || "false",
+  ANTI_PHONE_SHARING: process.env.ANTI_PHONE_SHARING || "false",
+  ANTI_SPAM: process.env.ANTI_SPAM|| "false",
 
 
 
