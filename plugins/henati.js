@@ -9,11 +9,6 @@ cmd({
     fromMe: true
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        // Ensure this command works only in groups
-        if (!isGroup && !isOwner) {
-            return reply('⚠️ This command is reserved for groups only.');
-        }
-
         const url = 'https://api.waifu.pics/nsfw/waifu'; // API endpoint for Waifu images
 
         // Fetch and send 5 images
