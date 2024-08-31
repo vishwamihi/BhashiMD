@@ -42,13 +42,13 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const tipsMessage = `
 🛡️ *Cybersecurity Tips* 🛡️
 
-Stay safe online with these important tips:
+> Stay safe online with these important tips:
 
 ${selectedTips.map((tip, index) => `${index + 1}. ${tip}`).join('\n\n')}
 
-🔐 Remember: Your online security is in your hands!
+> 🔐 Remember: Your online security is in your hands!
 
-Want more tips? Just use the .cybertips command again!
+> Want more tips? Just use the .cybertips command again!
         `.trim();
         
         await conn.sendMessage(from, { text: tipsMessage }, { quoted: mek })
