@@ -2,7 +2,7 @@ const truecaller = require('truecaller-scraper');
 
 // Command handler
 cmd({
-    pattern: "phonenumlook",
+    pattern: "numlook",
     desc: "Get information about a phone number from Truecaller",
     category: "useful",
     react: "📞",
