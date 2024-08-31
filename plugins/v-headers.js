@@ -18,7 +18,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, reply }) => {
         const headers = response.headers
 
         const headerInfo = `
-📑 *HTTP Headers for ${url}* 📑
+*📑 HTTP Headers for ${url} 📑*
+> BHASHI-MD
 
 ${Object.entries(headers).map(([key, value]) => `• ${key}: ${value}`).join('\n')}
         `.trim()
