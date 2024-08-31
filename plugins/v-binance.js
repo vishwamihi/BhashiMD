@@ -5,7 +5,7 @@ const axios = require('axios')
 cmd({
     pattern: "binance",
     desc: "Get current cryptocurrency prices from Binance",
-    category: "crypto",
+    category: "useful",
     react: "📊",
     filename: __filename
 },
