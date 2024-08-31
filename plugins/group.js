@@ -8,7 +8,102 @@ const checkPermissions = (isGroup, isAdmins, isOwner, isBotAdmins) => {
     if (!isBotAdmins) return 'Bot must be admin to use this command.';
     return null;
 };
+cmd({
+    pattern: "add",
+    desc: "Add a user to the group.",
+    category: "group",
+    filename: __filename,
+    react: "➕"
+},
+async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, args, reply }) => {
+    try {
+        const permissionError = checkPermissions(isGroup, isAdmins, isOwner, isBotAdmins);
+        if (permissionError) return reply(permissionError);
 
+        if (args.length === 0) return reply('Please provide the phone number(s) to add.');
+
+        const users = args.map(arg => arg.replace(/[^0-9]/g, '') + "@s.whatsapp.net");
+        await conn.groupParticipantsUpdate(from, users, "add");
+        reply(`✅ User(s) added to the group successfully.`);
+    } catch(e) {
+        console.error(e);
+        reply(`❌ Error: ${e}`);
+    }
+});
+
+// New command: Set group icon
+cmd({
+    pattern: "seticon",
+    desc: "Set a new group icon.",
+    category: "group",
+    filename: __filename,
+    react: "🖼️"
+},
+async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) => {
+    try {
+        const permissionError = checkPermissions(isGroup, isAdmins, isOwner, isBotAdmins);
+        if (permissionError) return reply(permissionError);
+
+        if (!m.quoted) return reply(`Please reply to an image with the command to set it as the group icon.`);
+        const media = await conn.downloadAndSaveMediaMessage(m.quoted);
+        await conn.updateProfilePicture(from, { url: media });
+        reply(`✅ Group icon has been updated successfully.`);
+    } catch(e) {
+        console.error(e);
+        reply(`❌ Error: ${e}`);
+    }
+});
+
+// New command: Tag all group members
+cmd({
+    pattern: "tagall",
+    desc: "Mention all group members.",
+    category: "group",
+    filename: __filename,
+    react: "📢"
+},
+async(conn, mek, m, { from, isGroup, isAdmins, isOwner, participants, reply }) => {
+    try {
+        if (!isGroup) return reply('This command can only be used in groups.');
+        if (!isAdmins && !isOwner) return reply('This command can only be used by group admins.');
+
+        let teks = `📢 *Attention All Members!*\n\n`;
+        for (let mem of participants) {
+            teks += `@${mem.id.split('@')[0]}\n`;
+        }
+        conn.sendMessage(from, { text: teks, mentions: participants.map(a => a.id) });
+    } catch(e) {
+        console.error(e);
+        reply(`❌ Error: ${e}`);
+    }
+});
+
+// New command: Remove all members (except bot and group creator)
+cmd({
+    pattern: "removeall",
+    desc: "Remove all members from the group (except bot and group creator).",
+    category: "group",
+    filename: __filename,
+    react: "🚫"
+},
+async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, groupMetadata, reply }) => {
+    try {
+        const permissionError = checkPermissions(isGroup, isAdmins, isOwner, isBotAdmins);
+        if (permissionError) return reply(permissionError);
+
+        if (!isOwner) return reply('This command can only be used by the bot owner.');
+
+        const creator = groupMetadata.owner;
+        const botId = conn.user.id;
+        const participants = groupMetadata.participants.filter(p => p.id !== creator && p.id !== botId);
+
+        await conn.groupParticipantsUpdate(from, participants.map(p => p.id), "remove");
+        reply(`🚫 All members have been removed from the group (except the bot and group creator).`);
+    } catch(e) {
+        console.error(e);
+        reply(`❌ Error: ${e}`);
+    }
+});
 // Function to handle group promotion
 cmd({
     pattern: "promote",
