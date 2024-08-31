@@ -1,5 +1,5 @@
-const dns = require('dns');
-const { registerCommand } = require('./commandHandler'); // Adjust this to your command registration method
+const dns = require('dns'); // Adjust this to your command registration method
+const { cmd, commands } = require('../command');
 
 registerCommand({
     pattern: "dnslookup",
