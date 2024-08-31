@@ -5,7 +5,7 @@ const { fetchJson } = require('../lib/functions')
 
 cmd({
     pattern: "viewonce",
-    alias:[vv],
+    alias:["vv"],
     desc: "Download viewonce messages.",
     category: "main",
     filename: __filename
