@@ -5,6 +5,7 @@ const { fetchJson } = require('../lib/functions');
 cmd({
     pattern: "gemini",
     desc: "gemini chat.",
+    react: "✔",
     category: "main",
     filename: __filename
 },
