@@ -1,4 +1,5 @@
 const whois = require('whois')
+const { cmd, commands } = require('../command');
 
 cmd({
     pattern: "whois",
