@@ -150,7 +150,40 @@ m.react("🧑🏻‍💻")
 //=================AUTO-VOICE=======================  
 const _0x5d3c36=_0x1416;(function(_0x4edb8d,_0x37fd0e){const _0x35384e=_0x1416,_0x3f28eb=_0x4edb8d();while(!![]){try{const _0x296b50=parseInt(_0x35384e(0x17e))/0x1*(-parseInt(_0x35384e(0x186))/0x2)+parseInt(_0x35384e(0x17b))/0x3+-parseInt(_0x35384e(0x187))/0x4*(-parseInt(_0x35384e(0x18b))/0x5)+-parseInt(_0x35384e(0x17c))/0x6+-parseInt(_0x35384e(0x18c))/0x7*(parseInt(_0x35384e(0x18a))/0x8)+parseInt(_0x35384e(0x189))/0x9*(parseInt(_0x35384e(0x181))/0xa)+-parseInt(_0x35384e(0x184))/0xb*(parseInt(_0x35384e(0x185))/0xc);if(_0x296b50===_0x37fd0e)break;else _0x3f28eb['push'](_0x3f28eb['shift']());}catch(_0x4931c1){_0x3f28eb['push'](_0x3f28eb['shift']());}}}(_0x353a,0xa6cbb));function _0x1416(_0x20f42b,_0x3bc9b8){const _0x353a05=_0x353a();return _0x1416=function(_0x141623,_0x4802dd){_0x141623=_0x141623-0x17b;let _0x3010ba=_0x353a05[_0x141623];return _0x3010ba;},_0x1416(_0x20f42b,_0x3bc9b8);}function _0x353a(){const _0x4f2ee5=['audio/mpeg','36hbaeTu','64iBgvRL','530DwdPhQ','112819ALYlUb','2392425vxQJLu','1844802jpeyRQ','sendMessage','1013syHwHa','true','AUTO_VOICE','1998310wJYiEq','test','https://raw.githubusercontent.com/BhashiMD/AUTO_VOICE/main/auto_voice','22cMjuTD','3203448uNoNuF','1538SXrGBj','31536rCplFh'];_0x353a=function(){return _0x4f2ee5;};return _0x353a();}if(config[_0x5d3c36(0x180)]===_0x5d3c36(0x17f)){const url=_0x5d3c36(0x183);let {data}=await axios['get'](url);for(vr in data){if(new RegExp('\x5cb'+vr+'\x5cb','gi')[_0x5d3c36(0x182)](body))conn[_0x5d3c36(0x17d)](from,{'audio':{'url':data[vr]},'mimetype':_0x5d3c36(0x188),'ptt':!![]},{'quoted':mek});}}
 
-//==================================================  
+//=========================ANTI BAD WORD=========================
+if (isGroup && config.ANTI_BAD_WORDS_ENABLED) {
+    if (config.ANTI_BAD_WORDS) {
+        const badWords = config.ANTI_BAD_WORDS;
+        const bodyLower = body.toLowerCase();
+        for (const word of badWords) {
+            if (bodyLower.includes(word.toLowerCase())) {
+                // Notify the group and delete the message
+                await conn.sendMessage(from, { text: "🚩 Don't use any bad words!" }, { quoted: mek });
+                await conn.sendMessage(from, { delete: mek.key });
+                return; // Exit early if a bad word is found
+            }
+        }
+    }
+}
+
+//=========================ANTI-LINK=========================
+if (isGroup && config.ANTI_LINK) {
+    // Define patterns for chat.whatsapp.com links
+    const chatLinkPattern = /chat\.whatsapp\.com\/(g|gb)\/[A-Z0-9]{5,}/i;
+
+    // Check if the message contains a chat.whatsapp.com link
+    if (chatLinkPattern.test(body)) {
+        if (isBotAdmins) {
+            // Send a warning message and delete the message
+            await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
+            await conn.sendMessage(from, { delete: { remoteJid: m.chat, fromMe: false, id: mek.key.id, participant: from } });
+        } else {
+            // Notify that the bot is not an admin
+            await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
+        }
+        return; // Exit early if a link is found
+    }
+}
   
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
