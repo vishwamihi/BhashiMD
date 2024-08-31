@@ -18,12 +18,12 @@ try{
   if (!q) return await reply('*🚫 Please provide a TikTok URL! 🚫*')
 
 let wm = `
-╭─『 TIKTOK DL 』───⊷
+╭─『 *ᴛɪᴋᴛᴏʟ ᴅʟ* 』───⊷
 │
 │ ✨ *ʀᴇQᴜᴇꜱᴛᴇʀ*: ${pushname}
 │ 🤖 *ʙᴏᴛ*: BHASHI-MD
 │  
-│ 🤷‍♀️ _We Will Send Your tiktok Video And Audio_
+│ 🤷‍♀️ _We Will Send Your tiktok Video And Audio , Without Watermark and best quality_
 ╰────────────────────⊷
 
 > BHASHI-MD`
