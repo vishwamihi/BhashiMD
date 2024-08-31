@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { cmd, commands } = require('../command');
+const config = require('../config');
 
 cmd({
     pattern: "shodan",
