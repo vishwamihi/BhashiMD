@@ -4,7 +4,7 @@ const { cmd, commands } = require('../command');
 cmd({
     pattern: "signal",
     desc: "📈 Get a basic trading signal based on price changes for a specified cryptocurrency.",
-    category: "📊 Trading",
+    category: "useful,
     react: "📈",
     filename: __filename
 },
