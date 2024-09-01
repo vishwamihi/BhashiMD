@@ -3,7 +3,7 @@ const { cmd } = require('../command');
 
 cmd({
     pattern: "alive",
-    desc: "Check if the bot is online and send an 'alive' message with a menu button.",
+    desc: "Check if the bot is online and send an 'alive' message.",
     category: "main",
     react: "👋🏻",
     filename: __filename
@@ -17,22 +17,12 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             ptt: true
         }, { quoted: mek });
 
-        // Define the buttons
-        const buttons = [
-            { buttonId: `${command}menu`, buttonText: { displayText: 'Menu' }, type: 1 }
-        ];
-        
-        // Button message configuration
-        const buttonMessage = {
+        // Send a simple image message without buttons
+        await conn.sendMessage(from, {
             image: { url: config.ALIVE_IMG },
-            caption: "Hello! Click the button below to see the menu.",
-            footer: "Powered by BHASHI-MD",
-            buttons: buttons,
-            headerType: 4 // Indicates an image and buttons
-        };
-
-        // Send the button message
-        await conn.sendMessage(from, buttonMessage, { quoted: mek });
+            caption: config.ALIVE_MSG,
+            footer: "> BHASHI-MD"
+        }, { quoted: mek });
 
     } catch (e) {
         console.log(e);
