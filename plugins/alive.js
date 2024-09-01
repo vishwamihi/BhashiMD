@@ -13,11 +13,11 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         // Send the audio message
         await conn.sendMessage(from, {
             audio: { url: 'https://github.com/BhashiMD/BhashiMD/raw/main/Media/media_Gm.mp3' },
-            mimetype: 'audio/mp4',
+            mimetype: 'audio/mpeg',
             ptt: true
         }, { quoted: mek });
 
-        // Send a simple image message without buttons
+        // Send the image message without buttons
         await conn.sendMessage(from, {
             image: { url: config.ALIVE_IMG },
             caption: config.ALIVE_MSG,
@@ -25,7 +25,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         }, { quoted: mek });
 
     } catch (e) {
-        console.log(e);
-        await reply(`Error: ${e.message}`);
+        console.error(e);
+        await reply(`🚫 Error: ${e.message}`);
     }
 });
