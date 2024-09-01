@@ -1,5 +1,4 @@
-const config = require('../config');
-const { cmd, commands } = require('../command');
+const { cmd } = require('../command');
 const yts = require('yt-search');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
@@ -13,15 +12,17 @@ cmd({
     category: "download",
     react: "🎧",
     filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+}, async (conn, mek, m, { from, quoted, body, q, reply }) => {
     try {
         if (!q) return reply("Please provide a URL or title");
 
         // Search for the song
         const search = await yts(q);
         const data = search.videos[0];
+        if (!data) return reply("No results found");
+
         const url = data.url;
+        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp3`;
 
         let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 🎧 *Title* : ${data.title}
@@ -37,8 +38,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const info = await ytdl.getInfo(url);
         const audioFormat = ytdl.chooseFormat(info.formats, { quality: 'highestaudio' });
         const stream = ytdl(url, { format: audioFormat });
-        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp3`;
 
+        // Create file write stream
         const writeStream = fs.createWriteStream(filePath);
         stream.pipe(writeStream);
 
@@ -46,7 +47,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             try {
                 // Send audio and document messages
                 await conn.sendMessage(from, { audio: fs.readFileSync(filePath), mimetype: "audio/mpeg" }, { quoted: mek });
-                await conn.sendMessage(from, { document: fs.readFileSync(filePath), mimetype: "audio/mpeg", fileName: data.title + ".mp3", caption: "" }, { quoted: mek });
+                await conn.sendMessage(from, { document: fs.readFileSync(filePath), mimetype: "audio/mpeg", fileName: `${data.title}.mp3`, caption: "" }, { quoted: mek });
             } catch (sendError) {
                 console.error("Error sending file:", sendError);
                 reply(`🚫 An error occurred while sending the file: ${sendError.message}`);
@@ -71,15 +72,17 @@ cmd({
     category: "download",
     react: "🎥",
     filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+}, async (conn, mek, m, { from, quoted, body, q, reply }) => {
     try {
         if (!q) return reply("Please provide a URL or title");
 
         // Search for the video
         const search = await yts(q);
         const data = search.videos[0];
+        if (!data) return reply("No results found");
+
         const url = data.url;
+        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp4`;
 
         let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 🎥 *Title* : ${data.title}
@@ -95,8 +98,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const info = await ytdl.getInfo(url);
         const videoFormat = ytdl.chooseFormat(info.formats, { quality: 'highest' });
         const stream = ytdl(url, { format: videoFormat });
-        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp4`;
 
+        // Create file write stream
         const writeStream = fs.createWriteStream(filePath);
         stream.pipe(writeStream);
 
