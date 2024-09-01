@@ -1,6 +1,6 @@
 FROM node:lts-buster
 
-# Install dependencies
+# Install necessary packages
 RUN apt-get update && \
   apt-get install -y \
   ffmpeg \
@@ -9,15 +9,24 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
-# Install application dependencies
-COPY package.json .
-RUN npm install && npm install -g qrcode-terminal pm2
+# Set working directory
+WORKDIR /app
 
-# Copy application files
+# Copy package.json and package-lock.json
+COPY package.json .
+COPY package-lock.json .
+
+# Install dependencies
+RUN npm install
+
+# Install PM2 globally
+RUN npm install -g pm2
+
+# Copy the rest of the application code
 COPY . .
 
-# Expose port
+# Expose the application port
 EXPOSE 5000
 
-# Use pm2 to start the application
-CMD ["pm2-runtime", "index.js"]
+# Start the application with PM2
+CMD ["pm2-runtime", "start", "index.js", "--name", "bhashimd"]
