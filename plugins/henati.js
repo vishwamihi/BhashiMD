@@ -4,7 +4,7 @@ const { cmd } = require('../command'); // Adjust the path if necessary
 
 // Command to fetch NSFW Waifu images
 cmd({
-    pattern: 'hentai',
+    pattern: 'hentai2',
     desc: 'Fetches NSFW Waifu images',
     category: 'download',
     react: '🙄',
