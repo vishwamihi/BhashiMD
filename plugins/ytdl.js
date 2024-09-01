@@ -1,5 +1,6 @@
+const dyluxApi = require("api-dylux"); // Import the module once
 const config = require("../config");
-const { cmd, commands } = require("../command");
+const { cmd } = require("../command");
 
 cmd({
   pattern: "ytdl",
@@ -23,11 +24,13 @@ cmd({
       return reply("Please enter a valid YouTube link.");
     }
 
-    // Import the necessary module for downloading the YouTube video
-    const apiDylux = require("api-dylux");
-
     // Fetch video data using the provided YouTube link
-    let videoData = await apiDylux.youtubedl(q);
+    let videoData = await dyluxApi.youtubedl(q); // Use the initialized API
+
+    // Ensure that videoData contains the necessary properties
+    if (!videoData || !videoData.title || !videoData.url_dl) {
+      return reply("Failed to retrieve video data.");
+    }
 
     // Prepare the message with video details
     const videoMessage = {
@@ -42,5 +45,3 @@ cmd({
     reply(`Error: ${error.message}`);
   }
 });
-
-
