@@ -224,9 +224,7 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 // Start the server and connect to WhatsApp
 })
 }
-app.get("/", (req, res) => {
-res.send("BASHI-MD WORKING ✅");
-});
+app.get("/", (req, res) => res.sendFile(require('path').join(__dirname, "../index.html")));
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 setTimeout(() => {
 connectToWA()
