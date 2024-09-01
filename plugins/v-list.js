@@ -227,6 +227,126 @@ const commands ={
     "category": "🔍 Search",
     "desc": "🔍 Chat with an AI for answers and conversations."
   },
+  "nsfwloli": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW loli image."
+  },
+  "nsfwfoot": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW foot image."
+  },
+  "nsfwass": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW ass image."
+  },
+  "nsfwbdsm": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW BDSM image."
+  },
+  "nsfwcum": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW cum image."
+  },
+  "nsfwero": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW ero image."
+  },
+  "nsfwfemdom": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW femdom image."
+  },
+  "nsfwglass": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW glass image."
+  },
+  "hentai": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random hentai image."
+  },
+  "tetas": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW breasts image."
+  },
+  "booty": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW booty image."
+  },
+  "ecchi": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random ecchi image."
+  },
+  "furro": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random furro image."
+  },
+  "trapito": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random trap image."
+  },
+  "imagenlesbians": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW lesbian image."
+  },
+  "panties": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW panties image."
+  },
+  "pene": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW penis image."
+  },
+  "porno": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW porno image."
+  },
+  "randomxxx": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW image."
+  },
+  "pechos": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW breasts image."
+  },
+  "yaoi": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random yaoi image."
+  },
+  "yaoi2": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random yaoi GIF."
+  },
+  "yuri": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random yuri image."
+  },
+  "yuri2": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random yuri GIF."
+  },
+  "hentai2": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random hentai GIF."
+  },
+  "trap": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random trap GIF."
+  },
+  "hneko": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random hentai neko image."
+  },
+  "belowjob": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random NSFW blowjob image."
+  },
+  "hentaivid": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a random hentai video."
+  },
+  "customnafw": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Fetch a custom NSFW image."
+  },
   "promote": {
     "category": "👥 Group",
     "desc": "👥 Promote a member to admin."
@@ -270,6 +390,22 @@ const commands ={
   "groupinfo": {
     "category": "👥 Group",
     "desc": "👥 Get information about the group."
+  },
+  "getpic": {
+    "category": "👥 Group",
+    "desc": "👥 Retrieve the group profile picture."
+  },
+  "setgoodbye": {
+    "category": "👥 Group",
+    "desc": "👥 Set the goodbye message for the group."
+  },
+  "setwelcome": {
+    "category": "👥 Group",
+    "desc": "👥 Set the welcome message for the group."
+  },
+  "add": {
+    "category": "👥 Group",
+    "desc": "👥 Add a member to the group."
   }
 };
 
