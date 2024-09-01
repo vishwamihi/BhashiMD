@@ -75,7 +75,7 @@ nsfwCommands.forEach(({ pattern, url, fallback, urls }) => {
             }
             
             if (imageUrl) {
-                await conn.sendMessage(from, { image: { url: imageUrl }, caption: `_${command}_`.trim() }, { quoted: m });
+                await conn.sendMessage(from, { image: { url: imageUrl }, caption: ` 🫦 Here Is Your Sexy _${command}_`.trim() }, { quoted: m });
             } else {
                 reply('Sorry, I could not fetch the image.');
             }
