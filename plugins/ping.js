@@ -17,7 +17,7 @@ cmd({
         // Send the ping response without buttons
         await conn.sendMessage(from, { 
             text: `⏰ 𝗥𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝗧𝗶𝗺𝗲 : ${ping}ms`,
-            footer: 'Powered by BHASHI-MD'
+            footer: '> BHASHI-MD'
         }, { quoted: message });
         
     } catch (e) {
