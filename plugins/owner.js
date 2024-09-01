@@ -2,9 +2,6 @@ const config = require('../config');
 const { cmd } = require('../command');
 const fs = require('fs');
 
-// Helper function to check if the sender is the owner
-const isOwner = (sender) => config.owner.includes(sender);
-
 // Helper function to toggle features
 const toggleFeature = (feature, state) => {
     config[feature] = state;
@@ -18,8 +15,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, isGroup, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     const message = args.join(" ");
     if (!message) return m.reply("❗ Please provide a message to broadcast.");
     
@@ -45,8 +41,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide a user's number to ban.");
     
     const userToBan = args[0].replace(/[^0-9]/g, "") + "@s.whatsapp.net";
@@ -62,8 +57,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide a user's number to unban.");
     
     const userToUnban = args[0].replace(/[^0-9]/g, "") + "@s.whatsapp.net";
@@ -79,8 +73,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     const newName = args.join(" ");
     if (!newName) return m.reply("❗ Please provide a new name for the bot.");
     
@@ -95,8 +88,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     const newBio = args.join(" ");
     if (!newBio) return m.reply("❗ Please provide a new bio for the bot.");
     
@@ -111,8 +103,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide the new owner's number.");
     
     const newOwner = args[0].replace(/[^0-9]/g, "") + "@s.whatsapp.net";
@@ -128,8 +119,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide a new prefix for the bot.");
     
     config.prefix = args[0];
@@ -143,8 +133,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide a user's number to block.");
     
     const userToBlock = args[0].replace(/[^0-9]/g, "") + "@s.whatsapp.net";
@@ -160,8 +149,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0]) return m.reply("❗ Please provide a user's number to unblock.");
     
     const userToUnblock = args[0].replace(/[^0-9]/g, "") + "@s.whatsapp.net";
@@ -177,8 +165,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0] || !['on', 'off'].includes(args[0].toLowerCase())) {
         return m.reply("❗ Please specify 'on' or 'off' to toggle the antilink feature.");
     }
@@ -194,8 +181,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0] || !['on', 'off'].includes(args[0].toLowerCase())) {
         return m.reply("❗ Please specify 'on' or 'off' to toggle the antibad feature.");
     }
@@ -211,8 +197,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { args, sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m, { args }) => {
     if (!args[0] || !['on', 'off'].includes(args[0].toLowerCase())) {
         return m.reply("❗ Please specify 'on' or 'off' to toggle group only mode.");
     }
@@ -228,8 +213,7 @@ cmd({
     category: "owner",
     filename: __filename
 },
-async (conn, mek, m, { sender }) => {
-    if (!isOwner(sender)) return m.reply("👑 *This command is only for the bot owner!*");
+async (conn, mek, m) => {
     if (!m.quoted || !m.quoted.mimetype || !m.quoted.mimetype.startsWith('image/')) {
         return m.reply("❗ Please reply to an image with this command to set it as the bot's profile picture.");
     }
