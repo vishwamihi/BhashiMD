@@ -1,6 +1,6 @@
 const config = require('../config');
 const { cmd, commands } = require('../command');
-const { xeontext2 } = require('./Media/xeontext2');  // Import xeontext2 from xeontext1.js
+const { xeontext2 } = require('../Media/xeontext2');  // Import xeontext2 from xeontext1.js
 
 cmd({
     pattern: "bug",
