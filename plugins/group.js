@@ -8,28 +8,95 @@ const checkPermissions = (isGroup, isAdmins, isOwner, isBotAdmins) => {
     if (!isBotAdmins) return 'Bot must be admin to use this command.';
     return null;
 };
+
 cmd({
     pattern: "add",
-    desc: "Add a user to the group.",
+    desc: "Add a member to the group.",
     category: "group",
-    filename: __filename,
-    react: "➕"
+    react: "➕",
+    filename: __filename
 },
-async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, args, reply }) => {
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        if (!isGroup) return reply('*🚨 ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜꜱᴇᴅ ɪɴ ɢʀᴏᴜᴘ*')
+        if (!isBotAdmins) return reply('*🚨 ᴘʟᴇᴀꜱᴇ ɢɪᴠᴇ ᴍᴇ ᴀᴅᴍɪɴ.*')
+        if (!isAdmins) return reply('*🚨 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴄᴀɴ ʏᴏᴜ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ*')
+
+        const user = q.split(' ')[0]
+        if (!user) return reply('Please provide a phone number to add.')
+
+        await conn.groupParticipantsUpdate(from, [`${user}@s.whatsapp.net`], 'add')
+        await reply(`@${user} has been added to the group.`, { mentions: [`${user}@s.whatsapp.net`] })
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
+
+cmd({
+    pattern: "setgoodbye",
+    desc: "Set the goodbye message for the group.",
+    category: "group",
+    react: "👋",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const permissionError = checkPermissions(isGroup, isAdmins, isOwner, isBotAdmins);
         if (permissionError) return reply(permissionError);
+        
+        const goodbye = q
+        if (!goodbye) return reply('Please provide a goodbye message.')
 
-        if (args.length === 0) return reply('Please provide the phone number(s) to add.');
-
-        const users = args.map(arg => arg.replace(/[^0-9]/g, '') + "@s.whatsapp.net");
-        await conn.groupParticipantsUpdate(from, users, "add");
-        reply(`✅ User(s) added to the group successfully.`);
-    } catch(e) {
-        console.error(e);
-        reply(`❌ Error: ${e}`);
+        await conn.sendMessage(from, { image: { url: config.ALIVE_IMG }, caption: goodbye })
+        await reply('Goodbye message has been set.')
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
     }
-});
+})
+
+cmd({
+    pattern: "setwelcome",
+    desc: "Set the welcome message for the group.",
+    category: "group",
+    react: "👋",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        const permissionError = checkPermissions(isGroup, isAdmins, isOwner, isBotAdmins);
+        if (permissionError) return reply(permissionError);
+        
+        const welcome = q
+        if (!welcome) return reply('Please provide a welcome message.')
+
+        await conn.sendMessage(from, { image: { url: config.ALIVE_IMG }, caption: welcome })
+        await reply('Welcome message has been set.')
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
+
+cmd({
+    pattern: "getpic",
+    desc: "Get the group profile picture.",
+    category: "group",
+    react: "🖼️",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        if (!isGroup) return reply('This command can only be used in a group.')
+
+        const groupPic = await conn.getProfilePicture(from)
+        await conn.sendMessage(from, { image: { url: groupPic }, caption: '*🪄Group Profile Picture*' })
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
 
 // New command: Set group icon
 cmd({
@@ -47,7 +114,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (!m.quoted) return reply(`Please reply to an image with the command to set it as the group icon.`);
         const media = await conn.downloadAndSaveMediaMessage(m.quoted);
         await conn.updateProfilePicture(from, { url: media });
-        reply(`✅ Group icon has been updated successfully.`);
+        reply(`*✅ Group icon has been updated successfully.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -98,7 +165,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, groupMetada
         const participants = groupMetadata.participants.filter(p => p.id !== creator && p.id !== botId);
 
         await conn.groupParticipantsUpdate(from, participants.map(p => p.id), "remove");
-        reply(`🚫 All members have been removed from the group (except the bot and group creator).`);
+        reply(`*🚫 All members have been removed from the group (except the bot and group creator).*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -121,7 +188,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (!mentionedJid || mentionedJid.length === 0) return reply('Please mention the user you want to promote.');
 
         await conn.groupParticipantsUpdate(from, mentionedJid, "promote");
-        reply(`✅ User promoted to admin successfully.`);
+        reply(`*✅ User promoted to admin successfully.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -145,7 +212,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (!mentionedJid || mentionedJid.length === 0) return reply('Please mention the admin you want to demote.');
 
         await conn.groupParticipantsUpdate(from, mentionedJid, "demote");
-        reply(`✅ User demoted from admin successfully.`);
+        reply(`*✅ User demoted from admin successfully.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -166,7 +233,7 @@ async(conn, mek, m, { from, isGroup, isBotAdmins, reply }) => {
         if (!isBotAdmins) return reply('Bot must be admin to use this command.');
 
         const inviteCode = await conn.groupInviteCode(from);
-        reply(`🔗 Group Invite Link: https://chat.whatsapp.com/${inviteCode}`);
+        reply(`*🔗 Group Invite Link: https://chat.whatsapp.com/${inviteCode}*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -219,7 +286,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (!mentionedJid || mentionedJid.length === 0) return reply('Please mention the user you want to kick.');
 
         await conn.groupParticipantsUpdate(from, mentionedJid, "remove");
-        reply(`👢 User has been kicked from the group.`);
+        reply(`*👢 User has been kicked from the group.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -243,7 +310,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, args, reply
         if (!newSubject) return reply('Please provide a new subject for the group.');
 
         await conn.groupUpdateSubject(from, newSubject);
-        reply(`✏️ Group subject has been updated to: ${newSubject}`);
+        reply(`*✏️ Group subject has been updated to: ${newSubject}*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -267,7 +334,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, args, reply
         if (!newDesc) return reply('Please provide a new description for the group.');
 
         await conn.groupUpdateDescription(from, newDesc);
-        reply(`✏️ Group description has been updated.`);
+        reply(`*✏️ Group description has been updated.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -288,7 +355,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (permissionError) return reply(permissionError);
 
         await conn.groupSettingUpdate(from, 'announcement');
-        reply(`🔇 Group has been muted. Only admins can send messages now.`);
+        reply(`*🔇 Group has been muted. Only admins can send messages now.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
@@ -309,7 +376,7 @@ async(conn, mek, m, { from, isGroup, isAdmins, isOwner, isBotAdmins, reply }) =>
         if (permissionError) return reply(permissionError);
 
         await conn.groupSettingUpdate(from, 'not_announcement');
-        reply(`🔊 Group has been unmuted. All participants can send messages now.`);
+        reply(`*🔊 Group has been unmuted. All participants can send messages now.*`);
     } catch(e) {
         console.error(e);
         reply(`❌ Error: ${e}`);
