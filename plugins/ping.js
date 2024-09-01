@@ -14,18 +14,12 @@ cmd({
         const endTime = Date.now();
         const ping = endTime - startTime;
 
-        const buttons = [
-            { buttonId: '.menu', buttonText: { displayText: 'Menu' }, type: 1 }
-        ];
-
-        const buttonMessage = {
+        // Send the ping response without buttons
+        await conn.sendMessage(from, { 
             text: `⏰ 𝗥𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝗧𝗶𝗺𝗲 : ${ping}ms`,
-            footer: 'Click the button below to see the menu',
-            buttons: buttons,
-            headerType: 1
-        };
-
-        await conn.sendMessage(from, buttonMessage, { quoted: message });
+            footer: 'Powered by BHASHI-MD'
+        }, { quoted: message });
+        
     } catch (e) {
         console.error(e);
         reply(`${e}`);
