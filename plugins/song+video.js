@@ -37,22 +37,29 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const info = await ytdl.getInfo(url);
         const audioFormat = ytdl.chooseFormat(info.formats, { quality: 'highestaudio' });
         const stream = ytdl(url, { format: audioFormat });
-        const filePath = `./${data.title}.mp3`;
+        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp3`;
 
         const writeStream = fs.createWriteStream(filePath);
         stream.pipe(writeStream);
 
         writeStream.on('finish', async () => {
-            // Send audio and document messages
-            await conn.sendMessage(from, { audio: fs.readFileSync(filePath), mimetype: "audio/mpeg" }, { quoted: mek });
-            await conn.sendMessage(from, { document: fs.readFileSync(filePath), mimetype: "audio/mpeg", fileName: data.title + ".mp3", caption: "" }, { quoted: mek });
-
-            // Delete the temporary file
-            fs.unlinkSync(filePath);
+            try {
+                // Send audio and document messages
+                await conn.sendMessage(from, { audio: fs.readFileSync(filePath), mimetype: "audio/mpeg" }, { quoted: mek });
+                await conn.sendMessage(from, { document: fs.readFileSync(filePath), mimetype: "audio/mpeg", fileName: data.title + ".mp3", caption: "" }, { quoted: mek });
+            } catch (sendError) {
+                console.error("Error sending file:", sendError);
+                reply(`🚫 An error occurred while sending the file: ${sendError.message}`);
+            } finally {
+                // Delete the temporary file
+                fs.unlink(filePath, (err) => {
+                    if (err) console.error("Error deleting file:", err);
+                });
+            }
         });
 
     } catch (e) {
-        console.log(e);
+        console.error(e);
         reply(`🚫 An error occurred: ${e.message}`);
     }
 });
@@ -88,21 +95,28 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const info = await ytdl.getInfo(url);
         const videoFormat = ytdl.chooseFormat(info.formats, { quality: 'highest' });
         const stream = ytdl(url, { format: videoFormat });
-        const filePath = `./${data.title}.mp4`;
+        const filePath = `./${data.title.replace(/[^a-zA-Z0-9]/g, '_')}.mp4`;
 
         const writeStream = fs.createWriteStream(filePath);
         stream.pipe(writeStream);
 
         writeStream.on('finish', async () => {
-            // Send video message
-            await conn.sendMessage(from, { video: fs.readFileSync(filePath), caption: data.title }, { quoted: mek });
-
-            // Delete the temporary file
-            fs.unlinkSync(filePath);
+            try {
+                // Send video message
+                await conn.sendMessage(from, { video: fs.readFileSync(filePath), caption: data.title }, { quoted: mek });
+            } catch (sendError) {
+                console.error("Error sending file:", sendError);
+                reply(`🚫 An error occurred while sending the file: ${sendError.message}`);
+            } finally {
+                // Delete the temporary file
+                fs.unlink(filePath, (err) => {
+                    if (err) console.error("Error deleting file:", err);
+                });
+            }
         });
 
     } catch (e) {
-        console.log(e);
+        console.error(e);
         reply(`🚫 An error occurred: ${e.message}`);
     }
 });
