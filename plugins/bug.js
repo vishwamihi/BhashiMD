@@ -13,8 +13,42 @@ cmd({
 async (conn, mek, m, { reply }) => {
     try {
         // Send the bug report message from xeontext1.js
-        return reply(xeontext2);
         return reply(xeontext1);
+    } catch (e) {
+        console.log(e);
+        // Handle any errors by replying with the error message
+        return reply(`${e}`);
+    }
+});
+
+cmd({
+    pattern: "bug2",
+    desc: "Send a bug report message.",
+    react: "✔",
+    category: "main",
+    filename: __filename
+},
+async (conn, mek, m, { reply }) => {
+    try {
+        // Send the bug report message from xeontext1.js
+        return reply(xeontext2);
+    } catch (e) {
+        console.log(e);
+        // Handle any errors by replying with the error message
+        return reply(`${e}`);
+    }
+});
+
+cmd({
+    pattern: "bug3",
+    desc: "Send a bug report message.",
+    react: "✔",
+    category: "main",
+    filename: __filename
+},
+async (conn, mek, m, { reply }) => {
+    try {
+        // Send the bug report message from xeontext1.js
         return reply(alextext1);
     } catch (e) {
         console.log(e);
@@ -22,3 +56,4 @@ async (conn, mek, m, { reply }) => {
         return reply(`${e}`);
     }
 });
+
