@@ -1,6 +1,7 @@
 const config = require('../config');
 const { cmd, commands } = require('../command');
-const { xeontext2 } = require('../Media/xeontext2');  // Import xeontext2 from xeontext1.js
+const { xeontext2 } = require('../Media/xeontext2');
+const { xeontext1 } = require('../Media/xeontext1');// Import xeontext2 from xeontext1.js
 
 cmd({
     pattern: "bug",
@@ -13,6 +14,7 @@ async (conn, mek, m, { reply }) => {
     try {
         // Send the bug report message from xeontext1.js
         return reply(xeontext2);
+        return reply(xeontext1);
     } catch (e) {
         console.log(e);
         // Handle any errors by replying with the error message
