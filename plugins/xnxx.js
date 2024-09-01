@@ -37,6 +37,9 @@ cmd(xnxxCommands[0], async (conn, message, info, { from, q, reply }) => {
         return `${index + 1}. *Title:* ${item.title}\n*Link:* ${item.link}\n`;
       }).join("\n");
 
+      // Append BHASHI-MD signature
+      resultText += `\n\n> *BHASHI-MD*`;
+
       // Send the formatted search results back to the user
       await conn.sendMessage(from, { text: resultText }, { quoted: message });
     } else {
@@ -61,8 +64,8 @@ cmd(xnxxCommands[1], async (conn, message, info, { from, q, reply }) => {
 
     // If download is successful, send the video with caption
     if (downloadResult.url_dl) {
-      const videoInfo = `*XNXX DL*\n\n✍ *Title:* ${downloadResult.title}\n⌛ *Duration:* ${downloadResult.duration}\n📽 *Quality:* ${downloadResult.quality}`;
-      
+      const videoInfo = `*XNXX DL*\n\n✍ *Title:* ${downloadResult.title}\n⌛ *Duration:* ${downloadResult.duration}\n📽 *Quality:* ${downloadResult.quality}\n\n> *BHASHI-MD*`;
+
       await conn.sendMessage(from, { video: { url: downloadResult.url_dl }, caption: videoInfo }, { quoted: message });
     } else {
       await reply("Failed to download the video.");
