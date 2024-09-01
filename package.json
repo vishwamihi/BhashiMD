@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
+    "@google/generative-ai": "^1.0.0",
     "wa-sticker-formatter": "^1.0.0",
     "@whiskeysockets/baileys": "6.6.0",
     "fb-downloader-scrapper": "^1.0.3",
