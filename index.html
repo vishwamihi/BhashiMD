@@ -4,89 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BASHI-MD Server</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@400;700&display=swap">
     <style>
-        /* Background Gradient and Setup */
         body {
-            background: linear-gradient(135deg, #2c3e50, #4b79a1);
-            background-size: 400% 400%;
-            animation: backgroundShift 15s ease infinite;
-            color: #ecf0f1;
-            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            background-size: 400% 400%;
+            animation: backgroundShift 15s ease infinite;
         }
 
-        /* Title Styling */
         h1 {
-            font-size: 4rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
             margin: 0;
-            animation: pulse 2s infinite;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(45deg, #00bfff, #1e90ff, #4169e1);
+            background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: gradientText 3s linear infinite;
         }
 
-        /* Subtitle Styling */
         .status {
             font-size: 1.5rem;
-            color: #1abc9c;
+            color: #87cefa;
             margin-top: 10px;
-            animation: fadeIn 3s ease-in-out infinite alternate;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
         }
 
-        /* Glowing Effect */
         .glow {
-            text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c;
+            text-shadow: 0 0 10px rgba(135, 206, 250, 0.7);
             animation: glowPulse 1.5s ease-in-out infinite alternate;
         }
 
-        /* Background Animation */
+        .info-box {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            padding: 20px;
+            border: 2px solid #4169e1;
+            border-radius: 15px;
+            background: rgba(26, 26, 46, 0.7);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .image-container {
+            margin-top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .image-container img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .feature-item {
+            background: rgba(26, 26, 46, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
         @keyframes backgroundShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Pulse Effect */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
-        /* Glow Pulse Effect */
         @keyframes glowPulse {
-            from {
-                text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c;
-            }
-            to {
-                text-shadow: 0 0 20px #1abc9c, 0 0 30px #1abc9c, 0 0 40px #1abc9c, 0 0 50px #1abc9c;
-            }
+            from { text-shadow: 0 0 5px #87cefa, 0 0 10px #87cefa; }
+            to { text-shadow: 0 0 10px #87cefa, 0 0 20px #87cefa; }
         }
 
-        /* Fade-in Effect for Text */
-        @keyframes fadeIn {
-            from { opacity: 0.5; }
-            to { opacity: 1; }
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1 class="glow">BASHI-MD WORKING ✅</h1>
-        <p class="status">Server is up and running!</p>
+    <h1 class="glow">BASHI-MD WORKING ✅</h1>
+    <p class="status">Server is up and running!</p>
+    <div class="info-box">
+        <p id="runtime">Runtime: Calculating...</p>
+        <p id="battery">Battery: Checking...</p>
+        <p id="memory">Memory Usage: Calculating...</p>
     </div>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>Active Users</h3>
+            <p id="activeUsers">Loading...</p>
+        </div>
+        <div class="feature-item">
+            <h3>Server Load</h3>
+            <p id="serverLoad">Calculating...</p>
+        </div>
+        <div class="feature-item">
+            <h3>Uptime</h3>
+            <p id="uptime">Checking...</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://telegra.ph/file/d8279f4ca5da23bda7da4.jpg" alt="Server Image">
+    </div>
+
+    <script>
+        function calculateRuntime() {
+            const startTime = new Date('2023-01-01'); // Replace with actual start time
+            const now = new Date();
+            const diff = now - startTime;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            return ${days}d ${hours}h ${minutes}m;
+        }
+
+        function updateBatteryStatus(battery) {
+            document.getElementById('battery').textContent = Battery: ${Math.round(battery.level * 100)}% ${battery.charging ? 'Charging' : 'Not Charging'};
+        }
+
+        function updateMemoryUsage() {
+            if (performance && performance.memory) {
+                const usedJSHeapSize = Math.round(performance.memory.usedJSHeapSize / (1024 * 1024));
+                const jsHeapSizeLimit = Math.round(performance.memory.jsHeapSizeLimit / (1024 * 1024));
+                document.getElementById('memory').textContent = Memory Usage: ${usedJSHeapSize}MB / ${jsHeapSizeLimit}MB;
+            } else {
+                document.getElementById('memory').textContent = 'Memory Usage: Not available';
+            }
+        }
+
+        function updateActiveUsers() {
+            // Simulating active users count
+            const activeUsers = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('activeUsers').textContent = activeUsers;
+        }
+
+        function updateServerLoad() {
+            // Simulating server load
+            const load = (Math.random() * 100).toFixed(2);
+            document.getElementById('serverLoad').textContent = ${load}%;
+        }
+
+        function updateUptime() {
+            document.getElementById('uptime').textContent = calculateRuntime();
+        }
+
+        // Initial updates
+        document.getElementById('runtime').textContent = Runtime: ${calculateRuntime()};
+        updateMemoryUsage();
+        updateActiveUsers();
+        updateServerLoad();
+        updateUptime();
+
+        // Battery status
+        if (navigator.getBattery) {
+            navigator.getBattery().then(updateBatteryStatus);
+        } else {
+            document.getElementById('battery').textContent = 'Battery: Not supported';
+        }
+
+        // Periodic updates
+        setInterval(() => {
+            document.getElementById('runtime').textContent = Runtime: ${calculateRuntime()};
+            updateMemoryUsage();
+            updateActiveUsers();
+            updateServerLoad();
+            updateUptime();
+        }, 5000);
+    </script>
 </body>
 </html>
