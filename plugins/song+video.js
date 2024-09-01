@@ -1,7 +1,10 @@
 const config = require('../config');
 const { cmd, commands } = require('../command');
-const yts = require('yt-search'); // Updated import for yt-search
-const fg = require('@bochilteam/scraper');
+const yts = require('yt-search');
+const ytdl = require('ytdl-core');
+const fs = require('fs');
+const { promisify } = require('util');
+const writeFileAsync = promisify(fs.writeFile);
 
 // Function to download and send a song
 cmd({
@@ -31,12 +34,22 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
 
         // Download audio
-        let down = await fg.yta(url);
-        let downloadUrl = down.dl_url;
+        const info = await ytdl.getInfo(url);
+        const audioFormat = ytdl.chooseFormat(info.formats, { quality: 'highestaudio' });
+        const stream = ytdl(url, { format: audioFormat });
+        const filePath = `./${data.title}.mp3`;
 
-        // Send audio and document messages
-        await conn.sendMessage(from, { audio: { url: downloadUrl }, mimetype: "audio/mpeg" }, { quoted: mek });
-        await conn.sendMessage(from, { document: { url: downloadUrl }, mimetype: "audio/mpeg", fileName: data.title + ".mp3", caption: "" }, { quoted: mek });
+        const writeStream = fs.createWriteStream(filePath);
+        stream.pipe(writeStream);
+
+        writeStream.on('finish', async () => {
+            // Send audio and document messages
+            await conn.sendMessage(from, { audio: fs.readFileSync(filePath), mimetype: "audio/mpeg" }, { quoted: mek });
+            await conn.sendMessage(from, { document: fs.readFileSync(filePath), mimetype: "audio/mpeg", fileName: data.title + ".mp3", caption: "" }, { quoted: mek });
+
+            // Delete the temporary file
+            fs.unlinkSync(filePath);
+        });
 
     } catch (e) {
         console.log(e);
@@ -72,11 +85,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
 
         // Download video
-        let down = await fg.ytv(url);
-        let downloadUrl = down.dl_url;
+        const info = await ytdl.getInfo(url);
+        const videoFormat = ytdl.chooseFormat(info.formats, { quality: 'highest' });
+        const stream = ytdl(url, { format: videoFormat });
+        const filePath = `./${data.title}.mp4`;
 
-        // Send video message
-        await conn.sendMessage(from, { video: { url: downloadUrl }, caption: data.title }, { quoted: mek });
+        const writeStream = fs.createWriteStream(filePath);
+        stream.pipe(writeStream);
+
+        writeStream.on('finish', async () => {
+            // Send video message
+            await conn.sendMessage(from, { video: fs.readFileSync(filePath), caption: data.title }, { quoted: mek });
+
+            // Delete the temporary file
+            fs.unlinkSync(filePath);
+        });
 
     } catch (e) {
         console.log(e);
