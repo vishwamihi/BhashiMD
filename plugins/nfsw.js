@@ -85,5 +85,3 @@ nsfwCommands.forEach(({ pattern, url, fallback, urls }) => {
         }
     });
 });
-
-module.exports = handler;
