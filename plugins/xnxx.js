@@ -1,4 +1,5 @@
 const dyluxApi = require("api-dylux");
+const { cmd } = require('../command');
 
 const xnxxCommands = [
   {
