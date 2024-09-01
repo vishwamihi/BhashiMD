@@ -1,6 +1,5 @@
 const config = require('../config');
 const { cmd } = require('../command');
-const { downloadMediaMessage } = require('@adiwajshing/baileys');
 const fs = require('fs');
 
 // Helper function to check if the sender is the owner
@@ -204,7 +203,8 @@ async (conn, mek, m, { args, sender }) => {
     const state = args[0].toLowerCase() === 'on';
     m.reply(toggleFeature('antibad', state));
 });
-// 14. Toggle group only mode
+
+// 12. Toggle group only mode
 cmd({
     pattern: "grouponly",
     desc: "👥 Toggle group only mode",
@@ -221,7 +221,7 @@ async (conn, mek, m, { args, sender }) => {
     m.reply(toggleFeature('groupOnly', state));
 });
 
-// 15. Set bot's profile picture
+// 13. Set bot's profile picture
 cmd({
     pattern: "setpp",
     desc: "🖼️ Set bot's profile picture",
@@ -235,7 +235,7 @@ async (conn, mek, m, { sender }) => {
     }
     
     try {
-        const media = await downloadMediaMessage(m.quoted, 'buffer');
+        const media = await m.quoted.download();
         const tmpFilePath = './temp_profile_pic.jpg';
         fs.writeFileSync(tmpFilePath, media);
         
