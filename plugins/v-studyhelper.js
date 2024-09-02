@@ -1,1 +1,62 @@
-const _0x3ef686=_0x3d78;function _0x3d78(_0x4f3bc3,_0xd2411e){const _0x2a1764=_0x2a17();return _0x3d78=function(_0x3d784a,_0x98c8ea){_0x3d784a=_0x3d784a-0x1a4;let _0x4b2b07=_0x2a1764[_0x3d784a];return _0x4b2b07;},_0x3d78(_0x4f3bc3,_0xd2411e);}(function(_0x2bcfc2,_0x3d741e){const _0x3a6150=_0x3d78,_0xcd7dc2=_0x2bcfc2();while(!![]){try{const _0x5ac8d0=-parseInt(_0x3a6150(0x1b9))/0x1+-parseInt(_0x3a6150(0x1c4))/0x2+-parseInt(_0x3a6150(0x1b5))/0x3*(-parseInt(_0x3a6150(0x1ca))/0x4)+parseInt(_0x3a6150(0x1bd))/0x5+-parseInt(_0x3a6150(0x1c7))/0x6*(-parseInt(_0x3a6150(0x1bf))/0x7)+parseInt(_0x3a6150(0x1b8))/0x8+-parseInt(_0x3a6150(0x1ab))/0x9;if(_0x5ac8d0===_0x3d741e)break;else _0xcd7dc2['push'](_0xcd7dc2['shift']());}catch(_0x51699a){_0xcd7dc2['push'](_0xcd7dc2['shift']());}}}(_0x2a17,0xef493));const {cmd}=require(_0x3ef686(0x1c8)),userTipIndex=new Map();cmd({'pattern':'studyhelper','desc':_0x3ef686(0x1ae),'category':_0x3ef686(0x1b4),'react':'📚','filename':__filename},async(_0x43707a,_0x4e42a4,_0x363d29,{from:_0x46603a,reply:_0x3a9414})=>{const _0x18b5bd=_0x3ef686,_0x5afc9e=[_0x18b5bd(0x1a7),'📝\x20Use\x20active\x20recall\x20and\x20spaced\x20repetition\x20to\x20improve\x20retention.',_0x18b5bd(0x1c5),_0x18b5bd(0x1ba),_0x18b5bd(0x1a8),_0x18b5bd(0x1c1),_0x18b5bd(0x1b6),_0x18b5bd(0x1a4),_0x18b5bd(0x1a5),_0x18b5bd(0x1b2),_0x18b5bd(0x1b0),_0x18b5bd(0x1b1),_0x18b5bd(0x1c9),_0x18b5bd(0x1be),'💪\x20Stay\x20physically\x20active\x20and\x20exercise\x20to\x20boost\x20cognitive\x20function.',_0x18b5bd(0x1c6),_0x18b5bd(0x1bc),_0x18b5bd(0x1ac),'📈\x20Track\x20your\x20progress\x20to\x20stay\x20motivated\x20and\x20identify\x20areas\x20for\x20improvement.','👥\x20Study\x20with\x20friends\x20or\x20in\x20study\x20groups\x20to\x20gain\x20different\x20perspectives.','🔖\x20Use\x20color-coded\x20notes\x20or\x20diagrams\x20to\x20visually\x20organize\x20information.',_0x18b5bd(0x1a9),'🕒\x20Practice\x20time\x20management\x20during\x20exams\x20and\x20assignments.',_0x18b5bd(0x1cd),'✏️\x20Practice\x20mindfulness\x20and\x20stress-relief\x20techniques\x20to\x20manage\x20exam\x20anxiety.',_0x18b5bd(0x1ad),_0x18b5bd(0x1b7),_0x18b5bd(0x1c2),_0x18b5bd(0x1af),_0x18b5bd(0x1aa),'🎯\x20Stay\x20organized\x20with\x20a\x20planner\x20or\x20to-do\x20list\x20for\x20tasks\x20and\x20deadlines.',_0x18b5bd(0x1a6),_0x18b5bd(0x1c0)];let _0x75db43=userTipIndex['get'](_0x46603a)||0x0;_0x75db43<_0x5afc9e[_0x18b5bd(0x1c3)]?(_0x3a9414(_0x18b5bd(0x1cc)+(_0x75db43+0x1)+':\x0a'+_0x5afc9e[_0x75db43]+_0x18b5bd(0x1cb)),userTipIndex['set'](_0x46603a,_0x75db43+0x1)):(_0x3a9414(_0x18b5bd(0x1bb)),userTipIndex[_0x18b5bd(0x1b3)](_0x46603a));});function _0x2a17(){const _0x55f50f=['🔍\x20Summarize\x20your\x20notes\x20to\x20highlight\x20key\x20points.','🧠\x20Challenge\x20yourself\x20with\x20practice\x20questions\x20and\x20mock\x20tests\x20regularly.','📖\x20Break\x20your\x20study\x20time\x20into\x20manageable\x20chunks\x20with\x20breaks\x20in\x20between.','💡\x20Teach\x20what\x20you\x27ve\x20learned\x20to\x20someone\x20else\x20to\x20solidify\x20your\x20understanding.','📖\x20Read\x20textbooks\x20and\x20additional\x20materials\x20for\x20a\x20deeper\x20understanding.','📚\x20Read\x20summaries\x20and\x20highlights\x20to\x20reinforce\x20learning.','22502943RYPnwu','🥗\x20Eat\x20a\x20balanced\x20diet\x20to\x20support\x20brain\x20health\x20and\x20concentration.','🔑\x20Focus\x20on\x20understanding\x20concepts\x20rather\x20than\x20rote\x20memorization.','Provide\x20study\x20tips\x20and\x20resources.','🎓\x20Seek\x20help\x20from\x20teachers\x20or\x20tutors\x20if\x20you\x27re\x20struggling\x20with\x20specific\x20topics.','✍️\x20Practice\x20writing\x20essays\x20and\x20problem-solving\x20regularly.','🧩\x20Mix\x20different\x20subjects\x20during\x20study\x20sessions\x20to\x20keep\x20things\x20interesting.','🧠\x20Use\x20mnemonic\x20devices\x20to\x20remember\x20complex\x20information.','delete','info','21657wkUfDi','📅\x20Create\x20a\x20study\x20schedule\x20and\x20stick\x20to\x20it.','🎯\x20Set\x20realistic\x20and\x20achievable\x20study\x20goals\x20to\x20maintain\x20motivation.','2785872BxYJDA','463905LnTWbE','🎯\x20Set\x20specific\x20goals\x20for\x20each\x20study\x20session.','📚\x20You’ve\x20received\x20all\x20study\x20tips.\x20Use\x20`!studyhelper`\x20again\x20to\x20start\x20over.','💤\x20Ensure\x20you\x20get\x20enough\x20sleep\x20for\x20optimal\x20cognitive\x20performance.','7996895WwaZOt','🌐\x20Use\x20online\x20resources\x20and\x20educational\x20videos\x20to\x20supplement\x20your\x20learning.','613865LelQHM','🔄\x20Review\x20and\x20revisit\x20material\x20periodically\x20to\x20reinforce\x20learning.','📚\x20Organize\x20your\x20study\x20space\x20to\x20reduce\x20distractions.','💡\x20Use\x20apps\x20and\x20tools\x20for\x20time\x20management\x20and\x20productivity.','length','3076250ROLHXQ','🌟\x20Practice\x20past\x20exam\x20papers\x20and\x20sample\x20questions.','🚶‍♂️\x20Take\x20regular\x20breaks\x20to\x20rest\x20and\x20recharge\x20your\x20mind.','108YJEgIu','../command','📊\x20Use\x20flashcards\x20for\x20quick\x20review\x20and\x20memorization.','1084kyHPME','\x0a\x0a>\x20BHASHI-MD','📚\x20Study\x20Tip\x20','📚\x20Set\x20aside\x20dedicated\x20time\x20for\x20review\x20and\x20revision\x20before\x20exams.','🎧\x20Listen\x20to\x20instrumental\x20music\x20or\x20white\x20noise\x20to\x20improve\x20focus.'];_0x2a17=function(){return _0x55f50f;};return _0x2a17();}
+const { cmd } = require('../command');
+
+// In-memory storage for tracking the last sent tip per user
+const userTipIndex = new Map();
+
+cmd({
+    pattern: "studyhelper",
+    desc: "Provide study tips and resources.",
+    category: "info",
+    react: "📚",
+    filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+    const tips = [
+        "📖 Break your study time into manageable chunks with breaks in between.",
+        "📝 Use active recall and spaced repetition to improve retention.",
+        "🌟 Practice past exam papers and sample questions.",
+        "🎯 Set specific goals for each study session.",
+        "💡 Teach what you've learned to someone else to solidify your understanding.",
+        "📚 Organize your study space to reduce distractions.",
+        "📅 Create a study schedule and stick to it.",
+        "🎧 Listen to instrumental music or white noise to improve focus.",
+        "🔍 Summarize your notes to highlight key points.",
+        "🧠 Use mnemonic devices to remember complex information.",
+        "✍️ Practice writing essays and problem-solving regularly.",
+        "🧩 Mix different subjects during study sessions to keep things interesting.",
+        "📊 Use flashcards for quick review and memorization.",
+        "🌐 Use online resources and educational videos to supplement your learning.",
+        "💪 Stay physically active and exercise to boost cognitive function.",
+        "🚶‍♂️ Take regular breaks to rest and recharge your mind.",
+        "💤 Ensure you get enough sleep for optimal cognitive performance.",
+        "🥗 Eat a balanced diet to support brain health and concentration.",
+        "📈 Track your progress to stay motivated and identify areas for improvement.",
+        "👥 Study with friends or in study groups to gain different perspectives.",
+        "🔖 Use color-coded notes or diagrams to visually organize information.",
+        "📖 Read textbooks and additional materials for a deeper understanding.",
+        "🕒 Practice time management during exams and assignments.",
+        "📚 Set aside dedicated time for review and revision before exams.",
+        "✏️ Practice mindfulness and stress-relief techniques to manage exam anxiety.",
+        "🔑 Focus on understanding concepts rather than rote memorization.",
+        "🎯 Set realistic and achievable study goals to maintain motivation.",
+        "💡 Use apps and tools for time management and productivity.",
+        "🎓 Seek help from teachers or tutors if you're struggling with specific topics.",
+        "📚 Read summaries and highlights to reinforce learning.",
+        "🎯 Stay organized with a planner or to-do list for tasks and deadlines.",
+        "🧠 Challenge yourself with practice questions and mock tests regularly.",
+        "🔄 Review and revisit material periodically to reinforce learning."
+    ];
+
+    // Retrieve the last sent tip index for the user
+    let index = userTipIndex.get(from) || 0;
+
+    // Send the next tip
+    if (index < tips.length) {
+        reply(`📚 Study Tip ${index + 1}:\n${tips[index]}\n\n> BHASHI-MD`);
+        // Update the index for the next time the user requests a tip
+        userTipIndex.set(from, index + 1);
+    } else {
+        reply("📚 You’ve received all study tips. Use `!studyhelper` again to start over.");
+        // Reset the index if you want to allow users to start over
+        userTipIndex.delete(from);
+    }
+});
