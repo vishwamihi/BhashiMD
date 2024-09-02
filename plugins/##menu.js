@@ -10,7 +10,7 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
-return await conn.sendMessage(from,{image: {url: config.MENU_IMG},caption: config.MENU_MSG},{quoted: mek})
+return await conn.sendMessage(from,{image:`https://telegra.ph/file/6593cd5ac4bbd29375b36.jpg`,caption: config.MENU_MSG},{quoted: mek})
 }catch(e){
 console.log(e)
 reply(`${e}`)
