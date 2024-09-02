@@ -18,10 +18,10 @@ cmd({
     const shortUrl = response.data;
 
     const resultMessage = `
-🔗 **URL Shortener**
+🔗 *URL Shortener*
 
-🌐 **Original URL:** ${longUrl}
-✂️ **Shortened URL:** ${shortUrl}
+🌐 *Original URL:* ${longUrl}
+✂️ *Shortened URL:* ${shortUrl}
 
 You can now use this short URL to share your link more easily! 🌟
 `;
