@@ -1,1 +1,33 @@
-function _0x5d5c(){const _0x4e13e8=['utility','1213350iSZzzQ','data','sendMessage','../command','get','1059612VoPipL','84637pWyXLQ','128373vzLWMj','791616FhntJn','\x0a\x0aYou\x20can\x20now\x20use\x20this\x20short\x20URL\x20to\x20share\x20your\x20link\x20more\x20easily!\x20🌟\x0a','9PxeIiS','shorturl','4mFdGjP','Error\x20shortening\x20URL:','152898ZSWesC','message','Create\x20a\x20short\x20URL\x20using\x20TinyURL\x20API.','❌\x20An\x20error\x20occurred\x20while\x20shortening\x20the\x20URL:\x20','axios','4897720omXpvm'];_0x5d5c=function(){return _0x4e13e8;};return _0x5d5c();}const _0x199401=_0x531e;(function(_0x114b45,_0x32c384){const _0x4206fd=_0x531e,_0x1fe164=_0x114b45();while(!![]){try{const _0x21092c=-parseInt(_0x4206fd(0x182))/0x1+parseInt(_0x4206fd(0x180))/0x2*(-parseInt(_0x4206fd(0x190))/0x3)+parseInt(_0x4206fd(0x191))/0x4+-parseInt(_0x4206fd(0x189))/0x5+-parseInt(_0x4206fd(0x18e))/0x6+-parseInt(_0x4206fd(0x18f))/0x7+-parseInt(_0x4206fd(0x187))/0x8*(-parseInt(_0x4206fd(0x193))/0x9);if(_0x21092c===_0x32c384)break;else _0x1fe164['push'](_0x1fe164['shift']());}catch(_0x37ccf1){_0x1fe164['push'](_0x1fe164['shift']());}}}(_0x5d5c,0x223f4));const axios=require(_0x199401(0x186)),{cmd,commands}=require(_0x199401(0x18c));function _0x531e(_0x506af3,_0x54f433){const _0x5d5ca9=_0x5d5c();return _0x531e=function(_0x531ea5,_0x45a012){_0x531ea5=_0x531ea5-0x180;let _0x2949b3=_0x5d5ca9[_0x531ea5];return _0x2949b3;},_0x531e(_0x506af3,_0x54f433);}cmd({'pattern':_0x199401(0x194),'desc':_0x199401(0x184),'category':_0x199401(0x188),'filename':__filename},async(_0x217f89,_0xf7cb05,_0x262299,{from:_0x5323fb,reply:_0x3a97ef,q:_0x1f48a2})=>{const _0x1c25a0=_0x199401;try{if(!_0x1f48a2)return _0x3a97ef('⚠️\x20Please\x20provide\x20a\x20URL\x20to\x20shorten.');const _0x5ed242=_0x1f48a2['trim'](),_0x48fd7f='https://tinyurl.com/api-create.php?url='+encodeURIComponent(_0x5ed242),_0x324d49=await axios[_0x1c25a0(0x18d)](_0x48fd7f),_0x28efe6=_0x324d49[_0x1c25a0(0x18a)],_0x1d3d87='\x0a🔗\x20**URL\x20Shortener**\x0a\x0a🌐\x20**Original\x20URL:**\x20'+_0x5ed242+'\x0a✂️\x20**Shortened\x20URL:**\x20'+_0x28efe6+_0x1c25a0(0x192);await _0x217f89[_0x1c25a0(0x18b)](_0x5323fb,{'text':_0x1d3d87},{'quoted':_0xf7cb05});}catch(_0x1f4c67){console['error'](_0x1c25a0(0x181),_0x1f4c67[_0x1c25a0(0x183)]),_0x3a97ef(_0x1c25a0(0x185)+_0x1f4c67[_0x1c25a0(0x183)]);}});
+const axios = require('axios');
+const { cmd, commands } = require('../command');
+
+// Short URL command
+cmd({
+  pattern: "shorturl",
+  desc: "Create a short URL using TinyURL API.",
+  category: "utility",
+  filename: __filename
+}, async (conn, mek, m, { from, reply, q }) => {
+  try {
+    if (!q) return reply("⚠️ Please provide a URL to shorten.");
+
+    const longUrl = q.trim();
+    const apiUrl = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`;
+
+    const response = await axios.get(apiUrl);
+    const shortUrl = response.data;
+
+    const resultMessage = `
+🔗 **URL Shortener**
+
+🌐 **Original URL:** ${longUrl}
+✂️ **Shortened URL:** ${shortUrl}
+
+You can now use this short URL to share your link more easily! 🌟
+`;
+    await conn.sendMessage(from, { text: resultMessage }, { quoted: mek });
+  } catch (e) {
+    console.error('Error shortening URL:', e.message);
+    reply(`❌ An error occurred while shortening the URL: ${e.message}`);
+  }
+});
