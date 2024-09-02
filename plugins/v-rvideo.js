@@ -1,1 +1,53 @@
-const _0x345eb8=_0x10c4;(function(_0x153e57,_0x4acff7){const _0x2d9d28=_0x10c4,_0x5aefd9=_0x153e57();while(!![]){try{const _0x5728ab=-parseInt(_0x2d9d28(0x210))/0x1+-parseInt(_0x2d9d28(0x207))/0x2*(-parseInt(_0x2d9d28(0x1ec))/0x3)+parseInt(_0x2d9d28(0x205))/0x4*(-parseInt(_0x2d9d28(0x1ff))/0x5)+-parseInt(_0x2d9d28(0x1f8))/0x6*(parseInt(_0x2d9d28(0x208))/0x7)+parseInt(_0x2d9d28(0x1fb))/0x8+parseInt(_0x2d9d28(0x209))/0x9+parseInt(_0x2d9d28(0x20e))/0xa;if(_0x5728ab===_0x4acff7)break;else _0x5aefd9['push'](_0x5aefd9['shift']());}catch(_0x6e9a0b){_0x5aefd9['push'](_0x5aefd9['shift']());}}}(_0x2d2b,0xe578e));function _0x2d2b(){const _0x25fa6e=['link','error','140wEIQEN','✅\x20*Your\x20video\x20has\x20been\x20successfully\x20downloaded!*\x20✅','18518QqmLkb','7vsQRLx','12708540JMLDvv','finish','message','path','createWriteStream','187410orHwqu','sendMessage','1790673yvGHeW','No\x20video\x20files\x20found\x20in\x20the\x20response','axios','333wsPCcT','random','🎥\x20*Random\x20Pexels\x20Video*\x20🎥\x0a\x0aTitle:\x20','rvideo','floor','\x0a>\x20BHASHI-MD','join','get','data','❌\x20Error\x20downloading\x20video:\x20','Fetch\x20and\x20send\x20a\x20random\x20video\x20from\x20Pexels.','log','4286238KfEDnX','video_files','videos','10961232HgPBAl','tempVideo.mp4','PEXELS_API_KEY','❌\x20Error\x20fetching\x20video:\x20','54820KAanUP','../config','https://api.pexels.com/videos/search?query=random&per_page=1&page=','stream'];_0x2d2b=function(){return _0x25fa6e;};return _0x2d2b();}const axios=require(_0x345eb8(0x212)),fs=require('fs'),path=require(_0x345eb8(0x20c)),{cmd,commands}=require('../command'),config=require(_0x345eb8(0x200));function _0x10c4(_0x5b87c1,_0x5dfbcf){const _0x2d2b20=_0x2d2b();return _0x10c4=function(_0x10c471,_0x1163d6){_0x10c471=_0x10c471-0x1ec;let _0x135257=_0x2d2b20[_0x10c471];return _0x135257;},_0x10c4(_0x5b87c1,_0x5dfbcf);}cmd({'pattern':_0x345eb8(0x1ef),'desc':_0x345eb8(0x1f6),'category':'fun','react':'🎥','filename':__filename},async(_0x3fb7c2,_0x13c66e,_0x586a52,{from:_0x359f2a,quoted:_0x481731,body:_0x573b7d,isCmd:_0x196683,command:_0x34cf93,args:_0x2af26f,q:_0xd26036,isGroup:_0x1f152c,sender:_0x545720,senderNumber:_0x4beb0a,botNumber2:_0x1dd444,botNumber:_0x53f047,pushname:_0x5c5875,isMe:_0x1b3967,isOwner:_0x52bdd2,groupMetadata:_0x4003bb,groupName:_0x89db7c,participants:_0x148539,groupAdmins:_0x11c290,isBotAdmins:_0x34e199,isAdmins:_0x2c885,reply:_0x220054})=>{const _0xc6671e=_0x345eb8;try{await _0x3fb7c2[_0xc6671e(0x20f)](_0x359f2a,{'text':'⏳\x20*Waiting,\x20your\x20video\x20is\x20downloading...*\x20⏳'},{'quoted':_0x13c66e});const _0x2f89cd=_0xc6671e(0x201)+(Math[_0xc6671e(0x1f0)](Math[_0xc6671e(0x1ed)]()*0x64)+0x1),_0x3e267d=await axios['get'](_0x2f89cd,{'headers':{'Authorization':config[_0xc6671e(0x1fd)]}}),_0x13dfbf=_0x3e267d[_0xc6671e(0x1f4)][_0xc6671e(0x1fa)][0x0];if(!_0x13dfbf||!_0x13dfbf['video_files']||_0x13dfbf[_0xc6671e(0x1f9)]['length']===0x0)throw new Error(_0xc6671e(0x211));const _0x42c414=_0x13dfbf[_0xc6671e(0x1f9)][0x0][_0xc6671e(0x203)],_0x1167fb=_0x13dfbf['title']||'Random\x20Video',_0x3bf66a=path[_0xc6671e(0x1f2)](__dirname,_0xc6671e(0x1fc)),_0x2043b6=fs[_0xc6671e(0x20d)](_0x3bf66a),_0x21ad13=await axios[_0xc6671e(0x1f3)](_0x42c414,{'responseType':_0xc6671e(0x202)});_0x21ad13[_0xc6671e(0x1f4)]['pipe'](_0x2043b6),_0x2043b6['on'](_0xc6671e(0x20a),async()=>{const _0x44d876=_0xc6671e;await _0x3fb7c2['sendMessage'](_0x359f2a,{'text':_0x44d876(0x206)},{'quoted':_0x13c66e}),await _0x3fb7c2[_0x44d876(0x20f)](_0x359f2a,{'video':{'url':_0x3bf66a},'caption':_0x44d876(0x1ee)+_0x1167fb+_0x44d876(0x1f1)},{'quoted':_0x13c66e}),fs['unlinkSync'](_0x3bf66a);}),_0x2043b6['on'](_0xc6671e(0x204),_0xd3ef43=>{const _0x463cab=_0xc6671e;console['log'](_0xd3ef43),_0x220054(_0x463cab(0x1f5)+_0xd3ef43[_0x463cab(0x20b)]);});}catch(_0x527e7a){console[_0xc6671e(0x1f7)](_0x527e7a),_0x220054(_0xc6671e(0x1fe)+_0x527e7a[_0xc6671e(0x20b)]);}});
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const { cmd, commands } = require('../command');
+const config = require('../config');
+
+cmd({
+    pattern: "rvideo",
+    desc: "Fetch and send a random video from Pexels.",
+    category: "fun",
+    react: "🎥",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        // Notify user that the video is being downloaded
+        await conn.sendMessage(from, { text: '⏳ *Waiting, your video is downloading...* ⏳' }, { quoted: mek });
+
+        const apiUrl = `https://api.pexels.com/videos/search?query=random&per_page=1&page=${Math.floor(Math.random() * 100) + 1}`;
+        const response = await axios.get(apiUrl, { headers: { Authorization: config.PEXELS_API_KEY } });
+
+        const video = response.data.videos[0];
+        if (!video || !video.video_files || video.video_files.length === 0) {
+            throw new Error('No video files found in the response');
+        }
+
+        const videoUrl = video.video_files[0].link;
+        const videoTitle = video.title || 'Random Video';
+
+        // Download the video
+        const videoPath = path.join(__dirname, 'tempVideo.mp4');
+        const writer = fs.createWriteStream(videoPath);
+
+        const responseVideo = await axios.get(videoUrl, { responseType: 'stream' });
+        responseVideo.data.pipe(writer);
+
+        writer.on('finish', async () => {
+            await conn.sendMessage(from, { text: '✅ *Your video has been successfully downloaded!* ✅' }, { quoted: mek });
+            await conn.sendMessage(from, { video: { url: videoPath }, caption: `🎥 *Random Pexels Video* 🎥\n\nTitle: ${videoTitle}\n> BHASHI-MD` }, { quoted: mek });
+
+            // Clean up
+            fs.unlinkSync(videoPath);
+        });
+
+        writer.on('error', (err) => {
+            console.log(err);
+            reply(`❌ Error downloading video: ${err.message}`);
+        });
+    } catch (e) {
+        console.log(e);
+        reply(`❌ Error fetching video: ${e.message}`);
+    }
+});
