@@ -81,33 +81,23 @@ module.exports = {
 A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services With A Real Time Automated Conversational Experience. Enjoy.
 
 Help : https://wa.me/94786328485`,
-  MENU_IMG: process.env.MENU_IMG || "https://telegra.ph/file/d9649350faf1dd9410580.jpg",
+  MENU_IMG: process.env.MENU_IMG || "https://telegra.ph/file/6593cd5ac4bbd29375b36.jpg",
   MENU_MSG: process.env.MENU_MSG || `Hello I'm Bhashi MD Your Friendly Bot Assistant. This is My All In One Commands Menu. Here All The Commands Are Arranged in Order. Type You Need Command And Send Me.
 
-Example : You Need "Main Commands" Send Me ".mainmenu" Then You Will Get "Main Commands"
+Please Reply The Number You Want To Select.
 
-📂 𝗺𝗮𝗶𝗻𝗺𝗲𝗻𝘂
-       You Can Get Main Commands.
+*╭───────────────────┈*
+*│📁   1.1*   Main Commands.
+*│📥   1.2*   Download Commands.
+*│⚙️   1.3*   Convert Commands.
+*│🤖   1.4*   Ai Commands.
+*│🔎   1.5*   Search Commands.
+*│🐼   1.6*   Fun Commands.
+*│🕵🏻   1.7*   Owner Commands.
+*╰───────────────────┈*
 
-📥 𝗱𝗹𝗺𝗲𝗻𝘂
-       You Can Get Download Commands.
-
-⚙️ 𝗰𝗼𝘃𝗲𝗿𝘁𝗺𝗲𝗻𝘂
-       You Can Get Convert Commands.
-
-🤖 𝗮𝗶𝗺𝗲𝗻𝘂
-       You Can Get Ai Commands.
-
-🐼 𝗳𝘂𝗻𝗺𝗲𝗻𝘂
-       You Can Get Fun Commands.
-
-🔍 𝘀𝗲𝗮𝗿𝗰𝗵𝗺𝗲𝗻𝘂
-       You Can Get Search Commands.
-
-🕵🏻 𝗼𝘄𝗻𝗲𝗿𝗺𝗲𝗻𝘂
-       You Can Get Owner Commands.
-
-Contact Bhashi : https://wa.me/94786328485`,
+*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*
+*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*`,
   MAIN_MENU: process.env.MAIN_MENU || `Hello I'm Bhashi MD Your Friendly Bot Assistant. This is My Main Commands List. Enjoy Now.
 
 📂 𝗮𝗹𝗶𝘃𝗲
