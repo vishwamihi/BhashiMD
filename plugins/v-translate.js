@@ -1,1 +1,38 @@
-const _0xf62956=_0x194b;(function(_0x2a8fbb,_0x153611){const _0x3ffa24=_0x194b,_0x52075e=_0x2a8fbb();while(!![]){try{const _0x5b16b7=-parseInt(_0x3ffa24(0xfb))/0x1+parseInt(_0x3ffa24(0x108))/0x2*(parseInt(_0x3ffa24(0xf6))/0x3)+parseInt(_0x3ffa24(0x10f))/0x4*(-parseInt(_0x3ffa24(0x107))/0x5)+parseInt(_0x3ffa24(0xfc))/0x6+parseInt(_0x3ffa24(0x10d))/0x7+parseInt(_0x3ffa24(0xf4))/0x8+-parseInt(_0x3ffa24(0x104))/0x9*(parseInt(_0x3ffa24(0x10e))/0xa);if(_0x5b16b7===_0x153611)break;else _0x52075e['push'](_0x52075e['shift']());}catch(_0x384e46){_0x52075e['push'](_0x52075e['shift']());}}}(_0x5177,0x9ea3b));function _0x194b(_0x49b14a,_0x32a2f5){const _0x51773e=_0x5177();return _0x194b=function(_0x194b90,_0x10185d){_0x194b90=_0x194b90-0xf4;let _0x2df91a=_0x51773e[_0x194b90];return _0x2df91a;},_0x194b(_0x49b14a,_0x32a2f5);}const axios=require(_0xf62956(0x10c)),{cmd}=require(_0xf62956(0x103));function _0x5177(){const _0x2fbbb0=['⚠️\x20An\x20error\x20occurred\x20while\x20translating\x20the\x20text.\x20Please\x20try\x20again\x20later.','5AtpuLc','346xhPIzQ','\x0a🌍\x20*Translation*\x20🌍\x0a\x0a🔤\x20*Original*:\x20','\x0a\x0a>\x20BHASHI-MD\x20TRANSLATOR','get','axios','984900OINHzh','387890BmYnSA','2220852UEdvQk','data','slice','9036440zjffWU','🌍\x20Translate\x20text\x20between\x20languages','14658OLwPzd','\x0a🔠\x20*Translated*:\x20','trt','❗\x20Please\x20provide\x20a\x20language\x20code\x20and\x20text.\x20Usage:\x20.translate\x20[language\x20code]\x20[text]','\x0a🌐\x20*Language*:\x20','164045zsJYvB','2037624alZfSd','translatedText','responseData','split','log','length','https://api.mymemory.translated.net/get?q=','../command','252lHDrmT','toUpperCase'];_0x5177=function(){return _0x2fbbb0;};return _0x5177();}cmd({'pattern':_0xf62956(0xf8),'desc':_0xf62956(0xf5),'react':'🌐','category':'useful','filename':__filename},async(_0x927379,_0xf950ce,_0x3b695a,{from:_0x2787c7,q:_0x1fa24a,reply:_0x77c972})=>{const _0x4daad5=_0xf62956;try{const _0x4961e2=_0x1fa24a[_0x4daad5(0xff)]('\x20');if(_0x4961e2[_0x4daad5(0x101)]<0x2)return _0x77c972(_0x4daad5(0xf9));const _0x3855a2=_0x4961e2[0x0],_0x50e29d=_0x4961e2[_0x4daad5(0x111)](0x1)['join']('\x20'),_0x527003=_0x4daad5(0x102)+encodeURIComponent(_0x50e29d)+'&langpair=en|'+_0x3855a2,_0x2b9e3f=await axios[_0x4daad5(0x10b)](_0x527003),_0x182792=_0x2b9e3f[_0x4daad5(0x110)][_0x4daad5(0xfe)][_0x4daad5(0xfd)],_0x45634=_0x4daad5(0x109)+_0x50e29d+_0x4daad5(0xf7)+_0x182792+_0x4daad5(0xfa)+_0x3855a2[_0x4daad5(0x105)]()+_0x4daad5(0x10a);return _0x77c972(_0x45634);}catch(_0x321cfb){return console[_0x4daad5(0x100)](_0x321cfb),_0x77c972(_0x4daad5(0x106));}});
+const axios = require('axios');
+const { cmd } = require('../command');
+
+cmd({
+    pattern: "trt",
+    desc: "🌍 Translate text between languages",
+    react: "🌐",
+    category: "useful",
+    filename: __filename
+},
+async (conn, mek, m, { from, q, reply }) => {
+    try {
+        const args = q.split(' ');
+        if (args.length < 2) return reply("❗ Please provide a language code and text. Usage: .translate [language code] [text]");
+
+        const targetLang = args[0];
+        const textToTranslate = args.slice(1).join(' ');
+
+        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(textToTranslate)}&langpair=en|${targetLang}`;
+
+        const response = await axios.get(url);
+        const translation = response.data.responseData.translatedText;
+
+        const translationMessage = `
+🌍 *Translation* 🌍
+
+🔤 *Original*: ${textToTranslate}
+🔠 *Translated*: ${translation}
+🌐 *Language*: ${targetLang.toUpperCase()}
+
+> BHASHI-MD TRANSLATOR`;
+
+        return reply(translationMessage);
+    } catch (e) {
+        console.log(e);
+        return reply("⚠️ An error occurred while translating the text. Please try again later.");
+    }
+});
