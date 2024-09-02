@@ -1,1 +1,42 @@
-const _0x2ebc17=_0x5312;(function(_0x183546,_0x312d6f){const _0x2b944d=_0x5312,_0x5b8a11=_0x183546();while(!![]){try{const _0x22f2fb=-parseInt(_0x2b944d(0x11b))/0x1+-parseInt(_0x2b944d(0x10c))/0x2+parseInt(_0x2b944d(0x105))/0x3+-parseInt(_0x2b944d(0x119))/0x4*(parseInt(_0x2b944d(0x118))/0x5)+parseInt(_0x2b944d(0x111))/0x6*(parseInt(_0x2b944d(0x112))/0x7)+parseInt(_0x2b944d(0x10b))/0x8*(-parseInt(_0x2b944d(0x10e))/0x9)+-parseInt(_0x2b944d(0x113))/0xa*(-parseInt(_0x2b944d(0x101))/0xb);if(_0x22f2fb===_0x312d6f)break;else _0x5b8a11['push'](_0x5b8a11['shift']());}catch(_0x310d6f){_0x5b8a11['push'](_0x5b8a11['shift']());}}}(_0x3605,0x4574d));function _0x5312(_0x355b98,_0x4f747c){const _0x360570=_0x3605();return _0x5312=function(_0x531280,_0x33e976){_0x531280=_0x531280-0xff;let _0x27b375=_0x360570[_0x531280];return _0x27b375;},_0x5312(_0x355b98,_0x4f747c);}const axios=require(_0x2ebc17(0x10d)),{cmd,commands}=require(_0x2ebc17(0x106)),qrcode=require('qrcode'),path=require(_0x2ebc17(0x110)),fs=require('fs')['promises'];cmd({'pattern':'qr','desc':_0x2ebc17(0x109),'category':_0x2ebc17(0x108),'filename':__filename},async(_0x42086f,_0xfbac84,_0x4e2456,{from:_0x58cf7a,reply:_0x20cee1,q:_0x37a5b6})=>{const _0x451837=_0x2ebc17;try{if(!_0x37a5b6)return _0x20cee1('⚠️\x20Please\x20provide\x20text\x20or\x20URL\x20to\x20generate\x20a\x20QR\x20code.');const _0x1f25b9=_0x37a5b6[_0x451837(0x115)](),_0x100109=path[_0x451837(0x10a)](__dirname,_0x451837(0x10f));await qrcode[_0x451837(0x114)](_0x100109,_0x1f25b9,{'color':{'dark':_0x451837(0x117),'light':_0x451837(0x104)}});const _0x3d51c9=await fs['readFile'](_0x100109);await _0x42086f[_0x451837(0x11a)](_0x58cf7a,{'image':_0x3d51c9,'caption':_0x451837(0xff)+_0x1f25b9+_0x451837(0x100)},{'quoted':_0xfbac84}),await fs['unlink'](_0x100109);}catch(_0x287db0){console[_0x451837(0x107)](_0x451837(0x116),_0x287db0[_0x451837(0x102)]),_0x20cee1(_0x451837(0x103)+_0x287db0[_0x451837(0x102)]);}});function _0x3605(){const _0x1c3027=['qrcode_output.png','path','222YzcaAG','40985lTEffL','3374990kuGlRf','toFile','trim','Error\x20generating\x20QR\x20code:','#000000','1676515HPjbAt','4lGOgsb','sendMessage','332316uprFMH','📱\x20Here\x27s\x20your\x20QR\x20code\x20for:\x20','\x0a\x0a>\x20BHASHI-MD','33NZQepo','message','❌\x20An\x20error\x20occurred\x20while\x20generating\x20the\x20QR\x20code:\x20','#ffffff','517668XVAWfk','../command','error','useful','Generate\x20a\x20QR\x20code\x20from\x20text\x20or\x20URL.','join','394928EZKGSW','208028QhWXon','axios','63rDYvac'];_0x3605=function(){return _0x1c3027;};return _0x3605();}
+const axios = require('axios');
+const { cmd, commands } = require('../command');
+const qrcode = require('qrcode');
+const path = require('path');
+const fs = require('fs').promises;
+
+// QR Code command
+cmd({
+  pattern: "qr",
+  desc: "Generate a QR code from text or URL.",
+  category: "utility",
+  filename: __filename
+}, async (conn, mek, m, { from, reply, q }) => {
+  try {
+    if (!q) return reply("⚠️ Please provide text or URL to generate a QR code.");
+    const text = q.trim();
+    const qrOutputPath = path.join(__dirname, 'qrcode_output.png');
+
+    // Generate QR code
+    await qrcode.toFile(qrOutputPath, text, {
+      color: {
+        dark: '#000000',
+        light: '#ffffff'
+      }
+    });
+
+    // Read the QR code image
+    const image = await fs.readFile(qrOutputPath);
+
+    // Send the QR code image
+    await conn.sendMessage(from, { 
+      image: image,
+      caption: `📱 Here's your QR code for: ${text}\n\n> BHASHI-MD`,
+    }, { quoted: mek });
+
+    // Delete the temporary file
+    await fs.unlink(qrOutputPath);
+  } catch (e) {
+    console.error('Error generating QR code:', e.message);
+    reply(`❌ An error occurred while generating the QR code: ${e.message}`);
+  }
+});
