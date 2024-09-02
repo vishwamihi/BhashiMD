@@ -1,1 +1,46 @@
-const _0x4aa567=_0x2d40;(function(_0x157bf7,_0x425104){const _0x5d4e26=_0x2d40,_0x4924e3=_0x157bf7();while(!![]){try{const _0x584174=-parseInt(_0x5d4e26(0x12c))/0x1+-parseInt(_0x5d4e26(0x132))/0x2+parseInt(_0x5d4e26(0x13a))/0x3*(parseInt(_0x5d4e26(0x142))/0x4)+-parseInt(_0x5d4e26(0x137))/0x5+-parseInt(_0x5d4e26(0x140))/0x6*(parseInt(_0x5d4e26(0x14e))/0x7)+-parseInt(_0x5d4e26(0x13f))/0x8+-parseInt(_0x5d4e26(0x149))/0x9*(-parseInt(_0x5d4e26(0x13c))/0xa);if(_0x584174===_0x425104)break;else _0x4924e3['push'](_0x4924e3['shift']());}catch(_0x50581d){_0x4924e3['push'](_0x4924e3['shift']());}}}(_0x184b,0x8ae73));function _0x184b(){const _0xe690d8=['main','9166059gBhMWQ','log','response','data','&appid=','5966583NJXNCP','pressure','speed','⚠️\x20An\x20error\x20occurred\x20while\x20fetching\x20the\x20weather\x20information.\x20Please\x20try\x20again\x20later.','&units=metric','🚫\x20City\x20not\x20found.\x20Please\x20check\x20the\x20spelling\x20and\x20try\x20again.','\x20m/s\x0a🔽\x20*Pressure*:\x20','756954ambSWp','weather','description','http://api.openweathermap.org/data/2.5/weather?q=','\x0a🌫️\x20*Description*:\x20','../config','1847624zYwPFR','°C\x0a🤷‍♀️\x20*Feels\x20Like*:\x20','OPENWEATHER_API_KEY','\x20hPa\x0a\x0a>\x20BHASHI-MD\x20🌦️\x0a','\x0a💨\x20*Wind\x20Speed*:\x20','3841200tIrNRY','status','sys','2735214sooHfF','get','40OffXma','feels_like','⚠️\x20OpenWeather\x20API\x20key\x20is\x20not\x20configured.\x20Please\x20set\x20it\x20up\x20in\x20the\x20config\x20file.','8921760mHgnqR','6ZcCsuW','temp','4AKFvOO','🌤\x20Get\x20weather\x20information\x20for\x20a\x20location','\x0a🌍\x20*Weather\x20Information\x20for\x20','country','°C\x0a🚨\x20*Min\x20Temp*:\x20','%\x0a☁️\x20*Weather*:\x20'];_0x184b=function(){return _0xe690d8;};return _0x184b();}const axios=require('axios'),config=require(_0x4aa567(0x131)),{cmd,commands}=require('../command');function _0x2d40(_0x25f1f2,_0x2fa49f){const _0x184ba7=_0x184b();return _0x2d40=function(_0x2d400a,_0xea8dd6){_0x2d400a=_0x2d400a-0x128;let _0x2e7bb6=_0x184ba7[_0x2d400a];return _0x2e7bb6;},_0x2d40(_0x25f1f2,_0x2fa49f);}cmd({'pattern':_0x4aa567(0x12d),'desc':_0x4aa567(0x143),'react':'🌤','category':_0x4aa567(0x148),'filename':__filename},async(_0x5b6739,_0x27dd82,_0x20bb17,{from:_0x39686b,q:_0x4aace0,reply:_0x1268d3})=>{const _0x701d93=_0x4aa567;try{if(!_0x4aace0)return _0x1268d3('❗\x20Please\x20provide\x20a\x20city\x20name.\x20Usage:\x20.weather\x20[city\x20name]');const _0x58eddc=config[_0x701d93(0x134)];if(!_0x58eddc)return _0x1268d3(_0x701d93(0x13e));const _0x3c9164=encodeURIComponent(_0x4aace0),_0x555ddc=_0x701d93(0x12f)+_0x3c9164+_0x701d93(0x14d)+_0x58eddc+_0x701d93(0x129),_0x17d774=await axios[_0x701d93(0x13b)](_0x555ddc),_0x5bb31a=_0x17d774[_0x701d93(0x14c)],_0x48a468=_0x701d93(0x144)+_0x5bb31a['name']+',\x20'+_0x5bb31a[_0x701d93(0x139)][_0x701d93(0x145)]+'*\x20🌍\x0a[\x20*BHASHI-MD\x20SEARCH\x20ENGINE*\x20]\x0a\x0a🌡️\x20*Temperature*:\x20'+_0x5bb31a[_0x701d93(0x148)][_0x701d93(0x141)]+_0x701d93(0x133)+_0x5bb31a[_0x701d93(0x148)][_0x701d93(0x13d)]+_0x701d93(0x146)+_0x5bb31a[_0x701d93(0x148)]['temp_min']+'°C\x0a🌝\x20*Max\x20Temp*:\x20'+_0x5bb31a[_0x701d93(0x148)]['temp_max']+'°C\x0a💧\x20*Humidity*:\x20'+_0x5bb31a[_0x701d93(0x148)]['humidity']+_0x701d93(0x147)+_0x5bb31a[_0x701d93(0x12d)][0x0][_0x701d93(0x148)]+_0x701d93(0x130)+_0x5bb31a['weather'][0x0][_0x701d93(0x12e)]+_0x701d93(0x136)+_0x5bb31a['wind'][_0x701d93(0x150)]+_0x701d93(0x12b)+_0x5bb31a[_0x701d93(0x148)][_0x701d93(0x14f)]+_0x701d93(0x135);return _0x1268d3(_0x48a468);}catch(_0x580cc5){console[_0x701d93(0x14a)](_0x580cc5);if(_0x580cc5[_0x701d93(0x14b)]&&_0x580cc5[_0x701d93(0x14b)][_0x701d93(0x138)]===0x194)return _0x1268d3(_0x701d93(0x12a));return _0x1268d3(_0x701d93(0x128));}});
+const axios = require('axios');
+const config = require('../config');
+const { cmd, commands } = require('../command');
+
+cmd({
+    pattern: "weather",
+    desc: "🌤 Get weather information for a location",
+    react: "🌤",
+    category: "main",
+    filename: __filename
+},
+async (conn, mek, m, { from, q, reply }) => {
+    try {
+        if (!q) return reply("❗ Please provide a city name. Usage: .weather [city name]");
+        const apiKey = config.OPENWEATHER_API_KEY; // Assuming you've added this to your config file
+        if (!apiKey) return reply("⚠️ OpenWeather API key is not configured. Please set it up in the config file.");
+
+        const city = encodeURIComponent(q);
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        const response = await axios.get(url);
+        const data = response.data;
+        const weather = `
+🌍 *Weather Information for ${data.name}, ${data.sys.country}* 🌍
+[ *BHASHI-MD SEARCH ENGINE* ]
+
+🌡️ *Temperature*: ${data.main.temp}°C
+🤷‍♀️ *Feels Like*: ${data.main.feels_like}°C
+🚨 *Min Temp*: ${data.main.temp_min}°C
+🌝 *Max Temp*: ${data.main.temp_max}°C
+💧 *Humidity*: ${data.main.humidity}%
+☁️ *Weather*: ${data.weather[0].main}
+🌫️ *Description*: ${data.weather[0].description}
+💨 *Wind Speed*: ${data.wind.speed} m/s
+🔽 *Pressure*: ${data.main.pressure} hPa
+
+> BHASHI-MD 🌦️
+`;
+        return reply(weather);
+    } catch (e) {
+        console.log(e);
+        if (e.response && e.response.status === 404) {
+            return reply("🚫 City not found. Please check the spelling and try again.");
+        }
+        return reply("⚠️ An error occurred while fetching the weather information. Please try again later.");
+    }
+});
