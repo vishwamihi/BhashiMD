@@ -1,1 +1,23 @@
-function _0x2859(){const _0x13cb45=['🖼️','fun','34029iKrNOQ','floor','40dXnjxn','original','src','sendMessage','1295727KlPmCk','470lmKGSF','2125248cURJFf','🖼️\x20*Random\x20Wallpaper\x20Image*\x20🖼️\x0a>\x20BHASHI-MD','message','29673PALcMC','data','Error\x20fetching\x20wallpaper\x20image:\x20','Fetch\x20a\x20random\x20wallpaper\x20image.','2396522drcyGk','../command','60693yakxIS','wallpaper','photos','1502575iPhTnU','2008hZxkJS','../config'];_0x2859=function(){return _0x13cb45;};return _0x2859();}function _0x2aee(_0x1d0644,_0x2e285e){const _0x28595a=_0x2859();return _0x2aee=function(_0x2aee47,_0x5a9282){_0x2aee47=_0x2aee47-0xf9;let _0x47d349=_0x28595a[_0x2aee47];return _0x47d349;},_0x2aee(_0x1d0644,_0x2e285e);}const _0x46f8d7=_0x2aee;(function(_0xee9caf,_0x570ee8){const _0x5c1e6e=_0x2aee,_0x503782=_0xee9caf();while(!![]){try{const _0x121361=-parseInt(_0x5c1e6e(0x10f))/0x1+parseInt(_0x5c1e6e(0xff))/0x2+-parseInt(_0x5c1e6e(0x101))/0x3*(-parseInt(_0x5c1e6e(0x10b))/0x4)+-parseInt(_0x5c1e6e(0x104))/0x5+-parseInt(_0x5c1e6e(0x111))/0x6+parseInt(_0x5c1e6e(0xfb))/0x7*(parseInt(_0x5c1e6e(0x105))/0x8)+-parseInt(_0x5c1e6e(0x109))/0x9*(-parseInt(_0x5c1e6e(0x110))/0xa);if(_0x121361===_0x570ee8)break;else _0x503782['push'](_0x503782['shift']());}catch(_0x5829a3){_0x503782['push'](_0x503782['shift']());}}}(_0x2859,0xa8e69));const axios=require('axios'),{cmd,commands}=require(_0x46f8d7(0x100)),config=require(_0x46f8d7(0x106));cmd({'pattern':_0x46f8d7(0x102),'desc':_0x46f8d7(0xfe),'category':_0x46f8d7(0x108),'react':_0x46f8d7(0x107),'filename':__filename},async(_0xa8fad7,_0x47cb9f,_0x36d530,{from:_0x2987e1,quoted:_0x52dec0,body:_0x3fbe48,isCmd:_0x4ce0d1,command:_0x47e223,args:_0x11860b,q:_0x934a4c,isGroup:_0x3c9c78,sender:_0x4f8d3a,senderNumber:_0x10be85,botNumber2:_0x18cebb,botNumber:_0xf2dd59,pushname:_0x24047f,isMe:_0x2587b6,isOwner:_0xfd1ad2,groupMetadata:_0x2e476e,groupName:_0x5105b3,participants:_0xdd9075,groupAdmins:_0x21fa6d,isBotAdmins:_0x3a0c1f,isAdmins:_0x563068,reply:_0x590ee5})=>{const _0x1c029e=_0x46f8d7;try{const _0x291404='https://api.pexels.com/v1/search?query=wallpaper&per_page=1&page='+(Math[_0x1c029e(0x10a)](Math['random']()*0x64)+0x1),_0x2503fa=await axios['get'](_0x291404,{'headers':{'Authorization':config['PEXELS_API_KEY']}}),_0x2ba652=_0x2503fa[_0x1c029e(0xfc)][_0x1c029e(0x103)][0x0];await _0xa8fad7[_0x1c029e(0x10e)](_0x2987e1,{'image':{'url':_0x2ba652[_0x1c029e(0x10d)][_0x1c029e(0x10c)]},'caption':_0x1c029e(0xf9)},{'quoted':_0x47cb9f});}catch(_0x51b88e){console['log'](_0x51b88e),_0x590ee5(_0x1c029e(0xfd)+_0x51b88e[_0x1c029e(0xfa)]);}});
+const axios = require('axios');
+const { cmd, commands } = require('../command');
+const config = require('../config'); // Add your Pexels API key here
+
+cmd({
+    pattern: "wallpaper",
+    desc: "Fetch a random wallpaper image.",
+    category: "fun",
+    react: "🖼️",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        const apiUrl = `https://api.pexels.com/v1/search?query=wallpaper&per_page=1&page=${Math.floor(Math.random() * 100) + 1}`;
+        const response = await axios.get(apiUrl, { headers: { Authorization: config.PEXELS_API_KEY } });
+        const data = response.data.photos[0];
+
+        await conn.sendMessage(from, { image: { url: data.src.original }, caption: '🖼️ *Random Wallpaper Image* 🖼️\n> BHASHI-MD' }, { quoted: mek });
+    } catch (e) {
+        console.log(e);
+        reply(`Error fetching wallpaper image: ${e.message}`);
+    }
+});
