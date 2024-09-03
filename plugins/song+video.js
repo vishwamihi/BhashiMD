@@ -1,5 +1,5 @@
 
-//================================================================================
+//==============================
 
 const {cmd , commands} = require('../command')
 const fg = require('api-dylux')
@@ -14,12 +14,12 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
-if(!q) return reply("Please give me url or title")
+if(!q) return reply("𝘗𝘭𝘦𝘢𝘴𝘦 𝘎𝘪𝘷𝘦 𝘮𝘦 𝘜𝘳𝘭 𝘖𝘳 𝘕𝘢𝘮𝘦 ✨")
 const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
+let desc = `*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 🎧 *Title* : ${song.title}
 ⏰ *Duration* : ${song.duration}
 📤 *Uploaded On* : ${song.uploaded}
@@ -55,12 +55,12 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
-if(!q) return reply("Please give me url or title")
+if(!q) return reply("𝘗𝘭𝘦𝘢𝘴𝘦 𝘎𝘪𝘷𝘦 𝘮𝘦 𝘜𝘳𝘭 𝘖𝘳 𝘕𝘢𝘮𝘦 ✨")
 const search = await yts(q)
 const data = search.videos[0];
 const url = data.url
 
-let desc = `‎‎*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
+let desc = `*𝗕𝗛𝗔𝗦𝗛𝗜 𝗠𝗗 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
 🎥 *Title* : ${video.title}
 ⏰ *Duration* : ${video.duration}
 📤 *Uploaded On* : ${video.uploaded}
