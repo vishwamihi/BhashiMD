@@ -2,7 +2,7 @@ const fs = require("fs");
 require("dotenv").config();
 
 module.exports = {
-  SESSION_ID: process.env.SESSION_ID || "UnMzxK7Z#IU0NOFrFff_yC-vHdEkBHlys5ySNDy9S1ZyTAVd8A_Q",
+  SESSION_ID: process.env.SESSION_ID || "bA13SRKZ#Dlcx3CSj6Z6azv4pNcWpneJpwSSFdh_5dLc0ZxRL3zU",
   PREFIX: process.env.PREFIX || ".",
   PEXELS_API_KEY: process.env.PEXELS_API_KEY || "39WCzaHAX939xiH22NCddGGvzp7cgbu1VVjeYUaZXyHUaWlL1LFcVFxH",
   OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39",
