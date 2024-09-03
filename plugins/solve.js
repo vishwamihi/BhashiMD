@@ -1,27 +1,45 @@
-const { cmd, commands } = require('../command');
+const { cmd } = require('../command');
 const math = require('mathjs');
 
 cmd({
     pattern: "solve",
-    desc: "Solve mathematical expressions.",
+    alias: ["mathsolve"],
+    desc: "🔢 Solve mathematical expressions.",
     react: "🔢",
-    category: "math",
+    category: "main",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, reply, q }) => {
+async (conn, mek, m, { from, q, reply }) => {
     try {
-        // Check if the user has provided an expression
+        // Check if the user has provided a mathematical expression
         if (!q) {
-            return reply("Please provide a mathematical expression to solve. Example: `.solve 2 + 2`");
+            return reply("❗ Please provide a mathematical expression to solve. Example: `.solve 2 + 2`");
         }
 
         // Evaluate the mathematical expression
         let result = math.evaluate(q);
-        let response = `*Math Expression:* ${q}\n*Result:* ${result}\n\n*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*`;
 
-        return conn.sendMessage(from, { text: response }, { quoted });
+        // Prepare response with the solved result
+        const response = `
+        📊 *Math Expression:* ${q}
+        ✅ *Result:* ${result}
+
+        *ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*
+        *ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*
+        `;
+
+        // Send the result to the user
+        return conn.sendMessage(from, { text: response }, { quoted: mek });
+
     } catch (e) {
         console.error(e);
-        return reply(`An error occurred while solving the expression: ${e.message}`);
+
+        // Handle specific MathJS errors
+        if (e instanceof math.Error) {
+            return reply("❌ Invalid mathematical expression. Please check your input and try again.");
+        }
+
+        // Generic error message
+        return reply(`⚠️ An error occurred while solving the expression: ${e.message}`);
     }
 });
