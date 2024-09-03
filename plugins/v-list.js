@@ -11,6 +11,18 @@ const commands ={
     "category": "🛠️ Useful",
     "desc": "🛠️ Get current cryptocurrency prices from Binance."
   },
+  "wa": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Get your wa.me Link"
+  },
+    "solve": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Solve Your Math Problems"
+  },
+    "jid": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Get your Whatsapp JID"
+  },
   "dnslookup": {
     "category": "🛠️ Useful",
     "desc": "🛠️ Perform DNS lookup on a domain to retrieve its IP address."
@@ -207,6 +219,10 @@ const commands ={
     "category": "🛠️ Useful",
     "desc": "🛠️ Check the strength of a password."
   },
+    "userinfo": {
+    "category": "🛠️ Useful",
+    "desc": "🛠️ Get You whatsapp User Informations"
+  },
   "autobio": {
     "category": "👑 Owner",
     "desc": "👑 Automatically update the bot's bio."
@@ -346,6 +362,14 @@ const commands ={
   "customnafw": {
     "category": "🔞 NSFW",
     "desc": "🔞 Fetch a custom NSFW image."
+  },
+    "xnxx": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Search XNXX Video From xnxx.com"
+  },
+    "xnxxdl": {
+    "category": "🔞 NSFW",
+    "desc": "🔞 Download XNXX Video By LInk"
   },
   "promote": {
     "category": "👥 Group",
