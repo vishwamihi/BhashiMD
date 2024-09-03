@@ -1,4 +1,3 @@
-
 const { fetchJson } = require('../lib/functions');
 const { cmd } = require('../command');
 
@@ -9,7 +8,7 @@ let baseUrl;
         let baseUrlGet = await fetchJson('https://raw.githubusercontent.com/prabathLK/PUBLIC-URL-HOST-DB/main/public/url.json');
         baseUrl = baseUrlGet.api;
     } catch (error) {
-        console.error('Error fetching base URL:', error);
+        console.error('❌ Error fetching base URL:', error);
     }
 })();
 
@@ -22,7 +21,9 @@ function formatFileSize(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
-// Google Drive Downloader
+// Google Drive Downloader with size limit (e.g., 100MB limit)
+const MAX_DOWNLOAD_SIZE = 500 * 1024 * 1024; // 100 MB
+
 cmd({
     pattern: "gdrive",
     alias: ["googledrive"],
@@ -39,18 +40,25 @@ cmd({
 
     try {
         const data = await fetchJson(`${baseUrl}/api/gdrivedl?url=${encodeURIComponent(q)}`);
-
         const fileInfo = data.data || data;
+
+        // Check if file size exceeds the limit
+        const fileSize = fileInfo.fileSize || fileInfo.size || 0;
+        if (fileSize > MAX_DOWNLOAD_SIZE) {
+            await conn.sendMessage(from, { text: `⚠️ The file size is too large. Maximum allowed size is 500 MB. The provided file is ${formatFileSize(fileSize)}.` }, { quoted: mek });
+            return await conn.sendMessage(from, { react: { text: "⚠️", key: mek.key } });
+        }
+
         const captionHeader = `
 ╭─『 *ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ᴅʟ* 』───⊷
 │
 │ ✨ *ʀᴇQᴜᴇꜱᴛᴇʀ*: ${pushname}
 │ 🤖 *ʙᴏᴛ*: BHASHI-MD
 │ 📄 *ꜰɪʟᴇ ɴᴀᴍᴇ:* ${fileInfo.fileName || fileInfo.title || 'Not available'}
-│ 📦 *ꜱɪᴢᴇ:* ${formatFileSize(fileInfo.fileSize || fileInfo.size || 0)}
+│ 📦 *ꜱɪᴢᴇ:* ${formatFileSize(fileSize)}
 │ 📎 *ᴛʏᴘᴇ:* ${fileInfo.mimeType || fileInfo.file_type || 'Not available'}
 │
-│ 🤷‍♀️ _We Will Send Your GOOGLE DRIVE Content_
+│ 🤷‍♀️ _Your Google Drive content is on its way!_
 ╰────────────────────⊷`.trim();
 
         const caption = `${captionHeader}\n\n> BHASHI-MD`.trim();
@@ -64,8 +72,12 @@ cmd({
 
         await conn.sendMessage(from, { react: { text: "✅", key: mek.key } });
     } catch (error) {
-        console.error(`Error in Google Drive downloader:`, error);
-        await conn.sendMessage(from, { text: `❌ An error occurred: ${error.message}` }, { quoted: mek });
+        console.error('❌ Error in Google Drive downloader:', error);
+        const errorMessage = error.response && error.response.status === 404 
+            ? '❌ Error: The requested file could not be found. Please check the URL and try again.'
+            : `❌ An error occurred: ${error.message}`;
+
+        await conn.sendMessage(from, { text: errorMessage }, { quoted: mek });
         await conn.sendMessage(from, { react: { text: "❌", key: mek.key } });
     } finally {
         await conn.sendMessage(from, { delete: downloadingMsg.key });
