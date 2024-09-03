@@ -45,6 +45,44 @@
 
 ***
 
+<p align="center"> 𝗪𝗢𝗥𝗞𝗙𝗟𝗢𝗪𝗦 𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗖𝗢𝗗𝗘
+
+```
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start application
+      run: npm start
+```
+
 <p align="center"> 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 𝗠𝗔𝗜𝗡 𝗢𝗪𝗡𝗘𝗥
 
 <p align="center">
