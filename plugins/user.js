@@ -39,8 +39,8 @@ cmd({
         // Default message if none provided
         const defaultMessage = 'Hello!';
 
-        // Get the custom message from the command text or use the default message
-        const message = text.trim() ? text.trim() : defaultMessage;
+        // Ensure that 'text' is defined and not null, or use default message
+        const message = (text && text.trim()) ? text.trim() : defaultMessage;
 
         // Extract the sender's phone number (assuming it's in E.164 format, i.e., with country code)
         const senderJid = m.sender;
@@ -60,6 +60,7 @@ cmd({
         reply(`${e}`);
     }
 });
+
 
 cmd({
   pattern: "userinfo",
