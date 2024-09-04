@@ -14,10 +14,18 @@ cmd({
         const endTime = Date.now();
         const ping = endTime - startTime;
 
-        // Send the ping response without buttons
+        // Send the ping response with newsletter forwarding information
         await conn.sendMessage(from, { 
             text: `⏰ 𝗥𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝗧𝗶𝗺𝗲 : ${ping}ms`,
-            footer: '> BHASHI-MD'
+            footer: '> BHASHI-MD',
+            contextInfo: { 
+                forwardingScore: 1, 
+                isForwarded: true, 
+                forwardedNewsletterMessageInfo: { 
+                    newsletterJid: "120363327841612745@newsletter", 
+                    newsletterName: "sᴏɴɢ ʟʏʀɪᴄs" 
+                }
+            }
         }, { quoted: message });
         
     } catch (e) {
