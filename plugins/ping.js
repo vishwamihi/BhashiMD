@@ -17,13 +17,13 @@ cmd({
         // Send the ping response with newsletter forwarding information
         await conn.sendMessage(from, { 
             text: `⏰ 𝗥𝗲𝘀𝗽𝗼𝗻𝘀𝗲 𝗧𝗶𝗺𝗲 : ${ping}ms`,
-            footer: '> BHASHI-MD',
+            footer: '*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*',
             contextInfo: { 
                 forwardingScore: 1, 
                 isForwarded: true, 
                 forwardedNewsletterMessageInfo: { 
-                    newsletterJid: "120363327841612745@newsletter", 
-                    newsletterName: "sᴏɴɢ ʟʏʀɪᴄs" 
+                    newsletterJid: "120363237238158413@newsletter", 
+                    newsletterName: "🇧​🇭​🇦​🇸​🇭​🇮​-🇲​🇩​" 
                 }
             }
         }, { quoted: message });
