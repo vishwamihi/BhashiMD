@@ -23,7 +23,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const freeMemory = (os.freemem() / 1024 / 1024).toFixed(2);
 
         let status = `
-─────⚙️ 𝘽𝙃𝘼𝙎𝙃𝙄-𝙈𝘿 𝙎𝙔𝙎𝙏𝙀𝙈 ⚙️──
+──⚙️ 𝘽𝙃𝘼𝙎𝙃𝙄-𝙈𝘿 𝙎𝙔𝙎𝙏𝙀𝙈 ⚙️──
 
 A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services With A Real Time Automated Conversational Experience. Enjoy.
 
@@ -42,8 +42,8 @@ A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services Wit
 > 👑 ᴏᴡɴᴇʀ : OFC Bhashitha
 > 🧑‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ : Vishwa Mihiranga
 
-ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ
-ᴘᴏᴡᴇʀᴅ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ`;
+*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*
+*ᴘᴏᴡᴇʀᴅ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*`;
 
         // Send the image with status as caption
         await conn.sendMessage(from, { 
