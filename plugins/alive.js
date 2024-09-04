@@ -49,6 +49,8 @@ _A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services Wi
 
 ${systemInfo}
 
+*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*
+
             `.trim(),
             footer: '*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*',
             contextInfo: { 
@@ -56,7 +58,7 @@ ${systemInfo}
                 isForwarded: true, 
                 forwardedNewsletterMessageInfo: { 
                     newsletterJid: "120363237238158413@newsletter", 
-                    newsletterName: "🇧​🇭​🇦​🇸​🇭​ɪ​-🇲​🇩​" 
+                    newsletterName: "🇧​🇭​🇦​🇸​🇭​ɪ​ - 🇲​🇩​" 
                 }
             }
         }, { quoted: mek });
