@@ -49,10 +49,16 @@ _A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services Wi
 
 ${systemInfo}
 
-*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*
-*ᴘᴏᴡᴇʀᴅ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*
             `.trim(),
-            footer: "> BHASHI-MD"
+            footer: '*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*',
+            contextInfo: { 
+                forwardingScore: 1, 
+                isForwarded: true, 
+                forwardedNewsletterMessageInfo: { 
+                    newsletterJid: "120363237238158413@newsletter", 
+                    newsletterName: "🇧​🇭​🇦​🇸​🇭​ɪ​-🇲​🇩​" 
+                }
+            }
         }, { quoted: mek });
 
     } catch (e) {
