@@ -47,4 +47,3 @@ async (conn, mek, m, {
         return reply(`An error occurred during upload: ${error.message}`);
     }
 });
-
