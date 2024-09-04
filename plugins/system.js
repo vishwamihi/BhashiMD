@@ -23,26 +23,31 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const freeMemory = (os.freemem() / 1024 / 1024).toFixed(2);
 
         let status = `
-*📊 ʙʜᴀꜱʜɪ-ᴍᴅ ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏ ✅*
+────⚙️ 𝘽𝙃𝘼𝙎𝙃𝙄-𝙈𝘿 𝙎𝙔𝙎𝙏𝙀𝙈 ⚙️───
 
-★──╴────╴───╴─╴───╴───★
-⏰ *ᴜᴘᴛɪᴍᴇ:* ${uptime}
-💾 *ʀᴀᴍ ᴜꜱᴀɢᴇ:* ${memoryUsage} MB / ${totalMemory} MB
-🖥️ *ᴄᴘᴜ ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ:* ${cpuArch}
-⚙️ *ᴄᴘᴜ ᴄᴏʀᴇꜱ:* ${cpuCores}
-🌐 *ᴘʟᴀᴛꜰᴏʀᴍᴇ:* ${systemPlatform}
-🏠 *ꜱʏꜱᴛᴇᴍ ᴛʏᴘᴇꜱ:* ${systemType}
-🆓 *ꜰʀᴇᴇ ᴍᴇᴍᴘʀʏ:* ${freeMemory} MB
-📻 *ʜᴏꜱᴛ:* ${os.hostname()}
-👑 *ᴏᴡɴᴇʀ:* OFC Bhashitha
-👾 *ᴅᴇᴠᴇʟᴏᴘᴇʀ:* Vishwa Mihiranga
-★──╴────╴───╴─╴───╴───★
+A Bhashi Md Whatsapp Bot Based Third Party Application Provide Many Services With A Real Time Automated Conversational Experience. Enjoy.
 
-*Have a great day!* 🪄`;
+                     SYSTEM INFO
+                   ──────────
+> ⏱️ ᴜᴘᴛɪᴍᴇ : ${uptime}
+> 🪄 ʀᴀᴍ ᴜꜱᴀɢᴇ : ${memoryUsage} MB / ${totalMemory} MB
+> 🖥️ ᴄᴘᴜ ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ : ${cpuArch}
+> ⚙️ ᴄᴘᴜ ᴄᴏʀᴇꜱ : ${cpuCores}
+> 🌐 ᴘʟᴀᴛꜰᴏʀᴍᴇ : ${systemPlatform}
+> ❄️ ꜱʏꜱᴛᴇᴍ ᴛʏᴘᴇꜱ : ${systemType}
+> 🛡️ ʜᴏꜱᴛ : ${os.hostname()}
+
+                  DEVELOPER INFO
+               ─────────────
+> 👑 ᴏᴡɴᴇʀ : OFC Bhashitha
+> 🧑‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ : Vishwa Mihiranga
+
+ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ
+ᴘᴏᴡᴇʀᴅ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ`;
 
         // Send the image with status as caption
         await conn.sendMessage(from, { 
-            image: { url: config.ALIVE_IMG },
+            image: { url: "https://i.ibb.co/xgGPSSz/image.png" },
             caption: status
         });
 
