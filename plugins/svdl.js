@@ -28,23 +28,49 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 🚨🪄 Your song download request is being processed. You will receive the audio file soon.`;
 
-        // Sending video details with a thumbnail image
-        await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
+        // Sending video details with a thumbnail image and contextInfo
+        await conn.sendMessage(from, { 
+            image: { url: data.thumbnail }, 
+            caption: desc,
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true ,
+                forwardedNewsletterMessageInfo: { 
+                    newsletterJid: "120363237238158413@newsletter", 
+                    newsletterName: "🇧​🇭​🇦​🇸​🇭​ɪ​-🇲​🇩​" 
+                }
+            } 
+        }, { quoted: mek });
 
         // Download audio
         let down = await fg.yta(url);
         let downloadUrl = down.dl_url;
 
-        // Sending audio file + document message
-        await conn.sendMessage(from, { audio: { url: downloadUrl }, mimetype: "audio/mpeg" }, { quoted: mek });
-        await conn.sendMessage(from, { document: { url: downloadUrl }, mimetype: "audio/mpeg", fileName: `${data.title}.mp3`, caption: "*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*" }, { quoted: mek });
+        // Sending audio file + document message with contextInfo
+        await conn.sendMessage(from, { 
+            audio: { url: downloadUrl }, 
+            mimetype: "audio/mpeg", 
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true 
+            } 
+        }, { quoted: mek });
+        await conn.sendMessage(from, { 
+            document: { url: downloadUrl }, 
+            mimetype: "audio/mpeg", 
+            fileName: `${data.title}.mp3`, 
+            caption: "*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*",
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true 
+            } 
+        }, { quoted: mek });
 
     } catch (e) {
         console.log(e);
         reply(`An error occurred: ${e.message}`);
     }
 });
-
 
 //===========video-dl===========
 
@@ -72,16 +98,43 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 🚨🪄 Your video download request is being processed. You will receive the video file soon.`;
 
-        // Sending video details with a thumbnail image
-        await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
+        // Sending video details with a thumbnail image and contextInfo
+        await conn.sendMessage(from, { 
+            image: { url: data.thumbnail }, 
+            caption: desc,
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true ,
+                forwardedNewsletterMessageInfo: { 
+                    newsletterJid: "120363237238158413@newsletter", 
+                    newsletterName: "🇧​🇭​🇦​🇸​🇭​ɪ​-🇲​🇩​" 
+                }
+            } 
+        }, { quoted: mek });
 
         // Download video
         let down = await fg.ytv(url);
         let downloadUrl = down.dl_url;
 
-        // Sending video file + document message
-        await conn.sendMessage(from, { video: { url: downloadUrl }, mimetype: "video/mp4" }, { quoted: mek });
-        await conn.sendMessage(from, { document: { url: downloadUrl }, mimetype: "video/mp4", fileName: `${data.title}.mp4`, caption: "*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*" }, { quoted: mek });
+        // Sending video file + document message with contextInfo
+        await conn.sendMessage(from, { 
+            video: { url: downloadUrl }, 
+            mimetype: "video/mp4", 
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true 
+            } 
+        }, { quoted: mek });
+        await conn.sendMessage(from, { 
+            document: { url: downloadUrl }, 
+            mimetype: "video/mp4", 
+            fileName: `${data.title}.mp4`, 
+            caption: "*ʙʜᴀꜱʜɪ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ*\n*ᴘᴏᴡᴇʀᴅ ʙʏ ʙʜᴀꜱʜɪᴛʜᴀ ᴀɴᴅ ᴠɪꜱʜᴡᴀ ᴍɪʜɪʀᴀɴɢᴀ*",
+            contextInfo: { 
+                forwardingScore: 999, 
+                isForwarded: true 
+            } 
+        }, { quoted: mek });
 
     } catch (e) {
         console.log(e);
