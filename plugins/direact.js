@@ -1,49 +1,49 @@
-const fs = require('fs').promises;
+
 const axios = require('axios');
 const { cmd } = require('../command');
-const { downloadMediaMessage } = require('@adiwajshing/baileys');
 
-cmd({
-    pattern: "upload",
-    desc: "Upload a file and get a direct download link.",
-    react: "📤",
-    category: "utility",
-    filename: __filename
-},
-async (conn, mek, m, { 
-    from, quoted, reply, args
-}) => {
+
+cmd(
+  {
+    pattern: "iosnews",
+    alias: ["ios"],
+    desc: "Fetches the latest iOS news.",
+    category: "news",
+    filename: __filename,
+    use: "iosnews",
+  },
+  async (message, input) => {
     try {
-        // Check if a file is attached
-        const quotedMsg = mek.quoted || mek;
-        if (!quotedMsg.mimetype) {
-            return reply("Please reply to a file or media that you want to upload.");
-        }
+      const apiUrl = "https://api.maher-zubair.tech/details/ios";
+      const response = await fetch(apiUrl);
+      const data = await response.json();
 
-        // Download the file
-        const buffer = await downloadMediaMessage(quotedMsg, 'buffer', {});
-        
-        // Generate a filename
-        const filename = quotedMsg.filename || `file_${Date.now()}.${quotedMsg.mimetype.split('/')[1]}`;
+      if (!data || data.status !== 200 || !data.result) {
+        return message.send("*Failed to fetch iOS news.*");
+      }
 
-        // Upload to Transfer.sh
-        const uploadResponse = await axios.put(
-            `https://transfer.sh/${filename}`,
-            buffer,
-            {
-                headers: {
-                    'Content-Type': quotedMsg.mimetype
-                },
-                maxBodyLength: Infinity,
-                maxContentLength: Infinity
-            }
-        );
+      const { title, link, images, desc } = data.result;
 
-        const directLink = uploadResponse.data.trim();
+      let output = `*${title}*\n\n`;
+      output += `${desc}\n\n`;
+      output += `*Link:* ${link}\n\n`;
 
-        return reply(`File uploaded successfully!\nDirect download link: ${directLink}`);
+      if (images && images.length > 0) {
+        output += "*Images:*\n";
+        images.forEach((image) => {
+          output += `${image}\n`;
+        });
+        output += "\n";
+      }
+
+      return message.send(output, { quoted: message });
     } catch (error) {
-        console.error("Upload command error:", error);
-        return reply(`An error occurred during upload: ${error.message}`);
+      console.error(error);
+      return message.error(
+        error + "\n\nCommand: iosnews",
+        error,
+        "*Failed to fetch iOS news.*"
+      );
     }
-});
+  }
+);
