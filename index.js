@@ -143,11 +143,11 @@ if(senderNumber.includes("94702481115")){
 if(isReact) return
 m.react("🧑🏻‍💻")
 }
-if(senderNumber.includes("94724826875")){
+if(senderNumber.includes("94786328485")){
 if(isReact) return
 m.react("🧑🏻‍💻")
 }
-if(senderNumber.includes("94702481115")){
+if(senderNumber.includes("94727528807")){
 if(isReact) return
 m.react("🧑🏻‍💻")
 }
