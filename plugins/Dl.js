@@ -102,28 +102,24 @@ async (conn, mek, m, { from, q, reply }) => {
 });
 
 // APK Downloader
+
 cmd({
     pattern: "apk",
     alias: ["modapk"],
-    desc: "📱 Download APKs",
+    desc: "download apks",
     category: "download",
-    react: "📥",
+    react: "⚡",
     filename: __filename
 },
-async (conn, mek, m, { from, q, reply }) => {
+async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        if (!q || !q.startsWith("https://")) return reply("❗ Please provide a valid APK URL. Example: `.apk https://apk.com/xyz`");
-        
-        // Fetch data from API
-        let data = await fetchJson(`${baseUrl}/api/apkdl?url=${q}`);
-        
-        reply("📥 *Fetching your APK...*");
-        
-        // Send APK as a document
-        await conn.sendMessage(from, { document: { url: data.data.link_1 }, fileName: data.data.name, mimetype: data.data.file_type, caption: `📦 *Here is your APK:* ${data.data.name}\n\n${yourName}` }, { quoted: mek });
-        
+        if (!q && !q.startsWith("https://")) return reply("❗Apk Not Found,Sorry")
+        //fetch data from api  
+        let data = await fetchJson(`${baseUrl}/api/apkdl?url=${q}`)
+        reply("*plase waite...*")
+        await conn.sendMessage(from, { document: { url: data.data.link_1 }, fileName: data.data.name, mimetype: data.data.file_type, caption: cap }, { quoted: mek })                                                                                                                 
     } catch (e) {
-        console.log(e);
-        reply(`❌ Error occurred while downloading the APK: ${e.message}`);
+        console.log(e)
+        reply(`${e}`)
     }
-});
+})
